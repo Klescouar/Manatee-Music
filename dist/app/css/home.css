@@ -31,6 +31,10 @@
       width: 40%;
       height: 90vh;
       background-color: #2d355d; }
+      .home-page .instruction .instruction-box p {
+        padding: 50px;
+        line-height: 2em;
+        color: #e3e6ec; }
   .home-page .bio-collective {
     background-color: #6d7b9f;
     height: 50vh;
