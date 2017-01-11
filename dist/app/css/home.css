@@ -42,16 +42,16 @@
     line-height: 2em;
     color: #272e50; }
   .home-page .bio-perso {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: space-around;
-    align-items: flex-end; }
+    align-items: flex-start; }
     .home-page .bio-perso .bio-box {
       position: relative;
       color: #e3e6ec;
       width: 40%;
-      height: 80vh;
-      margin-bottom: 30px;
+      min-height: 80vh;
+      margin-top: 80px;
       background-color: #2d355d; }
       .home-page .bio-perso .bio-box p {
         margin-top: 80px;
