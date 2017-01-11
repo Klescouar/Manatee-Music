@@ -1,0 +1,114 @@
+// Mise a disposition de la police dans ses différents formats
+@font-face {
+    font-family: "ROBOTO";
+    src: url("../../assets/lib/fonts/Quicksand/Quicksand_Book.otf");
+}
+@font-face {
+    font-family: "ROBOTO";
+    src: url("../../assets/lib/fonts/Quicksand/Quicksand_Bold.otf");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "ROBOTO";
+    src: url("../../assets/lib/fonts/Quicksand/Quicksand_Book_Oblique.otf");
+    font-style: oblique;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "ROBOTO";
+}
+
+body{
+  background-color: #e2e6ec;
+}
+
+.nav-bar {
+    height: 90px;
+    // background-color: rgb(227, 227, 227);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .nav-bar-logo {
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+        margin-left: 25px;
+
+        .logo {
+            height: 70px;
+            width: 170px;
+            background-image: url('../../assets/images/logo.png');
+            background-position: bottom;
+            background-size: cover;
+        }
+    }
+    // HOVER BUTTON NAVBAR
+    div.borderXwidth a:after,
+    div.borderXwidth a:before {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 1px;
+        content: '';
+        background: #838383;
+        transition: all 0.2s;
+    }
+
+    div.borderXwidth a:before {
+        left: 0;
+        top: 0;
+    }
+
+    div.borderXwidth a:after {
+        right: 0;
+        bottom: 0;
+    }
+
+    div.borderXwidth a:hover:after,
+    div.borderXwidth a:hover:before {
+        opacity: 1;
+        width: 100%;
+    }
+
+    a {
+        margin-right: 70px;
+        padding: 7px 0;
+        text-decoration: none;
+        color: rgb(31, 31, 31);
+        position: relative;
+        z-index: 0;
+    }
+}
+
+.footer {
+    height: 80px;
+    background-color: #e2e6ec;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .facebook-icon,
+    .google-icon,
+    .twiter-icon {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin: 0 60px;
+        width: 25px;
+        height: 25px;
+    }
+        .facebook-icon {
+            background-image: url("../../assets/images/facebook-logo-button.png");
+        }
+
+        .twiter-icon {
+            background-image: url("../../assets/images/twitter.png");
+        }
+
+        .google-icon {
+            background-image: url("../../assets/images/google-plus.png");
+        }
+}

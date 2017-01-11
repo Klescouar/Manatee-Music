@@ -1,0 +1,95 @@
+.home-page {
+    background-color: rgb(227,230,236);
+
+    .first-view {
+        min-height: calc(100vh - 90px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .first-view-logo {
+            height: 400px;
+            width: 600px;
+            background-image: url('../../assets/images/logo.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .presentation {
+        background-color: #6d7b9f;
+        height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 50px;
+        text-align: center;
+        line-height: 2em;
+        color: rgb(39, 46, 80);
+    }
+
+    .instruction {
+        height: 100vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .instruction-box {
+            width: 40%;
+            height: 90vh;
+            background-color: rgb(45,53,93);
+        }
+    }
+
+    .bio-collective {
+        background-color: #6d7b9f;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 50px;
+        text-align: center;
+        line-height: 2em;
+        color: rgb(39, 46, 80);
+    }
+
+    .bio-perso {
+        height: 100vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+
+        .bio-box {
+            position: relative;
+            color: rgb(227,230,236);
+            width: 40%;
+            height: 80vh;
+            margin-bottom: 30px;
+            background-color: rgb(45,53,93);
+
+            p {
+                margin-top: 80px;
+                padding: 50px;
+                line-height: 2em;
+            }
+
+            .bio-photo {
+                background-image: url('../../assets/images/jojo.jpg');
+                background-position: center;
+                background-size: cover;
+                border: 3px solid white;
+                height: 160px;
+                width: 160px;
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                position: absolute;
+                top: -60px;
+                left: 0;
+                right: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+}
