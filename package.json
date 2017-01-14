@@ -1,32 +1,37 @@
 {
-    "name": "manatee-music",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "engines": {
-        "node": "6.9.2",
-        "npm": "4.0.3"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js"
-    },
-    "author": "Kevin Le Scouarnec",
-    "license": "ISC",
-    "dependencies": {
-        "angular": "^1.6.1",
-        "angular-ui-router": "^0.3.2",
-        "browser-sync": "^2.18.5",
-        "gulp-autoprefixer": "^3.1.1",
-        "gulp-copy": "^1.0.0",
-        "gulp-inject": "^4.2.0",
-        "gulp-plumber": "^1.1.0",
-        "gulp-rename": "^1.2.2",
-        "gulp-sass": "^3.0.0",
-        "jquery": "^3.1.1",
-        "body-parser": "^1.15.2",
-        "express": "^4.14.0",
-        "morgan": "^1.7.0",
-        "path": "^0.12.7"
-    }
+  "name": "manatee-music",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node": "6.9.2",
+    "npm": "4.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Kevin Le Scouarnec",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-ui-router": "^0.3.2",
+    "body-parser": "^1.15.2",
+    "browser-sync": "^2.18.5",
+    "express": "^4.14.0",
+    "file-type": "^4.0.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-copy": "^1.0.0",
+    "gulp-inject": "^4.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.0.0",
+    "jquery": "^3.1.1",
+    "mongoose": "^4.7.6",
+    "morgan": "^1.7.0",
+    "multer": "^1.2.1",
+    "ng-file-upload": "^12.2.13",
+    "path": "^0.12.7",
+    "read-chunk": "^2.0.0"
+  }
 }

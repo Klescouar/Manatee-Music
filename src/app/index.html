@@ -18,6 +18,8 @@
         <script type="text/javascript" src="../assets/lib/js/angular.min.js"></script>
         <script type="text/javascript" src="../assets/lib/js/jquery.min.js"></script>
         <script type="text/javascript" src="../assets/lib/js/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="../assets/lib/js/ng-file-upload-shim.min.js"></script>
+        <script type="text/javascript" src="../assets/lib/js/ng-file-upload.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     </head>
     <body ng-app="manatee-music">
@@ -40,13 +42,18 @@
         <link rel="stylesheet" href="app/css/home.css">
         <link rel="stylesheet" href="app/css/contact.css">
         <link rel="stylesheet" href="app/css/player.css">
+        <link rel="stylesheet" href="app/css/admin.css">
         <!-- CONFIG -->
         <script src="app/app.js"></script>
         <script src="app/appRoute.js"></script>
+        <script src="app/constant.js"></script>
         <!-- CONTROLLERS -->
         <script src="app/js/controllers/homeCtrl.js"></script>
         <script src="app/js/controllers/contactCtrl.js"></script>
         <script src="app/js/controllers/playerCtrl.js"></script>
-
+        <script src="app/js/controllers/adminCtrl.js"></script>
+        <!-- SERVICES -->
+        <script src="app/js/services/player-service.js"></script>
+        <script src="app/js/services/API-service.js"></script>
     </body>
 </html>

@@ -1,0 +1,39 @@
+<div class="admin-page">
+    <div class="send-song">
+        <input type="text" id="title" value="" ng-model="song.title" required placeholder="Titre..."></input>
+        <div class="choose-pic">
+            <div id="upload-pic"></div>
+            <form id="upload-photos" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input id="photos-input" type="file" name="photos[]" multiple="multiple">
+                </div>
+                <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo"/>
+            </form>
+        </div>
+        <div class="choose-pic">
+            <div id="upload-pic"></div>
+            <form id="upload-song" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input id="song-input" type="file" name="photos[]" multiple="multiple">
+                </div>
+                <input class="btn btn-default" type="submit" name="Song Uploads" value="Upload Song"/>
+            </form>
+        </div>
+        <a>
+            <button type="button" ng-click="addSong()">
+                <h4>Envoyer</h4>
+            </button>
+        </a>
+    </div>
+
+    <div >
+        <div ng-repeat="song in songs">
+            <p>{{song.title}}</p>
+            <p>{{song.icon}}</p>
+            <p>{{song.filePath}}</p>
+            <input type="button" ng-click="removeSong(song._id)">
+        </div>
+    </div>
+
+
+</div>

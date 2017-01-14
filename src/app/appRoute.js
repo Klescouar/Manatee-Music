@@ -27,5 +27,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
+  .state('admin', {
+    url: '/secret/admin',
+    views:{
+     'home':{
+      templateUrl: 'app/views/admin.html',
+      controller: 'adminCtrl'
+     }
+    }
+  })
   $urlRouterProvider.otherwise('/home');
 });
