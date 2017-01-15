@@ -2,7 +2,8 @@ app.controller('adminCtrl', ['$scope', '$http', '$stateParams', 'APIService', fu
 $scope.song = {
     title: '',
     icon: '',
-    filePath: ''
+    filePath: '',
+    duration: '',
 };
 
 $scope.getAllSongs = () => {
@@ -53,6 +54,7 @@ $scope.handleSuccess = (data) => {
     console.log($scope.song);
 }
 $scope.handleSuccessSong = (data) => {
+  console.log(data);
     if (data.length > 0) {
       $scope.song.filePath = data[0].filename;
       console.log($scope.song);

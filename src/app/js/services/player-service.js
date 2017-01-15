@@ -1,6 +1,5 @@
 app.service("playerService", function(){
-
-  const player = function(window, undefined) {
+  (function(window, undefined) {
 
   'use strict';
 
@@ -147,7 +146,7 @@ app.service("playerService", function(){
         audio.play();
         playBtn.classList.add('is-playing');
         playSvgPath.setAttribute('d', playSvg.getAttribute('data-pause'));
-        plLi[index].classList.add('pl-list--current');
+        plLi[index].classList.add('pllistcurrent');
         notify(playList[index].title, {
           icon: playList[index].icon,
           body: 'Now playing'
@@ -191,7 +190,7 @@ app.service("playerService", function(){
       preloadBar.style.width = 0;
       playBtn.classList.remove('is-playing');
       playSvgPath.setAttribute('d', playSvg.getAttribute('data-play'));
-      plLi[index] && plLi[index].classList.remove('pl-list--current');
+      plLi[index] && plLi[index].classList.remove('pllistcurrent');
       changeDocumentTitle();
       throw new Error('Houston we have a problem: ' + mediaError[evt.target.error.code]);
     }
@@ -298,7 +297,7 @@ app.service("playerService", function(){
                     if(isDel > playList.length - 1) {
                       index -= 1;
                     }
-                    audio.src = '../../../assets/song/'+ playList[index].filePath;
+                    audio.src = '../../../assets/song/' + playList[index].filePath;
                     trackTitle.innerHTML = playList[index].title;
                     progressBar.style.width = 0;
                   }
@@ -314,14 +313,14 @@ app.service("playerService", function(){
 
       function plActive() {
         if(audio.paused) {
-          plLi[index].classList.remove('pl-list--current');
+          plLi[index].classList.remove('pllistcurrent');
           return;
         }
         var current = index;
         for(var i = 0, len = plLi.length; len > i; i++) {
-          plLi[i].classList.remove('pl-list--current');
+          plLi[i].classList.remove('pllistcurrent');
         }
-        plLi[current].classList.add('pl-list--current');
+        plLi[current].classList.add('pllistcurrent');
       }
 
 
@@ -726,6 +725,7 @@ app.service("playerService", function(){
    */
     return {
       init: init,
+      play : play,
       update: updatePL,
       destroy: destroy
     };
@@ -734,6 +734,6 @@ app.service("playerService", function(){
 
   window.AP = AudioPlayer;
 
-  }(window);
+  })(window);
 
 });

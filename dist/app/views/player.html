@@ -1,6 +1,91 @@
 
 <div class="player-page">
 
+  <div class="left-menu">
+    <div class="accordion">
+      <div class="section">
+        <input type="radio" name="accordion-1" id="section-1" checked="checked"/>
+        <label for="section-1"><span>Ambiance</span></label>
+        <div class="content">
+          <ul>
+            <li><i class="fa fa-inbox"></i><span>Calme</span></li>
+            <li><i class="fa fa-share"></i><span>Romantique</span></li>
+            <li><i class="fa fa-archive"></i><span>Action</span></li>
+            <li><i class="fa fa-inbox"></i><span>Western</span></li>
+            <li><i class="fa fa-share"></i><span>Voyage</span></li>
+            <li><i class="fa fa-archive"></i><span>Combat</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="section">
+        <input type="radio" name="accordion-1" id="section-2" value="toggle"/>
+        <label for="section-2"> <span>Style</span></label>
+        <div class="content">
+          <ul>
+            <li><i class="fa fa-cog"></i><span>Rock'n'Roll</span></li>
+            <li><i class="fa fa-group"></i><span>Classique</span></li>
+            <li><i class="fa fa-sitemap"></i><span>Jazzy</span></li>
+            <li><i class="fa fa-cog"></i><span>Urbain</span></li>
+            <li><i class="fa fa-group"></i><span>Pop</span></li>
+            <li><i class="fa fa-sitemap"></i><span>Blues</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="section">
+        <input type="radio" name="accordion-1" id="section-3" value="toggle"/>
+        <label for="section-3"> <span>Instrument</span></label>
+        <div class="content">
+          <ul>
+            <li><i class="fa fa-coffee"></i><span>Guitare</span></li>
+            <li><i class="fa fa-coffee"></i><span>Batterie</span></li>
+            <li><i class="fa fa-coffee"></i><span>Basse</span></li>
+            <li><i class="fa fa-coffee"></i><span>Piano</span></li>
+            <li><i class="fa fa-coffee"></i><span>Clavier</span></li>
+            <li><i class="fa fa-coffee"></i><span>Flûte</span></li>
+            <li><i class="fa fa-coffee"></i><span>Saxophone</span></li>
+            <li><i class="fa fa-coffee"></i><span>Trompette</span></li>
+            <li><i class="fa fa-coffee"></i><span>Violon</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="section">
+        <input type="radio" name="accordion-1" id="section-4" value="toggle"/>
+        <label for="section-4"> <span>Durée</span></label>
+        <div class="content">
+          <ul>
+            <li><i class="fa fa-coffee"></i><span>De 10sec à 30sec</span></li>
+            <li><i class="fa fa-coffee"></i><span>De 30sec à 1min</span></li>
+            <li><i class="fa fa-coffee"></i><span>De 1min à 2min</span></li>
+            <li><i class="fa fa-coffee"></i><span>Plus de 2min</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="left-container">
+
+  </div>
+  <div class="songs-container">
+    <li class="pl-list" ng-class="{pllistcurrent: $index == selected}" ng-repeat="song in songs track by $index" data-track="1">
+      <div class="pl-list__track">
+        <div class="pl-list__icon"></div>
+        <div class="pl-list__eq">
+          <div class="eq">
+            <div class="eq__bar"></div>
+            <div class="eq__bar"></div>
+            <div class="eq__bar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pl-list__title" ng-click="play($index)">{{song.title}}</div>
+      <button class="pl-list__remove">
+        <svg fill="#000000" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+        </svg>
+      </button>
+    </li>
+  </div>
 </div>
 <!-- Audio player -->
 <div class="ap" id="ap">
