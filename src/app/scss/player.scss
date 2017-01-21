@@ -26,17 +26,37 @@
         }
     }
 
+
+
+
+    *,
+    *:after,
+    *:before {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .left-menu {
+        position: relative;
+        z-index: 10;
+        background: #222;
+        width: 200px;
+        margin-top: -90px;
+    }
+
     .accordion {
+        font-size: 14px;
         color: #FFF;
         width: 200px;
     }
 
-    .accordion .section {
-        width: 100%;
-    }
-
     .accordion .section input[type='radio'] {
         display: none;
+    }
+
+    .accordion .section input[type='radio']:checked ~ .content {
+      padding: 15px 0;
     }
 
     .accordion .section input[type='radio']:checked + label {
@@ -52,7 +72,7 @@
     }
 
     .accordion .section input[type='radio']:checked ~ .content {
-        max-height: 300px;
+        max-height: 400px;
         opacity: 1;
         z-index: 10;
         overflow-y: auto;
@@ -110,38 +130,6 @@
         overflow-y: hidden;
     }
 
-    *,
-    *:after,
-    *:before {
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-
-    .left-menu {
-        position: relative;
-        z-index: 10;
-        background: #222;
-        width: 200px;
-        margin-top: -90px;
-    }
-
-    .accordion {
-        font-size: 14px;
-    }
-
-    .accordion .section .content {
-        padding: 0 15px;
-    }
-
-    .accordion .section input[type='radio'] {
-        display: none;
-    }
-
-    .accordion .section input[type='radio']:checked ~ .content {
-        padding: 15px;
-    }
-
     ul {
         width: 100%;
         padding: 0;
@@ -150,7 +138,8 @@
     }
 
     ul li {
-        padding: 10px;
+        padding: 10px 25px;
+        width: 100%;
     }
 
     ul li i {
@@ -183,7 +172,6 @@
 
 code,
 pre {
-    font-family: Consolas, Courier, monospace;
     font-size: inherit;
     color: #333;
     background: rgb(250, 250, 250);

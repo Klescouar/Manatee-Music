@@ -26,4 +26,121 @@ app.service("APIService", function($http, API_ENDPOINT) {
 
 
 
+
+
+
+    this.addAmbiance = function(ambiance) {
+        return $http.post(API_ENDPOINT.url + '/addAmbiance', ambiance).then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.getAllAmbiance = function() {
+        return $http.get(API_ENDPOINT.url + '/getAllAmbiance').then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.removeAmbiance = function(id) {
+        return $http.delete(API_ENDPOINT.url + '/removeAmbiance/' + id).then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+
+
+
+
+
+    this.addLength = function(length) {
+        return $http.post(API_ENDPOINT.url + '/addLength', length).then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.getAllLength = function() {
+        return $http.get(API_ENDPOINT.url + '/getAllLength').then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.removeLength = function(id) {
+        return $http.delete(API_ENDPOINT.url + '/removeLength/' + id).then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+
+
+
+
+
+    this.addStyle = function(style) {
+        return $http.post(API_ENDPOINT.url + '/addStyle', style).then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.getAllStyle = function() {
+        return $http.get(API_ENDPOINT.url + '/getAllStyle').then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.removeStyle = function(id) {
+        return $http.delete(API_ENDPOINT.url + '/removeStyle/' + id).then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+
+
+
+
+
+
+    this.addInstrument = function(instrument) {
+        return $http.post(API_ENDPOINT.url + '/addInstrument', instrument).then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.getAllInstrument = function() {
+        return $http.get(API_ENDPOINT.url + '/getAllInstrument').then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+    this.removeInstrument = function(id) {
+        return $http.delete(API_ENDPOINT.url + '/removeInstrument/' + id).then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
+
+
 });

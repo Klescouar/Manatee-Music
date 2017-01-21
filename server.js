@@ -5,10 +5,18 @@ const morgan      = require('morgan');
 const path        = require('path');
 const multer  =   require('multer');
 const mongoose    = require('mongoose');
+
 const config      = require(__dirname + '/config/database');
 const songs       = require(__dirname + '/app/controllers/controllers.songs');
+
 const uploadPhoto = require(__dirname + '/app/controllers/controllers.upload.photo');
 const uploadSong  = require(__dirname + '/app/controllers/controllers.upload.music');
+
+const ambiance    = require(__dirname + '/app/controllers/controllers.ambiance');
+const style       = require(__dirname + '/app/controllers/controllers.style');
+const length      = require(__dirname + '/app/controllers/controllers.length');
+const instrument  = require(__dirname + '/app/controllers/controllers.instrument');
+
 const apiRoutes   = express.Router();
 const port        = process.env.PORT || 6868;
 
@@ -40,6 +48,26 @@ app.get('/', function(req, res) {
 apiRoutes.get('/getAllSongs', songs.getAllSongs);
 apiRoutes.post('/addsong', songs.addSong);
 apiRoutes.delete('/removeSong/:id', songs.removeSong);
+
+/////////////////////////SONG CONTROLLER/////////////////////////
+apiRoutes.get('/getAllAmbiance', ambiance.getAllAmbiance);
+apiRoutes.post('/addAmbiance', ambiance.addAmbiance);
+apiRoutes.delete('/removeAmbiance/:id', ambiance.removeAmbiance);
+
+/////////////////////////SONG CONTROLLER/////////////////////////
+apiRoutes.get('/getAllStyle', style.getAllStyle);
+apiRoutes.post('/addStyle', style.addStyle);
+apiRoutes.delete('/removeStyle/:id', style.removeStyle);
+
+/////////////////////////SONG CONTROLLER/////////////////////////
+apiRoutes.get('/getAllLength', length.getAllLength);
+apiRoutes.post('/addLength', length.addLength);
+apiRoutes.delete('/removeLength/:id', length.removeLength);
+
+/////////////////////////SONG CONTROLLER/////////////////////////
+apiRoutes.get('/getAllInstrument', instrument.getAllInstrument);
+apiRoutes.post('/addInstrument', instrument.addInstrument);
+apiRoutes.delete('/removeInstrument/:id', instrument.removeInstrument);
 
 /////////////////////////UPLOAD CONTROLLER/////////////////////////
 apiRoutes.post('/upload_photos', uploadPhoto.uploadPhoto);

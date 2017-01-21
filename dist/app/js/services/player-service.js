@@ -1,7 +1,7 @@
-app.service("playerService", function(){
-  (function(window, undefined) {
+app.service("playerService",[ '$rootScope',function($rootScope){
 
-  'use strict';
+  $rootScope.biding = false;
+  vm = this;
 
   var AudioPlayer = (function() {
 
@@ -98,7 +98,6 @@ app.service("playerService", function(){
 
       playList = settings.playList;
 
-      playBtn.addEventListener('click', playToggle, false);
       volumeBtn.addEventListener('click', volumeToggle, false);
       repeatBtn.addEventListener('click', repeatToggle, false);
 
@@ -111,8 +110,6 @@ app.service("playerService", function(){
       volumeBar.closest('.volume').addEventListener('mousemove', setVolume);
       volumeBar.closest('.volume').addEventListener(wheel(), setVolume, false);
 
-      prevBtn.addEventListener('click', prev, false);
-      nextBtn.addEventListener('click', next, false);
 
       apActive = true;
 
@@ -132,9 +129,6 @@ app.service("playerService", function(){
       volumeBar.style.height = audio.volume * 100 + '%';
       volumeLength = volumeBar.css('height');
 
-      if(settings.confirmClose) {
-        window.addEventListener("beforeunload", beforeUnload, false);
-      }
 
       if(isEmptyList()) {
         return false;
@@ -147,10 +141,6 @@ app.service("playerService", function(){
         playBtn.classList.add('is-playing');
         playSvgPath.setAttribute('d', playSvg.getAttribute('data-pause'));
         plLi[index].classList.add('pllistcurrent');
-        notify(playList[index].title, {
-          icon: playList[index].icon,
-          body: 'Now playing'
-        });
       }
     }
 
@@ -328,6 +318,7 @@ app.service("playerService", function(){
    * Player methods
    */
     function play(currentIndex) {
+      $rootScope.biding = false;
 
       if(isEmptyList()) {
         return clearAll();
@@ -344,13 +335,6 @@ app.service("playerService", function(){
       // Audio play
       audio.play();
 
-      // Show notification
-      notify(playList[index].title, {
-        icon: playList[index].icon,
-        body: 'Now playing',
-        tag: 'music-player'
-      });
-
       // Toggle play button
       playBtn.classList.add('is-playing');
       playSvgPath.setAttribute('d', playSvg.getAttribute('data-pause'));
@@ -361,10 +345,17 @@ app.service("playerService", function(){
 
     function prev() {
       play(index - 1);
+      $rootScope.biding = false;
     }
 
     function next() {
+      $rootScope.biding = false;
       play(index + 1);
+    }
+
+    function pause() {
+      audio.pause();
+      playSvgPath.setAttribute('d', playSvg.getAttribute('data-play'));
     }
 
     function isEmptyList() {
@@ -388,17 +379,12 @@ app.service("playerService", function(){
     }
 
     function playToggle() {
+      $rootScope.biding = false;
       if(isEmptyList()) {
         return;
       }
       if(audio.paused) {
 
-        if(audio.currentTime === 0) {
-          notify(playList[index].title, {
-            icon: playList[index].icon,
-            body: 'Now playing'
-          });
-        }
         changeDocumentTitle(playList[index].title);
 
         audio.play();
@@ -486,22 +472,13 @@ app.service("playerService", function(){
     }
 
     function doEnd() {
-      if(index === playList.length - 1) {
-        if(!repeating) {
-          audio.pause();
-          plActive();
-          playBtn.classList.remove('is-playing');
-          playSvgPath.setAttribute('d', playSvg.getAttribute('data-play'));
-          return;
-        }
-        else {
-          play(0);
-        }
+        audio.pause();
+        plActive();
+        playBtn.classList.remove('is-playing');
+        playSvgPath.setAttribute('d', playSvg.getAttribute('data-play'));
+        $rootScope.biding = true;
+        $rootScope.$apply();
       }
-      else {
-        play(index + 1);
-      }
-    }
 
     function moveBar(evt, el, dir) {
       var value;
@@ -574,21 +551,6 @@ app.service("playerService", function(){
       }
     }
 
-    function notify(title, attr) {
-      if(!settings.notification) {
-        return;
-      }
-      if(window.Notification === undefined) {
-        return;
-      }
-      attr.tag = 'AP music player';
-      window.Notification.requestPermission(function(access) {
-        if(access === 'granted') {
-          var notice = new Notification(title.substr(0, 110), attr);
-          setTimeout(notice.close.bind(notice), 5000);
-        }
-      });
-    }
 
   /* Destroy method. Clear All */
     function destroy() {
@@ -697,43 +659,27 @@ app.service("playerService", function(){
       }
     };
 
-    // matches polyfill
-    window.Element && function(ElementPrototype) {
-        ElementPrototype.matches = ElementPrototype.matches ||
-        ElementPrototype.matchesSelector ||
-        ElementPrototype.webkitMatchesSelector ||
-        ElementPrototype.msMatchesSelector ||
-        function(selector) {
-            var node = this, nodes = (node.parentNode || node.document).querySelectorAll(selector), i = -1;
-            while (nodes[++i] && nodes[i] != node);
-            return !!nodes[i];
-        };
-    }(Element.prototype);
-
-    // closest polyfill
-    window.Element && function(ElementPrototype) {
-        ElementPrototype.closest = ElementPrototype.closest ||
-        function(selector) {
-            var el = this;
-            while (el.matches && !el.matches(selector)) el = el.parentNode;
-            return el.matches ? el : null;
-        };
-    }(Element.prototype);
 
   /**
    *  Public methods
    */
     return {
+      renderPL:renderPL,
+      destroy: destroy,
+      doEnd: doEnd,
+      playToggle : playToggle,
+      pause : pause,
       init: init,
       play : play,
+      prev : prev,
+      next : next,
       update: updatePL,
       destroy: destroy
     };
 
   })();
 
-  window.AP = AudioPlayer;
+  vm.AP = AudioPlayer;
 
-  })(window);
 
-});
+}]);

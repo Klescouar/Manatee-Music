@@ -1,2 +1,60 @@
-.send-song {
+.handle-song .add-song {
   display: flex; }
+
+.handle-song .show-song {
+  display: flex;
+  justify-content: center;
+  margin: 50px; }
+  .handle-song .show-song .song-card {
+    margin: 10px;
+    width: 250px;
+    height: 280px;
+    background-color: #bcc0c4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; }
+    .handle-song .show-song .song-card p {
+      font-weight: bold; }
+    .handle-song .show-song .song-card .song-icon {
+      width: 180px;
+      height: 180px;
+      background-position: center;
+      background-size: cover; }
+    .handle-song .show-song .song-card input {
+      width: 90%;
+      cursor: pointer; }
+
+.handle-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; }
+  .handle-filter .filter-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .handle-filter .filter-card .input-name {
+      margin: 10px; }
+    .handle-filter .filter-card button {
+      margin-bottom: 20px;
+      cursor: pointer; }
+    .handle-filter .filter-card .filter-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      border: 1px solid #404040;
+      padding: 5px;
+      margin: 10px; }
+      .handle-filter .filter-card .filter-name input {
+        cursor: pointer; }
+
+.admin-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .admin-nav a {
+    cursor: pointer; }
+  .admin-nav .menu-active {
+    border-bottom: 1px solid #444242; }
