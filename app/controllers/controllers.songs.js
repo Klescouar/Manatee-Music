@@ -24,7 +24,8 @@ exports.removeSong = (req, res) => {
 
 
 exports.addSong =  function(req, res) {
-   if (!req.body.title || !req.body.icon || !req.body.filePath) {
+  console.log(req.body);
+   if (!req.body.title || !req.body.icon || !req.body.url) {
      res.json({success: false, msg: 'Please pass all infos.'});
    } else {
      const newSongs = new Songs(req.body);

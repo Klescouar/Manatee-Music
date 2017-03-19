@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- TITLE -->
+        <title>Manatee-Music</title>
+        <!-- META -->
+        <meta name="description" content="Le site manatee-music.fr vous propose une large collection de musique spécifiquement crée pour être mis en image par les compositeurs Johan Barrer et Franck Gasseling"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+        <!-- LOGO -->
+        <link rel="icon" type="image/png" href="../assets/images/logo.png"/>
+        <!-- LIB -->
+        <link rel="stylesheet" href="../assets/lib/css/normalize.css">
+        <script type="text/javascript" src="../assets/lib/js/angular.min.js"></script>
+        <script type="text/javascript" src="../assets/lib/js/jquery.min.js"></script>
+        <script type="text/javascript" src="../assets/lib/js/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="../assets/lib/js/ng-file-upload-shim.min.js"></script>
+        <script type="text/javascript" src="../assets/lib/js/ng-file-upload.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    </head>
+    <body ng-app="manatee-music">
+        <div class="admin-page" ng-controller="adminCtrl">
+
+            <div class="nav-bar">
+                <div class="admin-nav">
+                    <a ng-class="{'menu-active' : show === 'addSong'}" ng-click="show = 'addSong'">Ajouter une musique</a>
+                    <a ng-class="{'menu-active' : show === 'music'}" ng-click="show = 'music'">Supprimer/modifier une musique</a>
+                    <a ng-class="{'menu-active' : show === 'filter'}" ng-click="show = 'filter'">Gérer mes filtres</a>
+                </div>
+            </div>
+
+            <div class="add-song" ng-if="show === 'addSong'">
+                <input type="text" id="input" value="" ng-model="song.title" required placeholder="Titre..."></input>
+                <!-- <div class="column-6 form-select">
+                    <select ng-model='song.duration'>
+                        <option value="" disabled="disabled" selected="selected">Choisir une durée</option>
+                        <option ng-repeat="length in lengths">{{length.name}}</option>
+                    </select>
+                </div> -->
+                <div class="ambiance-choice">
+                  <h4>CHOISIR LES AMBIANCES CORRESPONDANTS</h4>
+                  <button class="check-button" type="button" ng-repeat="ambiance in ambiances track by $index" ng-model="ambiance.name" ng-click='addElementToSong(ambiance.name,
+                  song.ambiance); isActive = !isActive' ng-class="{'active' : isActive}">{{ambiance.name}}</button>
+                </div>
+                <div class="style-choice">
+                  <h4>CHOISIR LES STYLES CORRESPONDANTS</h4>
+                  <button class="check-button" type="button" ng-repeat="style in styles track by $index" ng-model="style.name" ng-click='addElementToSong(style.name, song.style); isActive = !isActive' ng-class="{'active' : isActive}">{{style.name}}</button>
+                </div>
+                <div class="instrument-choice">
+                  <h4>CHOISIR LES INSTRUMENTS CORRESPONDANTS</h4>
+                  <button class="check-button" type="button" ng-repeat="instrument in instruments track by $index" ng-model="instrument.name" ng-click='addElementToSong(instrument.name, song.instrument); isActive = !isActive' ng-class="{'active' : isActive}">{{instrument.name}}</button>
+                </div>
+
+                <div class="form-box">
+                    <div class="choose-pic">
+                        <div id="upload-pic"></div>
+                        <form id="upload-photos" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <input id="photos-input" type="file" name="photos[]" multiple="multiple">
+                            </div>
+                            <input ng-click="submitPhoto()" class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photo"/>
+                        </form>
+                    </div>
+                    <div class="choose-pic">
+                        <div id="upload-pic"></div>
+                        <form id="upload-song" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <input id="song-input" type="file" name="photos[]" multiple="multiple">
+                            </div>
+                            <input ng-click="submitSong()" class="btn btn-default" type="submit" name="Song Uploads" value="Upload Song"/>
+                        </form>
+                    </div>
+                </div>
+
+                <a>
+                    <button type="button" ng-click="addSong()">
+                        <h3>Envoyer</h3>
+                    </button>
+                </a>
+            </div>
+
+            <div class="handle-song" ng-if="show === 'music'">
+                <div class="show-song">
+                    <div ng-repeat="song in songs" class="song-card">
+                        <p>{{song.title}}</p>
+                        <div class="song-icon" ng-style="{'background-image':'url(../assets/images/'+song.icon+')'}"></div>
+                        <input type="button" value="Supprimer" ng-click="removeSong(song._id)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="handle-filter" ng-if="show === 'filter'">
+
+                <div class="filter-card">
+                    <input type="text" id="input" value="" ng-model="ambiance.name" required placeholder="Ambiance..." class="input-name"></input>
+                    <button type="button" ng-click="addAmbiance()">
+                        <h4>Ajouter</h4>
+                    </button>
+
+                    <div ng-repeat="ambiance in ambiances" class="filter-name">
+                        <p>{{ambiance.name}}</p>
+                        <input type="button" value="Supprimer" ng-click="removeAmbiance(ambiance._id)">
+                    </div>
+                </div>
+
+                <div class="filter-card">
+
+                    <input type="text" id="input" value="" ng-model="length.name" required placeholder="Durée..." class="input-name"></input>
+                    <button type="button" ng-click="addLength()">
+                        <h4>Ajouter</h4>
+                    </button>
+
+                    <div ng-repeat="length in lengths" class="filter-name">
+                        <p>{{length.name}}</p>
+                        <input type="button" value="Supprimer" ng-click="removeLength(length._id)">
+                    </div>
+                </div>
+
+                <div class="filter-card">
+
+                    <input type="text" id="input" value="" ng-model="style.name" required placeholder="Style..." class="input-name"></input>
+                    <button type="button" ng-click="addStyle()">
+                        <h4>Ajouter</h4>
+                    </button>
+
+                    <div ng-repeat="style in styles" class="filter-name">
+                        <p>{{style.name}}</p>
+                        <input type="button" value="Supprimer" ng-click="removeStyle(style._id)">
+                    </div>
+                </div>
+
+                <div class="filter-card">
+
+                    <input type="text" id="input" value="" ng-model="instrument.name" required placeholder="Instrument..." class="input-name"></input>
+                    <button type="button" ng-click="addInstrument()">
+                        <h4>Ajouter</h4>
+                    </button>
+                    <div ng-repeat="instrument in instruments" class="filter-name">
+                        <p>{{instrument.name}}</p>
+                        <input type="button" value="Supprimer" ng-click="removeInstrument(instrument._id)">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="app/css/index.css">
+        <link rel="stylesheet" href="app/css/home.css">
+        <link rel="stylesheet" href="app/css/contact.css">
+        <link rel="stylesheet" href="app/css/player.css">
+        <link rel="stylesheet" href="app/css/admin.css">
+        <!-- CONFIG -->
+        <script src="app/app.js"></script>
+        <script src="app/appRoute.js"></script>
+        <script src="app/constant.js"></script>
+        <!-- CONTROLLERS -->
+        <script src="app/js/controllers/homeCtrl.js"></script>
+        <script src="app/js/controllers/contactCtrl.js"></script>
+        <script src="app/js/controllers/playerCtrl.js"></script>
+        <script src="app/js/controllers/adminCtrl.js"></script>
+        <!-- SERVICES -->
+        <script src="app/js/services/player-service.js"></script>
+        <script src="app/js/services/API-service.js"></script>
+    </body>
+</html>

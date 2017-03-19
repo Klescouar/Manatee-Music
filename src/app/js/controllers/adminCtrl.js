@@ -1,18 +1,30 @@
 app.controller('adminCtrl', ['$scope', '$http', '$stateParams', 'APIService', function($scope, $http, $stateParams, APIService){
 
-$scope.show = "music";
+$scope.show = "addSong";
 
 $scope.song = {
     title: '',
     icon: '',
-    filePath: '',
+    url: '',
+    artist:'lol',
     duration: '',
+    ambiance: [],
+    style: [],
+    instrument: []
 };
 
 $scope.ambiance = {name : ''};
 $scope.style = {name : ''};
 $scope.length = {name : ''};
 $scope.instrument = {name : ''};
+
+$scope.addElementToSong = (name, type) => {
+  if (type.indexOf(name) === -1) {
+    type.push(name);
+  } else {
+      type.splice(type.indexOf(name), 1);
+  }
+};
 
 
 $scope.getAllSongs = () => {
@@ -23,9 +35,9 @@ $scope.getAllSongs = () => {
     });
 }
 
-//ADD USERS
 $scope.addSong = () => {
-    APIService.addSong($scope.song).then(function(response) {}).catch(function(errMsg) {
+    APIService.addSong($scope.song).then(function(response) {
+    }).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Song failed!');
     });
     $scope.getAllSongs();
@@ -33,7 +45,6 @@ $scope.addSong = () => {
 
 $scope.removeSong = (id) => {
     APIService.removeSong(id).then(function(response) {
-        console.log(response.data);
     }).catch(function(errMsg) {
         console.log('show profils members failed!');
     });
@@ -48,6 +59,7 @@ $scope.uploadFiles = (formData) => {
     });
 }
 $scope.uploadSong = (formData) => {
+  console.log('lol');
     $.ajax({url: '/api/upload_song', method: 'post', data: formData, processData: false, contentType: false}).done($scope.handleSuccessSong).fail(function(xhr, status) {
         alert(status);
     });
@@ -59,13 +71,10 @@ $scope.handleSuccess = (data) => {
     } else {
         alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
     }
-    console.log($scope.song);
 }
 $scope.handleSuccessSong = (data) => {
-  console.log(data);
     if (data.length > 0) {
-      $scope.song.filePath = data[0].filename;
-      console.log($scope.song);
+      $scope.song.url = '../../assets/song/' + data[0].filename;
     } else {
         alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
     }
@@ -75,6 +84,7 @@ $scope.handleSuccessSong = (data) => {
 $scope.getAllStyle = () => {
     APIService.getAllStyle().then(function(response) {
         $scope.styles = response.data;
+        console.log(response.data);
     }).catch(function(errMsg) {
         console.log('show style failed!');
     });
@@ -89,7 +99,6 @@ $scope.addStyle = () => {
 
 $scope.removeStyle = (id) => {
     APIService.removeStyle(id).then(function(response) {
-        console.log(response.data);
     }).catch(function(errMsg) {
         console.log('remove style failed!');
     });
@@ -122,7 +131,6 @@ $scope.addLength = () => {
 
 $scope.removeLength = (id) => {
     APIService.removeLength(id).then(function(response) {
-        console.log(response.data);
     }).catch(function(errMsg) {
         console.log('remove Length failed!');
     });
@@ -155,7 +163,6 @@ $scope.addInstrument = () => {
 
 $scope.removeInstrument = (id) => {
     APIService.removeInstrument(id).then(function(response) {
-        console.log(response.data);
     }).catch(function(errMsg) {
         console.log('remove Instrument failed!');
     });
@@ -173,7 +180,6 @@ $scope.getAllInstrument();
 
 $scope.getAllAmbiance = () => {
     APIService.getAllAmbiance().then(function(response) {
-      console.log(response.data);
         $scope.ambiances = response.data;
     }).catch(function(errMsg) {
         console.log('show Ambiance failed!');
@@ -189,7 +195,6 @@ $scope.addAmbiance = () => {
 
 $scope.removeAmbiance = (id) => {
     APIService.removeAmbiance(id).then(function(response) {
-        console.log(response.data);
     }).catch(function(errMsg) {
         console.log('remove Ambiance failed!');
     });
@@ -215,8 +220,7 @@ $scope.getAllAmbiance();
 
 
 
-$('#upload-song').on('submit', function(event) {
-    event.preventDefault();
+$scope.submitSong = function() {
     // Get the files from input, create new FormData.
     const files = $('#song-input').get(0).files,
         formData = new FormData();
@@ -233,12 +237,10 @@ $('#upload-song').on('submit', function(event) {
     }
     // Note: We are only appending the file inputs to the FormData.
     $scope.uploadSong(formData);
-});
+};
 
 // On form submit, handle the file uploads.
-$('#upload-photos').on('submit', function(event) {
-    event.preventDefault();
-
+$scope.submitPhoto = function() {
     // Get the files from input, create new FormData.
     const files = $('#photos-input').get(0).files,
         formData = new FormData();
@@ -256,7 +258,7 @@ $('#upload-photos').on('submit', function(event) {
 
     // Note: We are only appending the file inputs to the FormData.
     $scope.uploadFiles(formData);
-});
+};
 
 }
 ]);

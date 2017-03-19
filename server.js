@@ -43,28 +43,31 @@ app.use("/node_modules", express.static(__dirname + "/node_modules"));
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/dist/app/index.html'));
 });
+// app.get('/admin', function(req, res) {
+//   res.sendFile(path.join(__dirname, '/dist/app/admin.html'));
+// });
 
 /////////////////////////SONG CONTROLLER/////////////////////////
 apiRoutes.get('/getAllSongs', songs.getAllSongs);
 apiRoutes.post('/addsong', songs.addSong);
 apiRoutes.delete('/removeSong/:id', songs.removeSong);
 
-/////////////////////////SONG CONTROLLER/////////////////////////
+/////////////////////////AMBIANCE FILTER CONTROLLER/////////////////////////
 apiRoutes.get('/getAllAmbiance', ambiance.getAllAmbiance);
 apiRoutes.post('/addAmbiance', ambiance.addAmbiance);
 apiRoutes.delete('/removeAmbiance/:id', ambiance.removeAmbiance);
 
-/////////////////////////SONG CONTROLLER/////////////////////////
+/////////////////////////STYLE FILTER CONTROLLER/////////////////////////
 apiRoutes.get('/getAllStyle', style.getAllStyle);
 apiRoutes.post('/addStyle', style.addStyle);
 apiRoutes.delete('/removeStyle/:id', style.removeStyle);
 
-/////////////////////////SONG CONTROLLER/////////////////////////
+/////////////////////////LENGTH FILTER CONTROLLER/////////////////////////
 apiRoutes.get('/getAllLength', length.getAllLength);
 apiRoutes.post('/addLength', length.addLength);
 apiRoutes.delete('/removeLength/:id', length.removeLength);
 
-/////////////////////////SONG CONTROLLER/////////////////////////
+/////////////////////////INSTRUMENT FILTER CONTROLLER/////////////////////////
 apiRoutes.get('/getAllInstrument', instrument.getAllInstrument);
 apiRoutes.post('/addInstrument', instrument.addInstrument);
 apiRoutes.delete('/removeInstrument/:id', instrument.removeInstrument);

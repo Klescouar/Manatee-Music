@@ -37,6 +37,7 @@ gulp.task('copy', function() {
     gulp.src('src/assets/lib/**/*').pipe(gulp.dest('dist/assets/lib'));
     gulp.src('src/app/js/**/*.js').pipe(gulp.dest('dist/app/js'));
     gulp.src('src/app/*.js').pipe(gulp.dest('dist/app/'));
+    gulp.src('src/app/*.html').pipe(gulp.dest('dist/app/'));
 });
 
 gulp.task('default', [
@@ -47,4 +48,5 @@ gulp.task('default', [
     gulp.watch('src/app/views/**/*.html', ['copy']);
     gulp.watch('src/app/js/**/*.js', ['copy']);
     gulp.watch('src/app/*.js', ['copy']);
+    gulp.watch('src/app/*.html', ['copy']);
 });

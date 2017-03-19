@@ -1,29 +1,32 @@
-.handle-song .add-song {
-  display: flex; }
-
-.handle-song .show-song {
+@charset "UTF-8";
+.handle-song {
   display: flex;
-  justify-content: center;
-  margin: 50px; }
-  .handle-song .show-song .song-card {
-    margin: 10px;
-    width: 250px;
-    height: 280px;
-    background-color: #bcc0c4;
+  flex-direction: column;
+  align-items: center; }
+  .handle-song .show-song {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center; }
-    .handle-song .show-song .song-card p {
-      font-weight: bold; }
-    .handle-song .show-song .song-card .song-icon {
-      width: 180px;
-      height: 180px;
-      background-position: center;
-      background-size: cover; }
-    .handle-song .show-song .song-card input {
-      width: 90%;
-      cursor: pointer; }
+    justify-content: center;
+    margin: 50px;
+    flex-wrap: wrap; }
+    .handle-song .show-song .song-card {
+      margin: 10px;
+      width: 250px;
+      height: 280px;
+      background-color: #bcc0c4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center; }
+      .handle-song .show-song .song-card p {
+        font-weight: bold; }
+      .handle-song .show-song .song-card .song-icon {
+        width: 180px;
+        height: 180px;
+        background-position: center;
+        background-size: cover; }
+      .handle-song .show-song .song-card input {
+        width: 90%;
+        cursor: pointer; }
 
 .handle-filter {
   display: flex;
@@ -49,12 +52,126 @@
       .handle-filter .filter-card .filter-name input {
         cursor: pointer; }
 
-.admin-nav {
+.admin-page #input {
+  padding-left: 5px;
+  height: 35px;
+  width: 250px;
+  border: none; }
+
+.admin-page #input:focus {
+  outline: none; }
+
+.admin-page .add-song {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 90px);
+  align-items: center;
+  justify-content: space-around; }
+  .admin-page .add-song h4 {
+    text-align: center;
+    margin-bottom: 20px; }
+  .admin-page .add-song .form-box #upload-photos {
+    display: flex; }
+  .admin-page .add-song .form-box #upload-song {
+    display: flex; }
+
+.admin-page .admin-nav {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center; }
-  .admin-nav a {
+  .admin-page .admin-nav a {
     cursor: pointer; }
-  .admin-nav .menu-active {
+  .admin-page .admin-nav .menu-active {
     border-bottom: 1px solid #444242; }
+
+.check-button {
+  margin: 0 5px;
+  width: 110px;
+  height: 40px;
+  border: 1px solid #6a6767;
+  cursor: pointer;
+  background-color: transparent;
+  color: black; }
+
+.active {
+  background-color: #6d7b9f; }
+
+.form-select {
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  background: #ffffff;
+  overflow: hidden;
+  border: 1px solid #cbcbcb;
+  border-radius: 3px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), inset 0 0 5px rgba(0, 0, 0, 0.07);
+  -moz-transition: box-shadow 0.2s;
+  -o-transition: box-shadow 0.2s;
+  -webkit-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s; }
+
+.form-select:focus, .form-select:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+
+.form-select:after {
+  content: '▾';
+  position: absolute;
+  top: 0;
+  right: 12px;
+  z-index: 1;
+  color: #bbbbbb;
+  line-height: 40px;
+  font-size: 14px; }
+
+.ie .form-select:after {
+  display: none; }
+
+select {
+  position: relative;
+  background: transparent;
+  background-image: none;
+  display: block;
+  width: 100%;
+  outline: none;
+  color: #888888;
+  cursor: pointer;
+  z-index: 2;
+  border: none;
+  padding: 10px 10px 10px 5px;
+  text-overflow: '';
+  text-indent: 5px;
+  -moz-appearance: none;
+  -webkit-appearance: none; }
+
+select[multiple=multiple] {
+  height: auto;
+  border: 1px solid #cbcbcb;
+  border-radius: 3px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), inset 0 0 5px rgba(0, 0, 0, 0.07);
+  -moz-transition: box-shadow 0.2s;
+  -o-transition: box-shadow 0.2s;
+  -webkit-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s; }
+
+select[multiple=multiple]:hover {
+  border-color: #cccccc;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+
+select option[disabled] {
+  color: #eeeeee;
+  text-shadow: none;
+  border: none; }
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #888888; }
+
+select::-ms-expand {
+  display: none; }
+
+/*==========  Generic styling  ==========*/
+.column-6 {
+  position: relative;
+  width: 200px; }

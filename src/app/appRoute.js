@@ -31,7 +31,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/secret/admin',
     views:{
      'home':{
-      templateUrl: 'app/views/admin.html',
+      templateUrl: 'app/admin.html',
       controller: 'adminCtrl'
      }
     }

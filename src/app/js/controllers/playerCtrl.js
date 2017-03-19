@@ -1,37 +1,54 @@
-app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService', 'APIService', '$rootScope', function($scope, $http, $stateParams, playerService, APIService, $rootScope){
+app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService', 'APIService', '$rootScope', 'angularPlayer', function($scope, $http, $stateParams, playerService, APIService, $rootScope, angularPlayer){
+  let volumeStatus = 0;
+  $scope.volume = 90;
+  $scope.isDisabled = true;
 
+const transformKeys = obj => {
+    result = {};
+    Object.keys(obj).forEach(x => {
+        const y = x.replace("_", "");
+        result[y] = obj[x];
+    });
+    // console.log(result);
+    return result;
+}
 
-  $scope.index = 0;
-  $scope.selected = -1;
+const addTrackToPlaylist = (item) => {
+    angularPlayer.addTrack(item);
+}
 
-  $rootScope.$watch('biding' ,function(){
-  if ($rootScope.biding === true) {
-    $scope.selected = -1;
-  }
-},true);
+$scope.ambianceFilter = [];
+$scope.styleFilter = [];
+$scope.durationFilter = [];
+$scope.instrumentFilter = [];
+const playSvg = document.querySelector('.icon-play');
+const playSvgPath = playSvg.querySelector('path');
 
-
+$scope.addFilter = (name, type) => {
+    if (type.indexOf(name) === -1) {
+        type.push(name);
+    } else {
+        type.splice(type.indexOf(name), 1);
+    }
+}
 
 $scope.getAllSongs = () => {
     APIService.getAllSongs().then(function(response) {
-        $scope.songs = response.data;
-        playerService.AP.init({playList: $scope.songs});
+        $scope.songs = response.data.map(transformKeys);
+        $scope.songs.map(addTrackToPlaylist);
     }).catch(function(errMsg) {
         console.log('show profils members failed!');
     });
 }
-
 $scope.getAllSongs();
 
 $scope.getAllAmbiance = () => {
     APIService.getAllAmbiance().then(function(response) {
-        console.log(response.data);
         $scope.ambiances = response.data;
     }).catch(function(errMsg) {
         console.log('show profils members failed!');
     });
 }
-
 $scope.getAllAmbiance();
 
 $scope.getAllStyle = () => {
@@ -41,7 +58,6 @@ $scope.getAllStyle = () => {
         console.log('show profils members failed!');
     });
 }
-
 $scope.getAllStyle();
 
 $scope.getAllLength = () => {
@@ -51,7 +67,6 @@ $scope.getAllLength = () => {
         console.log('show profils members failed!');
     });
 }
-
 $scope.getAllLength();
 
 $scope.getAllInstrument = () => {
@@ -61,46 +76,70 @@ $scope.getAllInstrument = () => {
         console.log('show profils members failed!');
     });
 }
-
 $scope.getAllInstrument();
 
+$scope.$on('track:id', function(event, data) {
+    $scope.currentTrackId = data;
+});
 
-
-
-
-
-
-
-
-
-
-$scope.play = (index) => {
-  if (!index && index !== 0) {
-    index = $scope.index;
-  }
-  if ($scope.index !== index) {
-    playerService.AP.play(index);
-    $scope.index = index;
-    $scope.selected = index;
-  } else{
-    playerService.AP.playToggle();
-    $scope.selected === -1 ? $scope.selected = index : $scope.selected = -1;
-  }
+$scope.playSong = (id) => {
+  $scope.isDisabled = false;
+    playSvgPath.setAttribute('d', playSvg.getAttribute('data-pause'));
+    if (angularPlayer.getCurrentTrack() === null) {
+        playSvgPath.setAttribute('d', playSvg.getAttribute('data-pause'));
+        return angularPlayer.playTrack(id);
+    } else {
+        if (angularPlayer.getCurrentTrack() === id && $scope.isPlaying) {
+            playSvgPath.setAttribute('d', playSvg.getAttribute('data-play'));
+            return angularPlayer.pause();
+        } else {
+            playSvgPath.setAttribute('d', playSvg.getAttribute('data-pause'));
+            return angularPlayer.playTrack(id);
+        }
+    }
 }
 
-$scope.previousTrack = () => {
-    if ($scope.index > 0) {
-      playerService.AP.prev();
-      $scope.selected = $scope.index - 1;
-      $scope.index = $scope.index - 1;
+$scope.playToggle = () => {
+  $scope.isDisabled = false;
+    if (angularPlayer.isPlayingStatus()) {
+        //if playing then pause
+        angularPlayer.pause();
+        playSvgPath.setAttribute('d', playSvg.getAttribute('data-play'));
+    } else {
+        //else play if not playing
+        angularPlayer.play();
+        playSvgPath.setAttribute('d', playSvg.getAttribute('data-pause'));
     }
 }
 
 $scope.nextTrack = () => {
-  if ($scope.index < $scope.songs.length - 1) {
-    playerService.AP.next();
-    $scope.selected = $scope.index + 1;
-    $scope.index = $scope.index + 1;
+  $scope.isDisabled = false;
+  if (angularPlayer.isPlayingStatus()) {
+    angularPlayer.nextTrack();
+    playSvgPath.setAttribute('d', playSvg.getAttribute('data-pause'));
+  }
+}
+
+$scope.prevTrack = () => {
+  $scope.isDisabled = false
+  if (angularPlayer.isPlayingStatus()) {
+    angularPlayer.prevTrack();
+    playSvgPath.setAttribute('d', playSvg.getAttribute('data-pause'));
+  }
+}
+
+$scope.$watch('volume', function(newValue, oldValue){
+  angularPlayer.adjustVolumeSlider(newValue);
+});
+
+$scope.handleVol = () => {
+  if ($scope.volume > 0) {
+    volumeStatus = $scope.volume;
+    angularPlayer.adjustVolumeSlider(0);
+    $scope.volume = 0;
+  } else {
+    angularPlayer.adjustVolumeSlider(volumeStatus);
+    $scope.volume = volumeStatus;
   }
 }
 

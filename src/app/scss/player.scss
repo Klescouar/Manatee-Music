@@ -7,6 +7,7 @@
         height: calc(100vh - 140px);
         display: flex;
         flex-direction: column;
+
         .song-background-style1 {
             background-color: rgb(213, 218, 224);
             width: 100%;
@@ -25,9 +26,6 @@
             align-items: center;
         }
     }
-
-
-
 
     *,
     *:after,
@@ -56,7 +54,7 @@
     }
 
     .accordion .section input[type='radio']:checked ~ .content {
-      padding: 15px 0;
+        padding: 15px 0;
     }
 
     .accordion .section input[type='radio']:checked + label {
@@ -142,6 +140,10 @@
         width: 100%;
     }
 
+    .isActive {
+        background-color: rgb(54,54,54);
+    }
+
     ul li i {
         font-size: 13px;
         width: 15px;
@@ -168,6 +170,43 @@
         font-size: 70px;
         color: #21CCFC;
     }
+}
+
+.pic-box {
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    .song-pic {
+        width: 45px;
+        height: 45px;
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.star-rating {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.star-rating .star {
+    padding: 1px;
+    color: #ddd;
+    font-size: 20px;
+    text-shadow: 0.05em 0.05em #aaa;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.star-rating .star.filled {
+    color: #fd0;
+}
+
+.star-rating.readonly .star.filled {
+    color: #666;
 }
 
 code,
@@ -598,8 +637,8 @@ $plZ: 77777;
     }
 }
 
-.pllistcurrent .pl-list__remove,
-.pl-list:hover .pl-list__remove {
+.pl-list:hover .pl-list__remove,
+.pllistcurrent .pl-list__remove {
     opacity: 1;
 }
 
@@ -663,4 +702,28 @@ $plZ: 77777;
 
 .h-show {
     display: block;
+}
+
+.volume-container .md-slider-wrapper {
+    width: 34px!important;
+}
+
+md-slider .md-track.md-track-fill{
+  background-color: steelblue;
+}
+
+md-slider .md-thumb{
+display: none;
+}
+
+md-slider[md-vertical] .md-track-container{
+  width: 3px;
+}
+
+.track md-slider.md-primary .md-track.md-track-fill{
+  background-color: steelblue;
+}
+
+.track .md-slider-wrapper {
+  cursor: pointer;
 }
