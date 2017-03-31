@@ -25,6 +25,7 @@
         <script type="text/javascript" src="../assets/lib/js/angular-animate.min.js"></script>
         <script type="text/javascript" src="../assets/lib/js/ng-file-upload-shim.min.js"></script>
         <script type="text/javascript" src="../assets/lib/js/ng-file-upload.min.js"></script>
+        <script type="text/javascript" src="../assets/lib/js/ngParallax.min.js"></script>
         <link rel="stylesheet" href="../assets/lib/css/normalize.css">
         <link rel="stylesheet" href="../assets/lib/css/angular-material.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -36,9 +37,13 @@
             <div class="nav-bar-logo">
                 <a ui-sref="home" class="logo"></a>
             </div>
-            <div class="nav-bar-right borderXwidth">
-                <a ui-sref="player">Nos productions</a>
+            <div class="nav-bar-right" >
+              <div class="nav-bar-button">
+                <a ui-sref="player">Nos productions {{lol}}</a>
+              </div>
+              <div class="nav-bar-button">
                 <a ui-sref="contact">Contact</a>
+              </div>
             </div>
         </div>
 
@@ -59,6 +64,9 @@
         <script src="app/js/controllers/contactCtrl.js"></script>
         <script src="app/js/controllers/playerCtrl.js"></script>
         <script src="app/js/controllers/adminCtrl.js"></script>
+        <script src="app/js/controllers/admin/adminAddSongCtrl.js"></script>
+        <script src="app/js/controllers/admin/adminRemoveSongCtrl.js"></script>
+        <script src="app/js/controllers/admin/adminHandleFilterCtrl.js"></script>
         <!-- SERVICES -->
         <script src="app/js/services/player-service.js"></script>
         <script src="app/js/services/API-service.js"></script>

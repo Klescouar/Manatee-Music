@@ -1,2 +1,3 @@
-app.controller('contactCtrl', ['$scope', '$http', function($scope, $http){
+app.controller('contactCtrl', ['$scope', '$http', 'angularPlayer', '$rootScope', function($scope, $http, angularPlayer, $rootScope){
+  angularPlayer.stop();
 }]);

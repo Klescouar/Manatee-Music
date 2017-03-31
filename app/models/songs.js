@@ -6,13 +6,10 @@ const SongSchema = new Schema({
     icon: String,
     title: String,
     artist: String,
+    duration: Number,
     url: String,
-    duration: String,
-    ratingSum: Number,
-    ratingNumber: Number,
-    ambiance: Array,
-    style: Array,
-    instrument: Array
+    tags: Array,
+    instrumental: Array
 });
 
 module.exports = mongoose.model('Songs', SongSchema);

@@ -8,6 +8,15 @@ app.service("APIService", function($http, API_ENDPOINT) {
         });
     };
 
+    this.addInstrumentalSong = function(song) {
+        return $http.post(API_ENDPOINT.url + '/addInstrumentalSong', song).then(function(response) {
+          console.log(response.data);
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
     this.getAllSongs = function() {
         return $http.get(API_ENDPOINT.url + '/getAllSongs').then(function(response) {
             return response;
@@ -24,6 +33,14 @@ app.service("APIService", function($http, API_ENDPOINT) {
         });
     };
 
+    this.removeInstrumentalSong = function(songId, instrumentalId) {
+        return $http.delete(API_ENDPOINT.url + '/removeInstrumentalSong/' + songId + '/' + instrumentalId).then(function(response) {
+          console.log(response);
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
 
 
 
@@ -140,7 +157,5 @@ app.service("APIService", function($http, API_ENDPOINT) {
             return error;
         });
     };
-
-
 
 });

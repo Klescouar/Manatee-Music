@@ -36,5 +36,41 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
+  .state('admin.addSong', {
+  url: '/addSong',
+  views:{
+    'admin_dashboard':{
+      templateUrl: 'app/views/admin/admin-addSong.html',
+      controller: 'adminAddSongCtrl'
+    }
+  }
+})
+.state('admin.removeSong', {
+url: '/removeSong',
+views:{
+  'admin_dashboard':{
+    templateUrl: 'app/views/admin/admin-removeSong.html',
+    controller: 'adminRemoveSongCtrl'
+  }
+}
+})
+.state('admin.handleFilter', {
+url: '/handleFilter',
+views:{
+  'admin_dashboard':{
+    templateUrl: 'app/views/admin/admin-handleFilter.html',
+    controller: 'adminHandleFilterCtrl'
+  }
+}
+})
+.state('admin.waitingCard', {
+  url: '/waitingCard',
+  views:{
+    'admin_dashboard':{
+      templateUrl: 'app/views/BO-views/waiting-card.html',
+      controller: 'waitingCardCtrl'
+    }
+  }
+})
   $urlRouterProvider.otherwise('/home');
 });

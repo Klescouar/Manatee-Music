@@ -1,0 +1,13 @@
+<div class="handle-song">
+    <div class="show-song" ng-repeat="song in songs">
+        <div class="song-card">
+            <p>{{song.title}}</p>
+            <div class="song-icon" ng-style="{'background-image':'url(../assets/images/'+song.icon+')'}"></div>
+            <input type="button" value="Supprimer" ng-click="removeSong(song._id)">
+            <div class="remove-instrumental" ng-repeat="songInst in song.instrumental">
+              <p>{{songInst.title}}</p>
+              <div ng-click="removeInstrumental(song._id, songInst.id)" class="remove-cross"></div>
+            </div>
+        </div>
+    </div>
+</div>

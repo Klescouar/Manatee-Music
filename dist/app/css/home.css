@@ -1,27 +1,35 @@
 .home-page {
-  background-color: #e3e6ec; }
+  background-color: #f2f2f2; }
   .home-page .first-view {
-    min-height: calc(100vh - 90px);
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center; }
-    .home-page .first-view .first-view-logo {
-      height: 400px;
-      width: 600px;
-      background-image: url("../../assets/images/logo.png");
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat; }
+    align-items: center;
+    background-size: cover !important;
+    position: relative;
+    color: #f1ebeb; }
+    .home-page .first-view h1 {
+      font-family: 'TEST2';
+      font-size: 7em; }
+    .home-page .first-view p {
+      font-size: 3em; }
   .home-page .presentation {
-    background-color: #6d7b9f;
     height: 70vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0 50px;
     text-align: center;
     line-height: 2em;
     color: #272e50; }
+    .home-page .presentation p {
+      padding: 40px; }
+    .home-page .presentation .hr {
+      height: 2px;
+      background-color: #bb0303;
+      width: 100px; }
   .home-page .instruction {
     height: 100vh;
     display: flex;
@@ -48,31 +56,48 @@
   .home-page .bio-perso {
     min-height: 100vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-start; }
     .home-page .bio-perso .bio-box {
-      position: relative;
-      color: #e3e6ec;
-      width: 40%;
-      min-height: 80vh;
-      margin-top: 80px;
-      background-color: #2d355d; }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0px 60px;
+      width: 30%; }
+      .home-page .bio-perso .bio-box h3 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 1.2em; }
       .home-page .bio-perso .bio-box p {
-        margin-top: 80px;
-        padding: 50px;
-        line-height: 2em; }
-      .home-page .bio-perso .bio-box .bio-photo {
+        text-align: justify;
+        line-height: 1.5em;
+        margin-top: 40px;
+        padding: 0 20px; }
+      .home-page .bio-perso .bio-box .franck-pic {
+        background: url("../../assets/images/Kyfran.jpg");
+        background-position: center;
+        background-size: cover; }
+      .home-page .bio-perso .bio-box .franck-pic:hover {
         background-image: url("../../assets/images/jojo.jpg");
         background-position: center;
-        background-size: cover;
-        border: 3px solid white;
-        height: 160px;
-        width: 160px;
-        -moz-border-radius: 50%;
-        -webkit-border-radius: 50%;
-        position: absolute;
-        top: -60px;
-        left: 0;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto; }
+        background-size: cover; }
+      .home-page .bio-perso .bio-box .johan-pic {
+        background-image: url("../../assets/images/jojo.jpg");
+        background-position: center;
+        background-size: cover; }
+      .home-page .bio-perso .bio-box .johan-pic:hover {
+        background-image: url("../../assets/images/Kyfran.jpg");
+        background-position: center;
+        background-size: cover; }
+      .home-page .bio-perso .bio-box .bio-photo {
+        height: 320px;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; }
+        .home-page .bio-perso .bio-box .bio-photo .bio-pic-bottom {
+          height: 100px;
+          width: 100%;
+          background-image: url("../../assets/images/people_two.png");
+          background-position: center;
+          background-size: cover; }

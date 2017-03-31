@@ -4,6 +4,7 @@
 
     .songs-container {
         width: 100%;
+        margin-top: 90px;
         height: calc(100vh - 140px);
         display: flex;
         flex-direction: column;
@@ -40,7 +41,8 @@
         z-index: 10;
         background: #222;
         width: 200px;
-        margin-top: -90px;
+        height: calc(100vh - 130px);
+        top: 80px;
     }
 
     .accordion {
@@ -209,6 +211,17 @@
     color: #666;
 }
 
+.open-track{
+  position: absolute;
+  z-index: 999;
+  left: 10px;
+  height: 25px;
+  width: 25px;
+  background-image: url('../../assets/images/add-circular-outlined-button.svg');
+  background-position: center;
+  background-size: cover;
+}
+
 code,
 pre {
     font-size: inherit;
@@ -245,6 +258,14 @@ $barSize: 3px;
 $apZ: 99999;
 $volZ: 88888;
 $plZ: 77777;
+
+.instrumental-song{
+  background-color: rgba(#4682b4, 0.22);
+}
+
+.instrumental-song:hover{
+  background-color: rgba(#4682b4, 0.51)!important;
+}
 
 .ap {
     position: fixed;
@@ -477,9 +498,6 @@ $plZ: 77777;
     height: 50%;
 }
 
-.icon-volume-off {
-    display: none;
-}
 
 .has-muted {
     .icon-volume-on {
@@ -507,7 +525,18 @@ $plZ: 77777;
     .ap {
         min-width: 250px;
     }
-
+    .load-bar{
+      top: 40px !important;
+    }
+    .progress-bar{
+      margin-top: 22px;
+    }
+    .progress-slider{
+      top: 19px !important;
+    }
+    .pic-box{
+      display: none;
+    }
     .ap,
     .ap__inner {
         height: auto;
@@ -515,6 +544,10 @@ $plZ: 77777;
 
     .ap__inner {
         flex-wrap: wrap;
+    }
+
+    .track__time{
+      top: 11px;
     }
 
     .ap__item--track {
@@ -555,6 +588,8 @@ $plZ: 77777;
 }
 
 .pl-list {
+  position: relative;
+  padding-left: 40px;
     display: flex;
     align-items: center;
     // transition: background .2s ease;
@@ -578,6 +613,7 @@ $plZ: 77777;
 .pl-list__track {
     flex: 0 50px;
     text-align: center;
+    cursor: pointer;
 }
 
 .pl-list__icon {
@@ -720,10 +756,69 @@ md-slider[md-vertical] .md-track-container{
   width: 3px;
 }
 
-.track md-slider.md-primary .md-track.md-track-fill{
-  background-color: steelblue;
+// .track md-slider .md-track-container {
+//   pointer-events: none;
+// }
+//
+// .track md-slider.md-primary .md-track.md-track-fill{
+//   background-color: steelblue;
+//   pointer-events: none;
+// }
+//
+// .track .md-slider-wrapper {
+//   cursor: pointer;
+// }
+
+.progress-box {
+	width: 100%;
+	margin: 20px 0;
 }
 
-.track .md-slider-wrapper {
+.track{
+  height: 100%;
+}
+
+.progress-bar{
+  height: 90%;
+  display: flex;
+  align-items: center;
+}
+
+.progress-box .progress-bar .inner {
+  position: relative;
+	width: 0;
+	height:100%;
+	background: #239bd6;
+}
+
+.progress-bar .inner {
+	height: 3px;
+	width: 0;
+  background-color: steelblue;
+  position: relative;
+	transition: all 0.1s ease-out;
+}
+
+.progress-bar-slider .inner {
+  transition: none;
+}
+
+.load-bar {
+  position: absolute;
+  top: 27px;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(172, 172, 172);
+}
+
+.progress-slider {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   cursor: pointer;
+  z-index: 1;
 }

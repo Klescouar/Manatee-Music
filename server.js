@@ -8,10 +8,8 @@ const mongoose    = require('mongoose');
 
 const config      = require(__dirname + '/config/database');
 const songs       = require(__dirname + '/app/controllers/controllers.songs');
-
 const uploadPhoto = require(__dirname + '/app/controllers/controllers.upload.photo');
 const uploadSong  = require(__dirname + '/app/controllers/controllers.upload.music');
-
 const ambiance    = require(__dirname + '/app/controllers/controllers.ambiance');
 const style       = require(__dirname + '/app/controllers/controllers.style');
 const length      = require(__dirname + '/app/controllers/controllers.length');
@@ -50,6 +48,8 @@ app.get('/', function(req, res) {
 /////////////////////////SONG CONTROLLER/////////////////////////
 apiRoutes.get('/getAllSongs', songs.getAllSongs);
 apiRoutes.post('/addsong', songs.addSong);
+apiRoutes.post('/addInstrumentalSong', songs.addInstrumentalSong);
+apiRoutes.delete('/removeInstrumentalSong/:songId/:instrumentalId', songs.removeInstrumentalSong);
 apiRoutes.delete('/removeSong/:id', songs.removeSong);
 
 /////////////////////////AMBIANCE FILTER CONTROLLER/////////////////////////
