@@ -5,6 +5,8 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   $scope.filters = [];
   $scope.currentSong = {};
   $scope.openInst = '';
+  $scope.thisSong = {};
+  let songsId = [];
   const playSvg = document.querySelector('.icon-play');
   const playSvgPath = playSvg.querySelector('path');
   let volumeStatus = 0;
@@ -18,18 +20,49 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
       return result;
   }
 
+  const getArrayOfsongsId = (item) => {
+    songsId.push(item.id);
+  }
+
   const addInstrumentalToPlaylist = (item) => {
-    angularPlayer.addTrack(item);
+    const playlist = angularPlayer.getPlaylist();
+    playlist.map(getArrayOfsongsId);
+    angularPlayer.addTrack(item, songsId.indexOf(item.integral));
   }
 
   const addTrackToPlaylist = (item) => {
       angularPlayer.addTrack(item);
-      item.instrumental.map(addInstrumentalToPlaylist)
   }
 
-  $scope.openInstrumental = (id) => {
-    $scope.openInst === id ? $scope.openInst = '' : $scope.openInst = id;
+  const removeTrackToPlaylist = (item) => {
+    const playlist = angularPlayer.getPlaylist();
+    angularPlayer.removeSong(item.id, playlist.indexOf(item));
   };
+
+  const getOnSong = (item, id) => {
+    if (item.id === id) {
+      return $scope.thisSong = item;
+    }
+  };
+
+  $scope.openInstrumental = (id) => {
+    $scope.songs.map(function(item) { return getOnSong(item, id); });
+    if ($scope.openInst === id) {
+      $scope.openInst = '';
+      $scope.thisSong.instrumental.map(removeTrackToPlaylist);
+      // $scope.getAllSongs();
+    } else {
+      $scope.openInst = id;
+      $scope.thisSong.instrumental.map(addInstrumentalToPlaylist);
+    }
+    const playlist = angularPlayer.getPlaylist();
+    playlist.map(removeTrackToPlaylist);
+    console.log($scope.songs);
+    $scope.songs.map(addTrackToPlaylist);
+    console.log(angularPlayer.getPlaylist());
+  };
+
+
   ////////////////////////////////////////// GET ALL SONGS //////////////////////////////////////////
 
   $scope.getAllSongs = () => {
@@ -37,7 +70,6 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
           $scope.allSongs = response.data.map(transformKeys);
           $scope.allSongs.map(addTrackToPlaylist);
           $scope.songs = $scope.allSongs;
-          console.log($scope.songs);
       }).catch(function(errMsg) {
           console.log('show profils members failed!');
       });
@@ -162,6 +194,11 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     $scope.songs = [];
     $scope.filters.indexOf(name) === -1 ? $scope.filters.push(name) : $scope.filters.splice($scope.filters.indexOf(name), 1);
     $scope.allSongs.map(filterResult);
+    const playlist = angularPlayer.getPlaylist();
+    playlist.map(removeTrackToPlaylist);
+    console.log($scope.songs);
+    $scope.songs.map(addTrackToPlaylist);
+    // console.log(angularPlayer.getPlaylist());
   }
 
   const filterResult = (item) => {

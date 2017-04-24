@@ -4569,10 +4569,16 @@ ngSoundManager.factory('angularPlayer', ['$rootScope', '$log',
                     return playlist[key];
                 }
             },
-            addToPlaylist: function(track) {
+            addToPlaylist: function(track, index) {
+              if (!index) {
                 playlist.push(track);
-                //broadcast playlist
-                $rootScope.$broadcast('player:playlist', playlist);
+              } else {
+                playlist.splice(index, 0, track);
+              }
+
+              //broadcast playlist
+              $rootScope.$broadcast('player:playlist', playlist);
+
             },
             isTrackValid: function (track) {
                 if (typeof track == 'undefined') {
@@ -4593,7 +4599,7 @@ ngSoundManager.factory('angularPlayer', ['$rootScope', '$log',
                     }
                 }
             },
-            addTrack: function(track) {
+            addTrack: function(track, index) {
                 //check if track itself is valid and if its url is playable
                 if (!this.isTrackValid) {
                     return null;
@@ -4609,7 +4615,11 @@ ngSoundManager.factory('angularPlayer', ['$rootScope', '$log',
                         url: track.url
                     });
                     //add to playlist
-                    this.addToPlaylist(track);
+                    if (index) {
+                      this.addToPlaylist(track, index);
+                    } else {
+                      this.addToPlaylist(track);
+                    }
                 }
                 return track.id;
             },
