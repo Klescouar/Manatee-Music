@@ -45,7 +45,7 @@
     </div>
     <div class="songs-container">
       <div ng-repeat="song in songs track by $index">
-        <li class="pl-list" ng-class="{pllistcurrent: isPlaying && currentTrackId === song.id}" >
+        <li class="pl-list" ng-class="{'pllistcurrent': isPlaying && currentTrackId === song.id, 'instrumental-song' : song.integral}" >
           <div ng-if="song.instrumental.length > 0" ng-click="openInstrumental(song.id)" class="open-track">
 
           </div>
@@ -60,22 +60,6 @@
                 </div>
             </div>
             <div ng-click="playSong(song.id)" class="pl-list__title">{{song.title}}</div>
-        </li>
-        <li class="pl-list instrumental-song" ng-if="openInst === song.id" ng-repeat="instrumental in song.instrumental" ng-class="{pllistcurrent: isPlaying && currentTrackId === instrumental.id}" >
-          <div ng-if="instrumental.instrumental.length > 0" class="open-track">
-
-          </div>
-            <div ng-click="playSong(instrumental.id)" class="pl-list__track">
-                <div class="pl-list__icon"></div>
-                <div class="pl-list__eq">
-                    <div class="eq">
-                        <div class="eq__bar"></div>
-                        <div class="eq__bar"></div>
-                        <div class="eq__bar"></div>
-                    </div>
-                </div>
-            </div>
-            <div ng-click="playSong(instrumental.id)" class="pl-list__title">{{instrumental.title}}</div>
         </li>
       </div>
     </div>

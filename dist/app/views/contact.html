@@ -1,0 +1,24 @@
+<div class="contact-page">
+    <div class="contact-page__header">
+    </div>
+    <div class="contact-page__form">
+        <div class="contact-page__form__container">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Nom</label>
+                <input ng-model="user.firstName">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Prénom</label>
+                <input ng-model="user.lastName">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Email</label>
+                <input ng-model="user.email" type="email">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Message</label>
+                <textarea ng-model="user.message" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+            </md-input-container>
+        </div>
+    </div>
+</div>

@@ -21,52 +21,64 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   }
 
   const getArrayOfsongsId = (item) => {
-    songsId.push(item.id);
-  }
-
-  const addInstrumentalToPlaylist = (item) => {
-    const playlist = angularPlayer.getPlaylist();
-    playlist.map(getArrayOfsongsId);
-    angularPlayer.addTrack(item, songsId.indexOf(item.integral));
+      songsId.push(item.id);
   }
 
   const addTrackToPlaylist = (item) => {
       angularPlayer.addTrack(item);
   }
 
-  const removeTrackToPlaylist = (item) => {
-    const playlist = angularPlayer.getPlaylist();
-    angularPlayer.removeSong(item.id, playlist.indexOf(item));
+  const removeInstrumental = (item) => {
+      return !item.integral;
   };
 
+  const removeTrackToPlaylist = (item) => {
+      const playlist = angularPlayer.getPlaylist();
+      angularPlayer.removeSong(item.id, playlist.indexOf(item));
+  };
+
+  function findWithAttr(array, attr, value) {
+      for (var i = 0; i < array.length; i += 1) {
+          if (array[i][attr] === value) {
+              return i;
+          }
+      }
+      return -1;
+  }
+
+  const addInstrumentalToPlaylist = (item) => {
+      const trackIndex = findWithAttr($scope.songs, 'id', item.integral);
+      $scope.songs.splice(trackIndex + 1, 0, item);
+  }
+
   const getOnSong = (item, id) => {
-    if (item.id === id) {
-      return $scope.thisSong = item;
-    }
+      if (item.id === id) {
+          return $scope.thisSong = item;
+      }
   };
 
   $scope.openInstrumental = (id) => {
-    $scope.songs.map(function(item) { return getOnSong(item, id); });
-    if ($scope.openInst === id) {
-      $scope.openInst = '';
-      $scope.thisSong.instrumental.map(removeTrackToPlaylist);
-      // $scope.getAllSongs();
-    } else {
-      $scope.openInst = id;
-      $scope.thisSong.instrumental.map(addInstrumentalToPlaylist);
-    }
-    const playlist = angularPlayer.getPlaylist();
-    playlist.map(removeTrackToPlaylist);
-    console.log($scope.songs);
-    $scope.songs.map(addTrackToPlaylist);
-    console.log(angularPlayer.getPlaylist());
+      angularPlayer.clearPlaylist(function() {
+          $scope.songs.map(function(item) {
+              return getOnSong(item, id);
+          });
+          if ($scope.openInst === id) {
+              $scope.openInst = '';
+              $scope.getAllSongs();
+          } else {
+              $scope.openInst = id;
+              $scope.songs = $scope.songs.filter(removeInstrumental);
+              const instrumentalReverse = $scope.thisSong.instrumental.reverse();
+              instrumentalReverse.map(addInstrumentalToPlaylist);
+              $scope.songs.map(addTrackToPlaylist);
+          }
+      });
   };
-
 
   ////////////////////////////////////////// GET ALL SONGS //////////////////////////////////////////
 
   $scope.getAllSongs = () => {
-      APIService.getAllSongs().then(function(response) {
+      return APIService.getAllSongs().then(function(response) {
           $scope.allSongs = response.data.map(transformKeys);
           $scope.allSongs.map(addTrackToPlaylist);
           $scope.songs = $scope.allSongs;
@@ -117,8 +129,8 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   ////////////////////////////////////////// HANDLE PLAYER //////////////////////////////////////////
 
   $scope.$on('track:id', function(event, data) {
-    $scope.currentSong.title = angularPlayer.currentTrackData().title;
-    $scope.currentSong.icon = angularPlayer.currentTrackData().icon;
+      $scope.currentSong.title = angularPlayer.currentTrackData().title;
+      $scope.currentSong.icon = angularPlayer.currentTrackData().icon;
       $scope.currentTrackId = data;
   });
 
@@ -187,36 +199,35 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
       }
   }
 
-
   ////////////////////////////////////////// HANDLE FILTERS //////////////////////////////////////////
 
   $scope.addFilter = (name) => {
-    $scope.songs = [];
-    $scope.filters.indexOf(name) === -1 ? $scope.filters.push(name) : $scope.filters.splice($scope.filters.indexOf(name), 1);
-    $scope.allSongs.map(filterResult);
-    const playlist = angularPlayer.getPlaylist();
-    playlist.map(removeTrackToPlaylist);
-    console.log($scope.songs);
-    $scope.songs.map(addTrackToPlaylist);
-    // console.log(angularPlayer.getPlaylist());
+      console.log($scope.filters);
+      console.log($scope.songs);
+      $scope.songs = [];
+      $scope.filters.indexOf(name) === -1
+          ? $scope.filters.push(name)
+          : $scope.filters.splice($scope.filters.indexOf(name), 1);
+      $scope.allSongs.map(filterResult);
   }
 
   const filterResult = (item) => {
-    if ($scope.filters.length === 0) {
-      return $scope.songs = $scope.allSongs;
-    } else if (!$scope.filters.some(val => item.tags.indexOf(val) === -1) && $scope.songs.indexOf(item) === -1) {
-      return $scope.songs.push(item);
-    } else if ($scope.songs.indexOf(item) !== -1 && $scope.filters.some(val => item.tags.indexOf(val) === -1)) {
-      return  $scope.songs.splice($scope.songs.indexOf(item), 1);
-    }
+      if ($scope.filters.length === 0) {
+          return $scope.songs = $scope.allSongs;
+      } else if (!$scope.filters.some(val => item.tags.indexOf(val) === -1) && $scope.songs.indexOf(item) === -1) {
+          return $scope.songs.push(item);
+      } else if ($scope.songs.indexOf(item) !== -1 && $scope.filters.some(val => item.tags.indexOf(val) === -1)) {
+          return $scope.songs.splice($scope.songs.indexOf(item), 1);
+      }
+      const playlist = angularPlayer.getPlaylist();
+      playlist.map(removeTrackToPlaylist);
+      $scope.songs.map(addTrackToPlaylist);
   }
 
-$rootScope.$on( "$stateChangeStart", function(event, next, current) {
-  $('.nav-bar').css("background-color", 'transparent');
-});
+  const onStart = () => {
+    console.log("lol");
+    $('.nav-bar').css("background-color", 'rgb(34,34,34)');
+  }
 
-
-
-  $('.nav-bar').css("background-color", 'rgb(34,34,34)');
-
+  onStart();
 }]);

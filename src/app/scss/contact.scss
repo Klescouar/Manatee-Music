@@ -1,0 +1,26 @@
+.contact-page{
+  display: flex;
+  flex-direction: column;
+  md-input-container .md-placeholder, md-input-container label:not(.md-no-float):not(.md-container-ignore){
+    color: rgb(61, 61, 61);
+  }
+  md-input-container .md-input{
+    // border-color: rgb(140, 140, 140);
+  }
+  &__header{
+    height: 70vh;
+    background-color: rgb(184, 184, 184);
+  }
+  &__right{
+    width: 70vw;
+    background-color: tomato;
+  }
+  &__form{
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+    &__container{
+      width: 40vw;
+    }
+  }
+}
