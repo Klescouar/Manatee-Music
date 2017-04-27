@@ -18,7 +18,8 @@ $scope.song = {
     url: '',
     duration: '',
     artist: 'Manatee Music Team',
-    tags: []
+    tags: [],
+    numberOfPlay : 0,
 };
 
 ////////////////////////////////////////// ADD SONGS //////////////////////////////////////////

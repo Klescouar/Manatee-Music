@@ -1,4 +1,4 @@
-app.controller('contactCtrl', ['$scope', '$http', 'angularPlayer', '$rootScope', function($scope, $http, angularPlayer, $rootScope){
+app.controller('contactCtrl', ['$scope', '$http', 'angularPlayer', '$rootScope', '$window', function($scope, $http, angularPlayer, $rootScope, $window){
   angularPlayer.stop();
   $('.nav-bar').css("background-color", 'transparent');
 
@@ -9,17 +9,22 @@ app.controller('contactCtrl', ['$scope', '$http', 'angularPlayer', '$rootScope',
     $('.nav-bar').css("background-color", 'transparent');
   }
 
-  if (window.pageYOffset > (window.innerHeight/1.5)) {
+  if (window.pageYOffset > (window.innerHeight/1.7)) {
       addBackgroundToNav();
   } else {
       removebackgroundToNav();
   }
 
-  window.addEventListener('scroll', function() {
-      if ($(window).scrollTop() > (window.innerHeight/1.5)) {
+  angular.element($window).bind("scroll", function() {
+    console.log(window.innerHeight);
+      if ($(window).scrollTop() > (window.innerHeight/1.7)) {
           addBackgroundToNav();
       } else {
           removebackgroundToNav();
       }
+  });
+
+  $scope.$on('$destroy', function() {
+    angular.element($window).unbind('scroll');
   });
 }]);

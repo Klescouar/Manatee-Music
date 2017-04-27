@@ -9,7 +9,11 @@
   }
   &__header{
     height: 70vh;
-    background-color: rgb(184, 184, 184);
+    background-color: rgb(45, 45, 45);
+    background-image: url('../../assets/images/manatee.png');
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
   }
   &__right{
     width: 70vw;

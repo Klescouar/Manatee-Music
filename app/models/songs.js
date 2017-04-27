@@ -9,7 +9,8 @@ const SongSchema = new Schema({
     duration: Number,
     url: String,
     tags: Array,
-    instrumental: Array
+    instrumental: Array,
+    numberOfPlay: Number
 });
 
 module.exports = mongoose.model('Songs', SongSchema);

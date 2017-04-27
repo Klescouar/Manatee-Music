@@ -3,10 +3,27 @@
   display: flex; }
   .player-page .songs-container {
     width: 100%;
-    margin-top: 90px;
+    margin-top: 80px;
     height: calc(100vh - 140px);
     display: flex;
     flex-direction: column; }
+    .player-page .songs-container .songs-filters {
+      height: 40px;
+      background-color: tomato;
+      padding-left: 90px;
+      display: flex; }
+      .player-page .songs-container .songs-filters .alphab-filter {
+        width: 400px;
+        background-color: green;
+        height: 40px; }
+      .player-page .songs-container .songs-filters .duration-filter {
+        width: 100px;
+        background-color: blue;
+        height: 40px; }
+      .player-page .songs-container .songs-filters .play-filter {
+        width: 100px;
+        background-color: red;
+        height: 40px; }
     .player-page .songs-container .song-background-style1 {
       background-color: #d5dae0;
       width: 100%;
@@ -473,7 +490,20 @@ pre {
   text-align: left;
   white-space: nowrap;
   text-overflow: ellipsis;
-  flex: 1; }
+  flex: 1;
+  display: flex; }
+  .pl-list__title .song-title {
+    padding-left: 20px;
+    width: 400px;
+    height: 40px; }
+  .pl-list__title .song-duration {
+    text-align: center;
+    width: 100px;
+    height: 40px; }
+  .pl-list__title .song-numberOfPlay {
+    text-align: center;
+    width: 100px;
+    height: 40px; }
 
 .pl-list__remove {
   height: 100%;

@@ -48,6 +48,8 @@ app.get('/', function(req, res) {
 /////////////////////////SONG CONTROLLER/////////////////////////
 apiRoutes.get('/getAllSongs', songs.getAllSongs);
 apiRoutes.post('/addsong', songs.addSong);
+apiRoutes.put('/updateNumberOfPlay/:id', songs.updateNumberOfPlay);
+apiRoutes.put('/updateNumberOfPlay/:id/:instrumentalId', songs.updateNumberOfPlay);
 apiRoutes.post('/addInstrumentalSong', songs.addInstrumentalSong);
 apiRoutes.delete('/removeInstrumentalSong/:songId/:instrumentalId', songs.removeInstrumentalSong);
 apiRoutes.delete('/removeSong/:id', songs.removeSong);

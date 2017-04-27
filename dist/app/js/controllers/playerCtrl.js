@@ -82,6 +82,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
           $scope.allSongs = response.data.map(transformKeys);
           $scope.allSongs.map(addTrackToPlaylist);
           $scope.songs = $scope.allSongs;
+          console.log($scope.songs);
       }).catch(function(errMsg) {
           console.log('show profils members failed!');
       });
@@ -132,6 +133,8 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
       $scope.currentSong.title = angularPlayer.currentTrackData().title;
       $scope.currentSong.icon = angularPlayer.currentTrackData().icon;
       $scope.currentTrackId = data;
+      console.log(angularPlayer.currentTrackData().integral);
+      angularPlayer.currentTrackData().integral ? APIService.updateNumberOfPlay(angularPlayer.currentTrackData().integral, data) : APIService.updateNumberOfPlay(data);
   });
 
   $scope.playSong = (id) => {
@@ -224,10 +227,6 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
       $scope.songs.map(addTrackToPlaylist);
   }
 
-  const onStart = () => {
-    console.log("lol");
     $('.nav-bar').css("background-color", 'rgb(34,34,34)');
-  }
 
-  onStart();
 }]);

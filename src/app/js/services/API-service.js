@@ -25,6 +25,24 @@ app.service("APIService", function($http, API_ENDPOINT) {
         });
     };
 
+    this.updateNumberOfPlay = function(id, instrumentalId) {
+      if (instrumentalId) {
+        return $http.put(API_ENDPOINT.url + '/updateNumberOfPlay/' + id + '/' + instrumentalId).then(function(response) {
+          console.log(response);
+            return response;
+        }, function(error) {
+            return error;
+        });
+      } else {
+          return $http.put(API_ENDPOINT.url + '/updateNumberOfPlay/' + id).then(function(response) {
+            console.log(response);
+              return response;
+          }, function(error) {
+              return error;
+          });
+      }
+    };
+
     this.removeSong = function(id) {
         return $http.delete(API_ENDPOINT.url + '/removeSong/' + id).then(function(response) {
             return response;

@@ -44,6 +44,17 @@
 
     </div>
     <div class="songs-container">
+      <div class="songs-filters">
+        <div class="alphab-filter">
+
+        </div>
+        <div class="duration-filter">
+
+        </div>
+        <div class="play-filter">
+
+        </div>
+      </div>
       <div ng-repeat="song in songs track by $index">
         <li class="pl-list" ng-class="{'pllistcurrent': isPlaying && currentTrackId === song.id, 'instrumental-song' : song.integral}" >
           <div ng-if="song.instrumental.length > 0" ng-click="openInstrumental(song.id)" class="open-track">
@@ -59,7 +70,17 @@
                     </div>
                 </div>
             </div>
-            <div ng-click="playSong(song.id)" class="pl-list__title">{{song.title}}</div>
+            <div ng-click="playSong(song.id)" class="pl-list__title">
+              <div class="song-title">
+                {{song.title}}
+              </div>
+              <div class="song-duration">
+                {{song.duration/60 | number:2}}
+              </div>
+              <div class="song-numberOfPlay">
+                {{song.numberOfPlay}}
+              </div>
+            </div>
         </li>
       </div>
     </div>

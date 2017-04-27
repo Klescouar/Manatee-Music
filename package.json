@@ -1,7 +1,7 @@
 {
   "name": "manatee-music",
   "version": "1.0.0",
-  "description": "",
+  "description": "manatee-music",
   "main": "server.js",
   "engines": {
     "node": "6.9.2",

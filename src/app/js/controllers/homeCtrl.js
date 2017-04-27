@@ -1,4 +1,4 @@
-app.controller('homeCtrl', ['$scope', 'angularPlayer', '$rootScope', function($scope, angularPlayer, $rootScope){
+app.controller('homeCtrl', ['$scope', 'angularPlayer', '$rootScope', '$window', function($scope, angularPlayer, $rootScope, $window){
   angularPlayer.stop();
    $scope.background = '../../../assets/images/test3.jpg'
 
@@ -16,11 +16,16 @@ app.controller('homeCtrl', ['$scope', 'angularPlayer', '$rootScope', function($s
        removebackgroundToNav();
    }
 
-   window.addEventListener('scroll', function() {
+   angular.element($window).bind("scroll", function() {
+     console.log(window.innerHeight);
        if ($(window).scrollTop() > (window.innerHeight - 40)) {
            addBackgroundToNav();
        } else {
            removebackgroundToNav();
        }
+   });
+
+   $scope.$on('$destroy', function() {
+     angular.element($window).unbind('scroll'); 
    });
 }]);

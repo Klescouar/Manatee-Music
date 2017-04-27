@@ -5,7 +5,11 @@
     color: #3d3d3d; }
   .contact-page__header {
     height: 70vh;
-    background-color: #b8b8b8; }
+    background-color: #2d2d2d;
+    background-image: url("../../assets/images/manatee.png");
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat; }
   .contact-page__right {
     width: 70vw;
     background-color: tomato; }
