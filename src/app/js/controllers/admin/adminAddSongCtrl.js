@@ -42,11 +42,15 @@ $scope.addElementToSong = (name) => {
 
 $scope.addSong = () => {
   if ($scope.song.integral) {
-    APIService.addInstrumentalSong($scope.song).then(function(response) {}).catch(function(errMsg) {
+    APIService.addInstrumentalSong($scope.song).then(function(response) {
+      alert(response.data.msg);
+    }).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Song failed!');
     });
   } else {
-    APIService.addSong($scope.song).then(function(response) {}).catch(function(errMsg) {
+    APIService.addSong($scope.song).then(function(response) {
+      alert(response.data.msg);
+    }).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Song failed!');
     });
   }
@@ -66,6 +70,7 @@ $scope.uploadSong = (formData) => {
 $scope.handleSuccess = (data) => {
     if (data.length > 0) {
         $scope.song.icon = data[0].filename;
+        alert("Photo uploadé!")
     } else {
         alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
     }
@@ -95,8 +100,9 @@ $scope.handleSuccessSong = (data) => {
             }
         });
         $scope.song.url = '../../assets/song/' + data[0].filename;
+        alert('Son uploadé!')
     } else {
-        alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
+        alert('Mauvais format')
     }
 }
 
