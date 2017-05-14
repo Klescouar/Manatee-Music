@@ -20,7 +20,7 @@ app.controller('adminRemoveSongCtrl', ['$scope', 'APIService', 'APIService', fun
 
   $scope.removeInstrumental = (songId, instrumentalId) => {
     APIService.removeInstrumentalSong(songId, instrumentalId).then((res) => {
-      console.log(res.data);
+      $scope.getAllSongs();
     });
   };
 

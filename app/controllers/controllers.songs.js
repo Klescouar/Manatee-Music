@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 exports.getAllSongs = (req, res) => {
     console.log('I received a GET request');
     Songs.find(function(err, songs) {
-        if (err)
+        if (err) {
             throw err;
 
-else {
+        } else {
             res.json(songs);
         }
     });
@@ -27,13 +27,20 @@ exports.removeSong = (req, res) => {
 };
 
 exports.removeInstrumentalSong = (req, res) => {
-    Songs.findOne({
-        _id: req.params.songId
-    }, function(err) {
-        if (err)
-            res.send(err);
+    Songs.findById(req.params.songId, function(err, doc) {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+          const index = doc.instrumental.findIndex(x => x.id== req.params.instrumentalId);
+          doc.instrumental.splice(index, 1);
 
-        res.json({message: 'Song removed!'});
+            doc.save(function(err, doc) {
+                if (err) {
+                    res.status(500).send(err)
+                }
+                res.send(doc);
+            });
+        }
     });
 };
 
@@ -58,13 +65,21 @@ exports.updateNumberOfPlay = function(req, res) {
             res.status(500).send(err);
         } else {
             if (req.params.instrumentalId) {
-                const filteredArray = doc.instrumental.filter((element) => { return element.id == req.params.instrumentalId; });
+                const filteredArray = doc.instrumental.filter((element) => {
+                    return element.id == req.params.instrumentalId;
+                });
                 const indexOfInstrumental = doc.instrumental.indexOf(filteredArray[0]);
                 // doc.instrumental[indexOfInstrumental].numberOfPlay = doc.instrumental[indexOfInstrumental].numberOfPlay + 1;
-                doc.instrumental[indexOfInstrumental].numberOfPlay ++;
+                doc.instrumental[indexOfInstrumental].numberOfPlay++;
                 const instrumentalArray = doc.instrumental;
                 console.log(instrumentalArray)
-                Songs.update({ _id: doc.id }, { $set: {  instrumental : instrumentalArray }}, function(err) {
+                Songs.update({
+                    _id: doc.id
+                }, {
+                    $set: {
+                        instrumental: instrumentalArray
+                    }
+                }, function(err) {
                     if (err) {
                         res.status(500).send(err)
                     }
