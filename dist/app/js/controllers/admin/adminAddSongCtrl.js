@@ -43,15 +43,15 @@ $scope.addElementToSong = (name) => {
 $scope.addSong = () => {
   if ($scope.song.integral) {
     APIService.addInstrumentalSong($scope.song).then(function(response) {
-      alert(response.data.msg);
+      alert("C'EST GOOD");
     }).catch(function(errMsg) {
-        const alertPopup = $window.alert('Add Song failed!');
+        alert('Add Song failed!');
     });
   } else {
     APIService.addSong($scope.song).then(function(response) {
-      alert(response.data.msg);
+      alert("C'EST GOOD");
     }).catch(function(errMsg) {
-        const alertPopup = $window.alert('Add Song failed!');
+        alert('Add Song failed!');
     });
   }
 };
