@@ -1,9 +1,9 @@
 <div class="admin-page">
 
     <div class="admin-nav">
-        <a ng-class="{'menu-active' : show === 'addSong'}" ng-click="show = 'addSong'" ui-sref="admin.addSong">Ajouter une musique</a>
-        <a ng-class="{'menu-active' : show === 'music'}" ng-click="show = 'music'" ui-sref="admin.removeSong">Supprimer/modifier une musique</a>
-        <a ng-class="{'menu-active' : show === 'filter'}" ng-click="show = 'filter'" ui-sref="admin.handleFilter">Gérer mes filtres</a>
+        <a ui-sref="admin.addSong">Ajouter une musique</a>
+        <a ui-sref="admin.removeSong">Supprimer/modifier une musique</a>
+        <a ui-sref="admin.handleFilter">Gérer mes filtres</a>
     </div>
 
     <div ui-view="admin_dashboard"></div>

@@ -45,21 +45,35 @@
     </div>
     <div class="songs-container">
       <div class="songs-filters">
-        <div class="alphab-filter">
-
-        </div>
-        <div class="duration-filter">
-
-        </div>
-        <div class="play-filter">
-
-        </div>
-      </div>
-      <div ng-repeat="song in songs track by $index">
-        <li class="pl-list" ng-class="{'pllistcurrent': isPlaying && currentTrackId === song.id, 'instrumental-song' : song.integral}" >
-          <div ng-if="song.instrumental.length > 0" ng-click="openInstrumental(song.id)" class="open-track">
+        <div class="alphab-filter filters-part-left-border" ng-click="changeOrder('title')">
+          <p>
+            Titre
+          </p>
+          <div class="double-arrow">
 
           </div>
+        </div>
+        <div class="duration-filter filters-part-left-border" ng-click="changeOrder('duration')">
+          <p>
+            Durée
+          </p>
+          <div class="double-arrow">
+
+          </div>
+        </div>
+        <div class="play-filter filters-part-left-border filters-part-right-border" ng-click="changeOrder('numberOfPlay')">
+          <p>
+            Écoutes
+          </p>
+          <div class="double-arrow">
+
+          </div>
+        </div>
+      </div>
+      <div ng-repeat="song in songs | orderBy: filterExeption(orderProperty) track by $index">
+        <li class="pl-list" ng-class="{'pllistcurrent': isPlaying && currentTrackId === song.id, 'instrumental-song' : song.integral}" >
+          <div ng-if="song.instrumental.length > 0" ng-click="openInstrumental(song.id)" class="open-track"></div>
+          <div ng-if="song.instrumental.length === 0 || song.integral" class="open-track-empty"></div>
             <div ng-click="playSong(song.id)" class="pl-list__track">
                 <div class="pl-list__icon"></div>
                 <div class="pl-list__eq">

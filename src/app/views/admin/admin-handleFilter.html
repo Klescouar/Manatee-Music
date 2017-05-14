@@ -1,10 +1,11 @@
 <div class="handle-filter">
 
     <div class="filter-card">
-        <input type="text" id="input" value="" ng-model="ambiance.name" required placeholder="Ambiance..." class="input-name"></input>
-        <button type="button" ng-click="addAmbiance()">
-            <h4>Ajouter</h4>
-        </button>
+      <md-input-container>
+          <label>Ambiance</label>
+          <input ng-model="ambiance.name">
+      </md-input-container>
+      <a ng-click="addAmbiance()"> Ajouter</a>
 
         <div ng-repeat="ambiance in ambiances" class="filter-name">
             <p>{{ambiance.name}}</p>
@@ -13,11 +14,11 @@
     </div>
 
     <div class="filter-card">
-
-        <input type="text" id="input" value="" ng-model="length.name" required placeholder="Durée..." class="input-name"></input>
-        <button type="button" ng-click="addLength()">
-            <h4>Ajouter</h4>
-        </button>
+      <md-input-container>
+          <label>Durée</label>
+          <input ng-model="length.name">
+      </md-input-container>
+      <a ng-click="addLength()"> Ajouter</a>
 
         <div ng-repeat="length in lengths" class="filter-name">
             <p>{{length.name}}</p>
@@ -26,11 +27,11 @@
     </div>
 
     <div class="filter-card">
-
-        <input type="text" id="input" value="" ng-model="style.name" required placeholder="Style..." class="input-name"></input>
-        <button type="button" ng-click="addStyle()">
-            <h4>Ajouter</h4>
-        </button>
+      <md-input-container>
+          <label>Style</label>
+          <input ng-model="style.name">
+      </md-input-container>
+      <a ng-click="addStyle()"> Ajouter</a>
 
         <div ng-repeat="style in styles" class="filter-name">
             <p>{{style.name}}</p>
@@ -39,11 +40,12 @@
     </div>
 
     <div class="filter-card">
+      <md-input-container>
+          <label>Instrument</label>
+          <input ng-model="instrument.name">
+      </md-input-container>
+      <a ng-click="addInstrument()"> Ajouter</a>
 
-        <input type="text" id="input" value="" ng-model="instrument.name" required placeholder="Instrument..." class="input-name"></input>
-        <button type="button" ng-click="addInstrument()">
-            <h4>Ajouter</h4>
-        </button>
         <div ng-repeat="instrument in instruments" class="filter-name">
             <p>{{instrument.name}}</p>
             <input type="button" value="Supprimer" ng-click="removeInstrument(instrument._id)">

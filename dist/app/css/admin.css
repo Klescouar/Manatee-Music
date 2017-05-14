@@ -1,6 +1,30 @@
 .admin-page {
   padding-top: 80px;
-  min-height: calc(100vh - 80px); }
+  min-height: calc(100vh - 80px);
+  background-color: #222222;
+  color: #dddddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .admin-page md-input-container label {
+    color: #dddddd; }
+  .admin-page md-input-container {
+    margin: 5px; }
+  .admin-page md-input-container .md-input {
+    border-color: #dddddd;
+    color: #dddddd; }
+  .admin-page md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: #dddddd;
+    border-bottom: 1px solid #dddddd; }
+  .admin-page md-input-container:not(.md-input-invalid).md-input-focused label {
+    color: #dddddd; }
+  .admin-page md-select .md-select-value {
+    border-color: #dddddd; }
+  .admin-page md-select .md-select-value.md-select-placeholder {
+    color: #dddddd; }
+  .admin-page md-input-container.md-input-has-value:not(.md-input-invalid) label {
+    color: #dddddd; }
   .admin-page #input {
     padding-left: 5px;
     height: 35px;
@@ -25,19 +49,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px; }
+    margin: 150px 0; }
     .admin-page .admin-nav a {
+      border: 1px solid #dddddd;
+      padding: 20px;
       cursor: pointer;
       margin: 0 20px;
+      font-size: 1.5em;
       text-decoration: none;
-      color: #424242; }
+      color: #dddddd; }
+      .admin-page .admin-nav a:hover {
+        background-color: #393939; }
     .admin-page .admin-nav .menu-active {
       border-bottom: 1px solid #444242; }
 
 .handle-song {
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  flex-wrap: wrap; }
   .handle-song .show-song {
     display: flex;
     justify-content: center;
@@ -73,9 +103,13 @@
     align-items: center; }
     .handle-filter .filter-card .input-name {
       margin: 10px; }
-    .handle-filter .filter-card button {
+    .handle-filter .filter-card a {
+      border: 1px solid #878585;
+      padding: 7px;
       margin-bottom: 20px;
       cursor: pointer; }
+      .handle-filter .filter-card a:hover {
+        background-color: #404041; }
     .handle-filter .filter-card .filter-name {
       display: flex;
       justify-content: space-between;
@@ -94,7 +128,7 @@
   border: 1px solid #6a6767;
   cursor: pointer;
   background-color: transparent;
-  color: black; }
+  color: #dddddd; }
 
 .active {
   background-color: #6d7b9f; }

@@ -6,6 +6,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   $scope.currentSong = {};
   $scope.openInst = '';
   $scope.thisSong = {};
+  $scope.filterOrder  = '';
   let songsId = [];
   const playSvg = document.querySelector('.icon-play');
   const playSvgPath = playSvg.querySelector('path');
@@ -57,14 +58,53 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
       }
   };
 
+  $scope.changeOrder = (order) => {
+    angularPlayer.stop();
+    playSvgPath.setAttribute('d', playSvg.getAttribute('data-play'));
+    $scope.songs = $scope.songs.filter(removeInstrumental);
+      angularPlayer.clearPlaylist(function(){
+        if (order === 'title' && $scope.orderProperty !== 'title') {
+          $scope.songs.sort(function(a,b) {return (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0);} );
+        } else if (order === 'duration' && $scope.orderProperty !== 'duration') {
+          $scope.songs.sort(function(a, b) { return parseFloat(a.duration) - parseFloat(b.duration); });
+        } else if (order === 'numberOfPlay' && $scope.orderProperty !== 'numberOfPlay') {
+          $scope.songs.sort(function(a, b) { return parseFloat(a.numberOfPlay) - parseFloat(b.numberOfPlay); });
+        } else if (order === 'title' && $scope.orderProperty === 'title') {
+          $scope.songs.reverse();
+        } else if (order === 'duration' && $scope.orderProperty === 'duration') {
+          $scope.songs.reverse();
+        } else if (order === 'numberOfPlay' && $scope.orderProperty === 'numberOfPlay') {
+          $scope.songs.reverse();
+        }
+        $scope.songs.map(addTrackToPlaylist);
+
+
+
+        if ($scope.orderProperty === order) {
+            $scope.orderProperty = '-' + order;
+        } else if ($scope.orderProperty === '-' + order) {
+            $scope.orderProperty = order;
+        } else {
+            $scope.orderProperty = order;
+        }
+      });
+  }
+
+  $scope.filterExeption = (filter) => {
+    console.log(filter);
+  }
+
   $scope.openInstrumental = (id) => {
+
+    angularPlayer.stop();
+    playSvgPath.setAttribute('d', playSvg.getAttribute('data-play'));
       angularPlayer.clearPlaylist(function() {
           $scope.songs.map(function(item) {
               return getOnSong(item, id);
           });
           if ($scope.openInst === id) {
               $scope.openInst = '';
-              $scope.getAllSongs();
+              $scope.songs = $scope.songs.filter(removeInstrumental);
           } else {
               $scope.openInst = id;
               $scope.songs = $scope.songs.filter(removeInstrumental);
@@ -72,6 +112,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
               instrumentalReverse.map(addInstrumentalToPlaylist);
               $scope.songs.map(addTrackToPlaylist);
           }
+          console.log($scope.songs);
       });
   };
 
@@ -82,7 +123,6 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
           $scope.allSongs = response.data.map(transformKeys);
           $scope.allSongs.map(addTrackToPlaylist);
           $scope.songs = $scope.allSongs;
-          console.log($scope.songs);
       }).catch(function(errMsg) {
           console.log('show profils members failed!');
       });
@@ -133,7 +173,6 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
       $scope.currentSong.title = angularPlayer.currentTrackData().title;
       $scope.currentSong.icon = angularPlayer.currentTrackData().icon;
       $scope.currentTrackId = data;
-      console.log(angularPlayer.currentTrackData().integral);
       angularPlayer.currentTrackData().integral ? APIService.updateNumberOfPlay(angularPlayer.currentTrackData().integral, data) : APIService.updateNumberOfPlay(data);
   });
 
@@ -205,8 +244,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   ////////////////////////////////////////// HANDLE FILTERS //////////////////////////////////////////
 
   $scope.addFilter = (name) => {
-      console.log($scope.filters);
-      console.log($scope.songs);
+      angularPlayer.stop();
       $scope.songs = [];
       $scope.filters.indexOf(name) === -1
           ? $scope.filters.push(name)
@@ -216,15 +254,15 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
 
   const filterResult = (item) => {
       if ($scope.filters.length === 0) {
-          return $scope.songs = $scope.allSongs;
+           $scope.songs = $scope.allSongs;
       } else if (!$scope.filters.some(val => item.tags.indexOf(val) === -1) && $scope.songs.indexOf(item) === -1) {
-          return $scope.songs.push(item);
+           $scope.songs.push(item);
       } else if ($scope.songs.indexOf(item) !== -1 && $scope.filters.some(val => item.tags.indexOf(val) === -1)) {
-          return $scope.songs.splice($scope.songs.indexOf(item), 1);
+           $scope.songs.splice($scope.songs.indexOf(item), 1);
       }
       const playlist = angularPlayer.getPlaylist();
       playlist.map(removeTrackToPlaylist);
-      $scope.songs.map(addTrackToPlaylist);
+      setTimeout(function(){ $scope.songs.map(addTrackToPlaylist);}, 10);
   }
 
     $('.nav-bar').css("background-color", 'rgb(34,34,34)');

@@ -10,7 +10,6 @@ app.service("APIService", function($http, API_ENDPOINT) {
 
     this.addInstrumentalSong = function(song) {
         return $http.post(API_ENDPOINT.url + '/addInstrumentalSong', song).then(function(response) {
-          console.log(response.data);
             return response;
         }, function(error) {
             return error;
@@ -28,14 +27,12 @@ app.service("APIService", function($http, API_ENDPOINT) {
     this.updateNumberOfPlay = function(id, instrumentalId) {
       if (instrumentalId) {
         return $http.put(API_ENDPOINT.url + '/updateNumberOfPlay/' + id + '/' + instrumentalId).then(function(response) {
-          console.log(response);
             return response;
         }, function(error) {
             return error;
         });
       } else {
           return $http.put(API_ENDPOINT.url + '/updateNumberOfPlay/' + id).then(function(response) {
-            console.log(response);
               return response;
           }, function(error) {
               return error;
@@ -53,7 +50,6 @@ app.service("APIService", function($http, API_ENDPOINT) {
 
     this.removeInstrumentalSong = function(songId, instrumentalId) {
         return $http.delete(API_ENDPOINT.url + '/removeInstrumentalSong/' + songId + '/' + instrumentalId).then(function(response) {
-          console.log(response);
             return response;
         }, function(error) {
             return error;

@@ -1,44 +1,99 @@
 .admin-page {
-  padding-top: 80px;
-  min-height: calc(100vh - 80px);
-    #input{
-      padding-left: 5px;
-      height: 35px;
-      width: 250px;
-      border: none;
+    padding-top: 80px;
+    min-height: calc(100vh - 80px);
+    background-color: rgb(34,34,34);
+    color: rgb(221, 221, 221);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    md-input-container label {
+        color: rgb(221, 221, 221);
     }
-    #input:focus{
-      outline: none;
+
+    md-input-container {
+      margin: 5px;
     }
+
+    md-input-container .md-input {
+        border-color: rgb(221, 221, 221);
+        color: rgb(221, 221, 221);
+    }
+
+    md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+        border-color: rgb(221, 221, 221);
+        border-bottom: 1px solid rgb(221, 221, 221);
+    }
+
+    md-input-container:not(.md-input-invalid).md-input-focused label {
+        color: rgb(221, 221, 221);
+    }
+
+    md-select .md-select-value {
+        border-color: rgb(221, 221, 221);
+    }
+
+    md-select .md-select-value.md-select-placeholder {
+        color: rgb(221, 221, 221);
+    }
+
+    md-input-container.md-input-has-value:not(.md-input-invalid) label {
+        color: rgb(221, 221, 221);
+    }
+
+    #input {
+        padding-left: 5px;
+        height: 35px;
+        width: 250px;
+        border: none;
+    }
+
+    #input:focus {
+        outline: none;
+    }
+
     .add-song {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
         height: 100vh;
-        h4{
-          text-align: center;
-          margin-bottom: 20px;
+
+        h4 {
+            text-align: center;
+            margin-bottom: 20px;
         }
-        .form-box{
-          #upload-photos{
-            display: flex;
-          }
-          #upload-song{
-            display: flex;
-          }
+
+        .form-box {
+            #upload-photos {
+                display: flex;
+            }
+
+            #upload-song {
+                display: flex;
+            }
         }
     }
+
     .admin-nav {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 50px;
+        margin: 150px 0;
+
         a {
+            border: 1px solid rgb(221, 221, 221);
+            padding: 20px;
             cursor: pointer;
             margin: 0 20px;
+            font-size: 1.5em;
             text-decoration: none;
-            color: rgb(66, 66, 66);
+            color: rgb(221, 221, 221);
+
+            &:hover {
+                background-color: rgb(57, 57, 57);
+            }
         }
 
         .menu-active {
@@ -48,9 +103,11 @@
 }
 
 .handle-song {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
     .show-song {
         display: flex;
         justify-content: center;
@@ -100,9 +157,14 @@
             margin: 10px;
         }
 
-        button {
+        a {
+            border: 1px solid rgb(135, 133, 133);
+            padding: 7px;
             margin-bottom: 20px;
             cursor: pointer;
+            &:hover{
+              background-color: rgb(64, 64, 65);
+            }
         }
 
         .filter-name {
@@ -121,50 +183,54 @@
     }
 }
 
-.check-button{
-  margin: 0 5px;
-  width: 110px;
-  height: 40px;
-  border: 1px solid rgb(106, 103, 103);
-  cursor: pointer;
-  background-color: transparent;
-  color: black;
-}
-.active{
-  background-color: rgb(109,123,159);
+.check-button {
+    margin: 0 5px;
+    width: 110px;
+    height: 40px;
+    border: 1px solid rgb(106, 103, 103);
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(221, 221, 221);
 }
 
-.remove-instrumental{
-  width: 90%;
-  padding: 3px 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .remove-cross{
-    width: 17px;
-    height: 17px;
-    background-image: url('../../assets/images/error.svg');
-    background-position: center;
-    background-size: cover;
-    margin-left: 10px;
-  }
+.active {
+    background-color: rgb(109,123,159);
 }
 
-.add-song-page{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: 50vh;
-  .add-choice{
-    margin: 50px;
-    a{
-      padding: 20px;
-      background-color: rgb(59, 94, 126);
-      cursor: pointer;
-      margin: 40px;
-      color: white;
-      text-decoration: none;
+.remove-instrumental {
+    width: 90%;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .remove-cross {
+        width: 17px;
+        height: 17px;
+        background-image: url('../../assets/images/error.svg');
+        background-position: center;
+        background-size: cover;
+        margin-left: 10px;
     }
-  }
+}
+
+.add-song-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 50vh;
+
+    .add-choice {
+        margin: 50px;
+
+        a {
+            padding: 20px;
+            background-color: rgb(59, 94, 126);
+            cursor: pointer;
+            margin: 40px;
+            color: white;
+            text-decoration: none;
+        }
+    }
 }

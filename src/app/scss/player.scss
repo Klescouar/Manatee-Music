@@ -9,24 +9,58 @@
         display: flex;
         flex-direction: column;
         .songs-filters{
-          height: 40px;
-          background-color: tomato;
+          height: 36.1px;
           padding-left: 90px;
           display: flex;
+          background-color: rgb(111, 111, 111);
+          .filters-part-left-border{
+            border-left: 1px solid rgb(152, 152, 152);
+            cursor: pointer;
+          }
+          .filters-part-right-border{
+            border-right: 1px solid rgb(152, 152, 152);
+          }
+          p{
+            margin-left: 15px;
+            color: rgb(224,224,224);
+          }
+          .double-arrow{
+            background-image: url('../../assets/images/vertical-double-arrow.png');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 20px;
+            width: 20px;
+          }
           .alphab-filter{
             width: 400px;
-            background-color: green;
-            height: 40px;
+            height: 36.1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &:hover{
+              background-color: rgb(135, 135, 135);
+            }
           }
           .duration-filter{
             width: 100px;
-            background-color: blue;
-            height: 40px;
+            height: 36.1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &:hover{
+              background-color: rgb(135, 135, 135);
+            }
           }
           .play-filter{
             width: 100px;
-            background-color: red;
-            height: 40px;
+            height: 36.1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &:hover{
+              background-color: rgb(135, 135, 135);
+            }
           }
         }
         .song-background-style1 {
@@ -232,14 +266,19 @@
 }
 
 .open-track{
-  position: absolute;
-  z-index: 999;
-  left: 10px;
+  // position: absolute;
+  // z-index: 999;
+  // left: 10px;
   height: 25px;
   width: 25px;
   background-image: url('../../assets/images/add-circular-outlined-button.svg');
   background-position: center;
   background-size: cover;
+}
+
+.open-track-empty{
+  height: 25px;
+  width: 25px;
 }
 
 code,
@@ -264,7 +303,7 @@ $plBG: #fff;
 $plCurrentBG: $primaryColor;
 $plColorIcon: $primaryColor;
 $plCurrentColor: #fff;
-$plHoverColor: #f6f6f6;
+$plHoverColor: #f1eded;
 $iconColor: #777;
 $iconColorActive: $primaryColor;
 $iconBGActive: $primaryColor;
@@ -280,11 +319,11 @@ $volZ: 88888;
 $plZ: 77777;
 
 .instrumental-song{
-  background-color: rgba(#4682b4, 0.22);
+  background-color: rgb(227, 227, 227);
 }
 
 .instrumental-song:hover{
-  background-color: rgba(#4682b4, 0.51)!important;
+  background-color: rgb(195, 195, 195)!important;
 }
 
 .ap {
@@ -609,7 +648,7 @@ $plZ: 77777;
 
 .pl-list {
   position: relative;
-  padding-left: 40px;
+  padding-left: 10px;
     display: flex;
     align-items: center;
     // transition: background .2s ease;
@@ -791,19 +830,6 @@ display: none;
 md-slider[md-vertical] .md-track-container{
   width: 3px;
 }
-
-// .track md-slider .md-track-container {
-//   pointer-events: none;
-// }
-//
-// .track md-slider.md-primary .md-track.md-track-fill{
-//   background-color: steelblue;
-//   pointer-events: none;
-// }
-//
-// .track .md-slider-wrapper {
-//   cursor: pointer;
-// }
 
 .progress-box {
 	width: 100%;

@@ -4687,9 +4687,6 @@ ngSoundManager.factory('angularPlayer', ['$rootScope', '$log',
                 var currentTrackKey = this.getIndexByValue(soundManager.soundIDs, this.getCurrentTrack());
                 var nextTrackKey = +currentTrackKey + 1;
                 var nextTrack = soundManager.soundIDs[nextTrackKey];
-                console.log(currentTrackKey);
-                console.log(nextTrackKey);
-                console.log(nextTrack);
                 if(typeof nextTrack !== 'undefined') {
                     this.playTrack(nextTrack);
                 } else {

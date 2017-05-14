@@ -73,7 +73,7 @@ $scope.handleSuccess = (data) => {
 $scope.handleSuccessSong = (data) => {
     if (data.length > 0) {
         const newAudio = new Audio();
-        newAudio.src = '../../../assets/song/Résidents.mp3';
+        newAudio.src = '../../../assets/song/' + data[0].filename;
         newAudio.addEventListener('loadedmetadata', function() {
             $scope.song.duration = newAudio.duration;
             switch (true) {
