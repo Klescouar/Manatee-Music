@@ -26,10 +26,6 @@
     color: #272e50; }
     .home-page .presentation p {
       padding: 40px; }
-    .home-page .presentation .hr {
-      height: 2px;
-      background-color: #bb0303;
-      width: 100px; }
   .home-page .instruction {
     height: 100vh;
     display: flex;
@@ -100,3 +96,8 @@
           background-image: url("../../assets/images/people_two.png");
           background-position: center;
           background-size: cover; }
+
+.hr {
+  height: 2px;
+  background-color: #bb0303;
+  width: 100px; }

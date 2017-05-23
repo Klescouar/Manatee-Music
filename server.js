@@ -14,6 +14,7 @@ const ambiance    = require(__dirname + '/app/controllers/controllers.ambiance')
 const style       = require(__dirname + '/app/controllers/controllers.style');
 const length      = require(__dirname + '/app/controllers/controllers.length');
 const instrument  = require(__dirname + '/app/controllers/controllers.instrument');
+const mail  = require(__dirname + '/app/controllers/controllers.mail');
 
 const apiRoutes   = express.Router();
 const port        = process.env.PORT || 6868;
@@ -77,6 +78,11 @@ apiRoutes.delete('/removeInstrument/:id', instrument.removeInstrument);
 /////////////////////////UPLOAD CONTROLLER/////////////////////////
 apiRoutes.post('/upload_photos', uploadPhoto.uploadPhoto);
 apiRoutes.post('/upload_song', uploadSong.uploadSong);
+
+/////////////////////////SEND MAIL/////////////////////////
+apiRoutes.post('/sendMail', mail.sendMail);
+
+
 
 
 // Start the server

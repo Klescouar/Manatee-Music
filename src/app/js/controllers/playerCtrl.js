@@ -91,7 +91,6 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   }
 
   $scope.filterExeption = (filter) => {
-    console.log(filter);
   }
 
   $scope.openInstrumental = (id) => {
@@ -112,7 +111,6 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
               instrumentalReverse.map(addInstrumentalToPlaylist);
               $scope.songs.map(addTrackToPlaylist);
           }
-          console.log($scope.songs);
       });
   };
 

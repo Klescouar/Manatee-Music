@@ -172,4 +172,12 @@ app.service("APIService", function($http, API_ENDPOINT) {
         });
     };
 
+    this.sendMail = function(userInfos) {
+        return $http.post(API_ENDPOINT.url + '/sendMail', userInfos).then(function(response) {
+            return response;
+        }, function(error) {
+            return error;
+        });
+    };
+
 });

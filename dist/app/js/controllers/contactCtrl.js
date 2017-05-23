@@ -1,30 +1,91 @@
-app.controller('contactCtrl', ['$scope', '$http', 'angularPlayer', '$rootScope', '$window', function($scope, $http, angularPlayer, $rootScope, $window){
+app.controller('contactCtrl', ['$scope', '$http', 'angularPlayer', '$rootScope', '$window','APIService', function($scope, $http, angularPlayer, $rootScope, $window, APIService){
   angularPlayer.stop();
-  $('.nav-bar').css("background-color", 'transparent');
+  $scope.$on('$destroy', function() {
+      angular.element($window).unbind('scroll');
+  });
 
+  $scope.user = {
+    lastName : '',
+    firstName : '',
+    email : '',
+    message : ''
+  }
+
+  $scope.sendMail = () => {
+    APIService.sendMail($scope.user).then((response) => {
+      console.log(response.data);
+
+          setTimeout(function() {
+              $('.button').addClass( "loading" );
+          }, 125);
+
+          setTimeout(function() {
+              $('.button').addClass( "ready" );
+          }, 4300);
+
+    }).catch((errMsg) => {
+        console.log('show profils members failed!');
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  $('.nav-bar').css("background-color", 'transparent');
   const addBackgroundToNav = () => {
-    $('.nav-bar').css("background-color", 'rgba(0, 0, 0, 0.8)');
+      $('.nav-bar').css("background-color", 'rgba(0, 0, 0, 0.8)');
   }
   const removebackgroundToNav = () => {
-    $('.nav-bar').css("background-color", 'transparent');
+      $('.nav-bar').css("background-color", 'transparent');
   }
-
-  if (window.pageYOffset > (window.innerHeight/1.7)) {
+  if (window.pageYOffset > (window.innerHeight / 1.7)) {
       addBackgroundToNav();
   } else {
       removebackgroundToNav();
   }
-
   angular.element($window).bind("scroll", function() {
-    console.log(window.innerHeight);
-      if ($(window).scrollTop() > (window.innerHeight/1.7)) {
+      if ($(window).scrollTop() > (window.innerHeight / 1.7)) {
           addBackgroundToNav();
       } else {
           removebackgroundToNav();
       }
   });
 
-  $scope.$on('$destroy', function() {
-    angular.element($window).unbind('scroll');
-  });
 }]);
