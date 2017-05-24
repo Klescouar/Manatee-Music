@@ -19,14 +19,14 @@
               </md-input-container>
               <md-input-container class="md-block" flex-gt-sm>
                   <label>Email</label>
-                  <input ng-model="user.email" type="email">
+                  <input required ng-model="user.email" type="email">
               </md-input-container>
               <md-input-container class="md-block">
                   <label>Message</label>
                   <textarea ng-model="user.message" md-maxlength="500" rows="5" md-select-on-focus></textarea>
               </md-input-container>
           </div>
-          <md-button class="button" type="submit">Envoyer</md-button>
+          <button class="button" type="submit">Envoyer</button>
       </form>
     </div>
 
