@@ -19,9 +19,9 @@ exports.removeSong = (req, res) => {
     Songs.findOneAndRemove({
         _id: req.params.id
     }, function(err) {
-        if (err)
+        if (err) {
             res.send(err);
-
+        }
         res.json({message: 'Song removed!'});
     });
 };
@@ -31,8 +31,8 @@ exports.removeInstrumentalSong = (req, res) => {
         if (err) {
             res.status(500).send(err);
         } else {
-          const index = doc.instrumental.findIndex(x => x.id== req.params.instrumentalId);
-          doc.instrumental.splice(index, 1);
+            const index = doc.instrumental.findIndex(x => x.id == req.params.instrumentalId);
+            doc.instrumental.splice(index, 1);
 
             doc.save(function(err, doc) {
                 if (err) {
@@ -69,7 +69,6 @@ exports.updateNumberOfPlay = function(req, res) {
                     return element.id == req.params.instrumentalId;
                 });
                 const indexOfInstrumental = doc.instrumental.indexOf(filteredArray[0]);
-                // doc.instrumental[indexOfInstrumental].numberOfPlay = doc.instrumental[indexOfInstrumental].numberOfPlay + 1;
                 doc.instrumental[indexOfInstrumental].numberOfPlay++;
                 const instrumentalArray = doc.instrumental;
                 console.log(instrumentalArray)
