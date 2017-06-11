@@ -11,6 +11,7 @@
     color: #f1ebeb; }
     .home-page .first-view h1 {
       font-family: 'TEST2';
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
       font-size: 7em; }
     .home-page .first-view p {
       font-size: 3em; }
@@ -54,24 +55,51 @@
     display: flex;
     justify-content: center;
     align-items: flex-start; }
+    .home-page .bio-perso .johan-box {
+      background-color: #4A626D;
+      color: #BDBDBD; }
+    .home-page .bio-perso .franck-box {
+      background-color: #BDBDBD;
+      color: #4A626D; }
     .home-page .bio-perso .bio-box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 0px 60px;
-      width: 30%; }
+      margin: 0;
+      height: 150vh;
+      padding: 60px 0; }
+      .home-page .bio-perso .bio-box .underline-left {
+        height: 2px;
+        background-color: white;
+        width: 90%;
+        margin: 20px 0 30px 70px; }
+      .home-page .bio-perso .bio-box .underline-right {
+        height: 2px;
+        background-color: white;
+        width: 90%;
+        margin: 20px 70px 30px 0px; }
       .home-page .bio-perso .bio-box h3 {
-        margin-top: 40px;
-        margin-bottom: 20px;
-        font-size: 1.2em; }
+        font-size: 3em;
+        color: white;
+        font-family: 'Berlin'; }
       .home-page .bio-perso .bio-box p {
         line-height: 1.5em;
         margin-top: 40px;
-        padding: 0 20px; }
+        padding: 0 20px;
+        width: 80%; }
+      .home-page .bio-perso .bio-box b {
+        font-size: 5em;
+        font-family: 'Berlin'; }
+      .home-page .bio-perso .bio-box h4 {
+        font-size: 1.1em;
+        font-family: 'Berlin'; }
       .home-page .bio-perso .bio-box .franck-pic {
         background: url("../../assets/images/Kyfran.jpg");
         background-position: center;
-        background-size: cover; }
+        background-size: cover;
+        border-radius: 50%;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
       .home-page .bio-perso .bio-box .franck-pic:hover {
         background-image: url("../../assets/images/jojo.jpg");
         background-position: center;
@@ -79,7 +107,10 @@
       .home-page .bio-perso .bio-box .johan-pic {
         background-image: url("../../assets/images/jojo.jpg");
         background-position: center;
-        background-size: cover; }
+        background-size: cover;
+        border-radius: 50%;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
       .home-page .bio-perso .bio-box .johan-pic:hover {
         background-image: url("../../assets/images/Kyfran.jpg");
         background-position: center;
