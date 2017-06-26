@@ -12,17 +12,12 @@ app.controller('contactCtrl', ['$scope', '$http', 'angularPlayer', '$rootScope',
   }
 
   $scope.sendMail = () => {
+    $('.button').addClass( "loading" );
     APIService.sendMail($scope.user).then((response) => {
       console.log(response.data);
-
-          setTimeout(function() {
-              $('.button').addClass( "loading" );
-          }, 125);
-
-          setTimeout(function() {
-              $('.button').addClass( "ready" );
-          }, 4300);
-
+      setTimeout(function() {
+          $('.button').addClass( "ready" );
+      }, 1000);
     }).catch((errMsg) => {
         console.log('show profils members failed!');
     });

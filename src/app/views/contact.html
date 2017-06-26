@@ -11,19 +11,23 @@
           <div class="contact-page__form__container">
               <md-input-container class="md-block" flex-gt-sm>
                   <label>Nom</label>
-                  <input ng-model="user.lastName">
+                  <input required ng-model="user.lastName">
               </md-input-container>
               <md-input-container class="md-block" flex-gt-sm>
                   <label>Prénom</label>
-                  <input ng-model="user.firstName">
+                  <input required ng-model="user.firstName">
               </md-input-container>
               <md-input-container class="md-block" flex-gt-sm>
                   <label>Email</label>
                   <input required ng-model="user.email" type="email">
               </md-input-container>
+              <md-input-container class="md-block" flex-gt-sm>
+                  <label>Objet</label>
+                  <input required ng-model="user.object" type="text">
+              </md-input-container>
               <md-input-container class="md-block">
                   <label>Message</label>
-                  <textarea ng-model="user.message" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+                  <textarea required ng-model="user.message" md-maxlength="500" rows="5" md-select-on-focus></textarea>
               </md-input-container>
           </div>
           <button class="button" type="submit">Envoyer</button>

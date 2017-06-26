@@ -27,12 +27,32 @@ app.config(function($stateProvider, $urlRouterProvider) {
      }
     }
   })
+  .state('adminConnect', {
+    url: '/secret/admin/connect',
+    views:{
+     'home':{
+      templateUrl: 'app/views/admin/admin-connect.html',
+      controller: 'adminConnectCtrl'
+     }
+    }
+  })
   .state('admin', {
     url: '/secret/admin',
     views:{
      'home':{
       templateUrl: 'app/admin.html',
-      controller: 'adminCtrl'
+      controller: 'adminCtrl',
+      resolve:{
+       function(AuthService, $state){
+        const role = AuthService.userRole();
+        if (role === 'Admin') {
+          return true;
+        }else{
+          $state.go('adminConnect');
+          return false;
+        }
+       }
+      }
      }
     }
   })

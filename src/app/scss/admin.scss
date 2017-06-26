@@ -234,3 +234,59 @@
         }
     }
 }
+
+.admin-connect{
+  padding-top: 80px;
+  background-color: rgb(34,34,34);
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    md-input-container .md-placeholder,
+    md-input-container label:not(.md-no-float):not(.md-container-ignore) {
+        color: rgb(168, 168, 168);
+    }
+
+    md-input-container label {
+        color: rgb(168, 168, 168);
+    }
+    md-input-container {
+        margin: 5px;
+    }
+
+    md-input-container .md-input {
+      border-bottom: 1px solid rgb(168, 168, 168);
+        border-color: rgb(168, 168, 168);
+        color: rgb(168, 168, 168);
+    }
+
+    md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+      border-bottom: 1px solid rgb(168, 168, 168);
+        border-color: rgb(168, 168, 168);
+        border-bottom: 1px solid rgb(168, 168, 168);
+    }
+
+    md-input-container .md-input.ng-invalid.ng-dirty{
+      border-width: 0 0 1px;
+    }
+
+    md-input-container:not(.md-input-invalid).md-input-focused label {
+        color: rgb(168, 168, 168);
+    }
+    button{
+      border-radius: 0px;
+      background-color: rgb(34,34,34);
+      border: 1px solid rgb(168, 168, 168);
+      color: rgb(168, 168, 168);
+      padding: 10px;
+      &:hover{
+        background-color: rgb(45, 44, 44);
+      }
+    }
+  }
+}

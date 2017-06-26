@@ -5,6 +5,7 @@ const morgan      = require('morgan');
 const path        = require('path');
 const multer  =   require('multer');
 const mongoose    = require('mongoose');
+const jwt         = require('jwt-simple');
 
 const config      = require(__dirname + '/config/database');
 const songs       = require(__dirname + '/app/controllers/controllers.songs');
@@ -14,6 +15,7 @@ const ambiance    = require(__dirname + '/app/controllers/controllers.ambiance')
 const style       = require(__dirname + '/app/controllers/controllers.style');
 const length      = require(__dirname + '/app/controllers/controllers.length');
 const instrument  = require(__dirname + '/app/controllers/controllers.instrument');
+const auth  = require(__dirname + '/app/controllers/controllers.authentication');
 const mail  = require(__dirname + '/app/controllers/controllers.mail');
 
 const apiRoutes   = express.Router();
@@ -45,6 +47,10 @@ app.get('/', function(req, res) {
 // app.get('/admin', function(req, res) {
 //   res.sendFile(path.join(__dirname, '/dist/app/admin.html'));
 // });
+
+/////////////////////////AUTH CONTROLLER/////////////////////////
+apiRoutes.post('/authenticate', auth.authenticate);
+apiRoutes.post('/signup', auth.signup);
 
 /////////////////////////SONG CONTROLLER/////////////////////////
 apiRoutes.get('/getAllSongs', songs.getAllSongs);

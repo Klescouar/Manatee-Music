@@ -162,3 +162,43 @@
       margin: 40px;
       color: white;
       text-decoration: none; }
+
+.admin-connect {
+  padding-top: 80px;
+  background-color: #222222;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .admin-connect form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    .admin-connect form md-input-container .md-placeholder,
+    .admin-connect form md-input-container label:not(.md-no-float):not(.md-container-ignore) {
+      color: #a8a8a8; }
+    .admin-connect form md-input-container label {
+      color: #a8a8a8; }
+    .admin-connect form md-input-container {
+      margin: 5px; }
+    .admin-connect form md-input-container .md-input {
+      border-bottom: 1px solid #a8a8a8;
+      border-color: #a8a8a8;
+      color: #a8a8a8; }
+    .admin-connect form md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+      border-bottom: 1px solid #a8a8a8;
+      border-color: #a8a8a8;
+      border-bottom: 1px solid #a8a8a8; }
+    .admin-connect form md-input-container .md-input.ng-invalid.ng-dirty {
+      border-width: 0 0 1px; }
+    .admin-connect form md-input-container:not(.md-input-invalid).md-input-focused label {
+      color: #a8a8a8; }
+    .admin-connect form button {
+      border-radius: 0px;
+      background-color: #222222;
+      border: 1px solid #a8a8a8;
+      color: #a8a8a8;
+      padding: 10px; }
+      .admin-connect form button:hover {
+        background-color: #2d2c2c; }
