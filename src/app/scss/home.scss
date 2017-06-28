@@ -1,187 +1,237 @@
 .home-page {
-    background-color: rgb(242,242,242);
+  background-color: rgb(242,242,242);
 
-    .first-view {
-        min-height: 100vh;
+  .first-view {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover!important;
+    position: relative;
+    color: rgb(241, 235, 235);
+
+    h1 {
+      font-family: 'TEST2';
+      text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      font-size: 7em;
+    }
+
+    p {
+      font-size: 3em;
+    }
+  }
+
+  .presentation {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 50px;
+    text-align: center;
+    line-height: 2em;
+    color: rgb(39, 46, 80);
+
+    p {
+      padding: 40px;
+    }
+  }
+
+  .instruction {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .instruction-box {
+      width: 40%;
+      height: 90vh;
+      background-color: rgb(45,53,93);
+
+      p {
+        padding: 50px;
+        line-height: 2em;
+        color: rgb(227,230,236);
+      }
+    }
+  }
+
+  .bio-collective {
+    background-color: #6d7b9f;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+    text-align: center;
+    line-height: 2em;
+    color: rgb(39, 46, 80);
+  }
+
+  .bio-perso {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+
+    .johan-box {
+      background-color: #4A626D;
+      color: #BDBDBD;
+    }
+
+    .franck-box {
+      background-color: #BDBDBD;
+      color: #4A626D;
+    }
+
+    .bio-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 60px 0;
+      width: 50%;
+      min-width: 375px;
+      flex-grow: 1;
+
+      .underline-left {
+        height: 2px;
+        background-color: white;
+        width: 90%;
+        margin: 20px 0 30px 70px;
+      }
+
+      .underline-right {
+        height: 2px;
+        background-color: white;
+        width: 90%;
+        margin: 20px 70px 30px 0;
+      }
+
+      h3 {
+        font-size: 3em;
+        color: white;
+        font-family: 'Berlin';
+      }
+
+      p {
+        line-height: 1.5em;
+        margin-top: 40px;
+        padding: 0 20px;
+        width: 80%;
+      }
+
+      b {
+        font-size: 5em;
+        font-family: 'Berlin';
+      }
+
+      h4 {
+        font-size: 1.1em;
+        font-family: 'Berlin';
+      }
+
+      .franck-pic {
+        background: url('../../assets/images/Kyfran.jpg');
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      }
+
+      .franck-pic:hover {
+        background-image: url('../../assets/images/jojo.jpg');
+        background-position: center;
+        background-size: cover;
+      }
+
+      .johan-pic {
+        background-image: url('../../assets/images/jojo.jpg');
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      }
+
+      .johan-pic:hover {
+        background-image: url('../../assets/images/Kyfran.jpg');
+        background-position: center;
+        background-size: cover;
+      }
+
+      .bio-photo {
+        height: 320px;
+        width: 320px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-size: cover!important;
-        position: relative;
-        color: rgb(241, 235, 235);
-
-        h1 {
-            font-family: 'TEST2';
-            text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            font-size: 7em;
-        }
-
-        p {
-            font-size: 3em;
-        }
+        justify-content: flex-end;
+      }
     }
-
-    .presentation {
-        height: 70vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 0 50px;
-        text-align: center;
-        line-height: 2em;
-        color: rgb(39, 46, 80);
-
-        p {
-            padding: 40px;
-        }
-    }
-
-    .instruction {
-        height: 100vh;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-
-        .instruction-box {
-            width: 40%;
-            height: 90vh;
-            background-color: rgb(45,53,93);
-
-            p {
-                padding: 50px;
-                line-height: 2em;
-                color: rgb(227,230,236);
-            }
-        }
-    }
-
-    .bio-collective {
-        background-color: #6d7b9f;
-        height: 50vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 50px;
-        text-align: center;
-        line-height: 2em;
-        color: rgb(39, 46, 80);
-    }
-
-    .bio-perso {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-
-        .johan-box {
-            background-color: #4A626D;
-            color: #BDBDBD;
-        }
-
-        .franck-box {
-            background-color: #BDBDBD;
-            color: #4A626D;
-        }
-
-        .bio-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            height: 150vh;
-            padding: 60px 0;
-
-            .underline-left {
-                height: 2px;
-                background-color: white;
-                width: 90%;
-                margin: 20px 0 30px 70px;
-            }
-
-            .underline-right {
-                height: 2px;
-                background-color: white;
-                width: 90%;
-                margin: 20px 70px 30px 0px;
-
-            }
-
-            h3 {
-                font-size: 3em;
-                color: white;
-                font-family: 'Berlin';
-            }
-
-            p {
-                line-height: 1.5em;
-                margin-top: 40px;
-                padding: 0 20px;
-                width: 80%;
-            }
-
-            b {
-                font-size: 5em;
-                font-family: 'Berlin';
-            }
-
-            h4 {
-                font-size: 1.1em;
-                font-family: 'Berlin';
-            }
-
-            .franck-pic {
-                background: url('../../assets/images/Kyfran.jpg');
-                background-position: center;
-                background-size: cover;
-                border-radius: 50%;
-                margin-bottom: 40px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            }
-
-            .franck-pic:hover {
-                background-image: url('../../assets/images/jojo.jpg');
-                background-position: center;
-                background-size: cover;
-            }
-
-            .johan-pic {
-                background-image: url('../../assets/images/jojo.jpg');
-                background-position: center;
-                background-size: cover;
-                border-radius: 50%;
-                margin-bottom: 40px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            }
-
-            .johan-pic:hover {
-                background-image: url('../../assets/images/Kyfran.jpg');
-                background-position: center;
-                background-size: cover;
-            }
-
-            .bio-photo {
-                height: 320px;
-                width: 320px;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-
-                .bio-pic-bottom {
-                    height: 100px;
-                    width: 100%;
-                    background-image: url('../../assets/images/people_two.png');
-                    background-position: center;
-                    background-size: cover;
-                }
-            }
-        }
-    }
+  }
 }
 
 .hr {
-    height: 2px;
-    background-color: rgb(187, 3, 3);
-    width: 100px;
+  height: 2px;
+  background-color: rgb(187, 3, 3);
+  width: 100px;
+}
+@media(max-width:750px) {
+  .home-page {
+    .first-view {
+      h1 {
+        font-family: 'TEST2';
+        text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        font-size: 4em;
+      }
+
+      p {
+        font-size: 2em;
+      }
+    }
+    .bio-perso {
+      .bio-box {
+        .underline-left {
+          width: 60%;
+          margin: 20px 70px 30px;
+        }
+        .underline-right {
+          width: 60%;
+          margin: 20px 70px 30px;
+        }
+      }
+    }
+    .presentation {
+      padding: 40px 20px;
+
+      p {
+        padding: 40px;
+      }
+    }
+  }
+}
+
+@media(max-width:500px) {
+  .home-page {
+    .first-view {
+      h1 {
+        font-family: 'TEST2';
+        text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        font-size: 3em;
+      }
+
+      p {
+        font-size: 1.5em;
+      }
+    }
+    .presentation {
+      padding: 40px 20px;
+
+      p {
+        padding: 20px;
+      }
+    }
+  }
 }

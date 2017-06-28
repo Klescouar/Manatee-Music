@@ -1,6 +1,6 @@
 app.controller('homeCtrl', ['$scope', 'angularPlayer', '$rootScope', '$window', function($scope, angularPlayer, $rootScope, $window){
   angularPlayer.stop();
-   $scope.background = '../../../assets/images/test3.jpg'
+   $scope.background = '../../../assets/images/home.jpg'
 
 
    const addBackgroundToNav = () => {
@@ -26,6 +26,6 @@ app.controller('homeCtrl', ['$scope', 'angularPlayer', '$rootScope', '$window', 
    });
 
    $scope.$on('$destroy', function() {
-     angular.element($window).unbind('scroll'); 
+     angular.element($window).unbind('scroll');
    });
 }]);
