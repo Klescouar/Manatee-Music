@@ -3,14 +3,37 @@ const Schema   = mongoose.Schema;
 
 
 const SongSchema = new Schema({
-    icon: String,
-    title: String,
-    artist: String,
-    duration: Number,
-    url: String,
-    tags: Array,
-    instrumental: Array,
-    numberOfPlay: Number
+    icon: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    artist: {
+      type: String,
+      required: true
+    },
+    duration: {
+      type: Number,
+      required: true
+    },
+    url: {
+      type: String,
+      required: true
+    },
+    tags: {
+      type: Array,
+      required: true
+    },
+    instrumental: {
+      type: Array,
+    },
+    numberOfPlay: {
+      type: Number,
+      required: true
+    },
 });
 
 module.exports = mongoose.model('Songs', SongSchema);

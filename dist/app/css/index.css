@@ -46,6 +46,8 @@
       background-image: url("../../assets/images/manatee.png");
       background-position: bottom;
       background-size: cover; }
+  .nav-bar #menu-button {
+    display: none; }
   .nav-bar .nav-bar-right {
     height: 100%;
     display: flex;

@@ -128,33 +128,3 @@
   height: 2px;
   background-color: #bb0303;
   width: 100px; }
-
-@media (max-width: 750px) {
-  .home-page .first-view h1 {
-    font-family: 'TEST2';
-    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    font-size: 4em; }
-  .home-page .first-view p {
-    font-size: 2em; }
-  .home-page .bio-perso .bio-box .underline-left {
-    width: 60%;
-    margin: 20px 70px 30px; }
-  .home-page .bio-perso .bio-box .underline-right {
-    width: 60%;
-    margin: 20px 70px 30px; }
-  .home-page .presentation {
-    padding: 40px 20px; }
-    .home-page .presentation p {
-      padding: 40px; } }
-
-@media (max-width: 500px) {
-  .home-page .first-view h1 {
-    font-family: 'TEST2';
-    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    font-size: 3em; }
-  .home-page .first-view p {
-    font-size: 1.5em; }
-  .home-page .presentation {
-    padding: 40px 20px; }
-    .home-page .presentation p {
-      padding: 20px; } }

@@ -1,7 +1,7 @@
 app.service("APIService", function($http, API_ENDPOINT) {
 
     this.addSong = function(song) {
-        return $http.post(API_ENDPOINT.url + '/addsong', song).then(function(response) {
+        return $http.post(API_ENDPOINT.url + '/songs', song).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -9,7 +9,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.addInstrumentalSong = function(song) {
-        return $http.post(API_ENDPOINT.url + '/addInstrumentalSong', song).then(function(response) {
+        return $http.post(API_ENDPOINT.url + '/instrumentals', song).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -17,7 +17,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.getAllSongs = function() {
-        return $http.get(API_ENDPOINT.url + '/getAllSongs').then(function(response) {
+        return $http.get(API_ENDPOINT.url + '/songs').then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -26,13 +26,13 @@ app.service("APIService", function($http, API_ENDPOINT) {
 
     this.updateNumberOfPlay = function(id, instrumentalId) {
       if (instrumentalId) {
-        return $http.put(API_ENDPOINT.url + '/updateNumberOfPlay/' + id + '/' + instrumentalId).then(function(response) {
+        return $http.put(API_ENDPOINT.url + '/songs/' + id + '/' + instrumentalId).then(function(response) {
             return response;
         }, function(error) {
             return error;
         });
       } else {
-          return $http.put(API_ENDPOINT.url + '/updateNumberOfPlay/' + id).then(function(response) {
+          return $http.put(API_ENDPOINT.url + '/songs/' + id).then(function(response) {
               return response;
           }, function(error) {
               return error;
@@ -41,7 +41,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.removeSong = function(id) {
-        return $http.delete(API_ENDPOINT.url + '/removeSong/' + id).then(function(response) {
+        return $http.delete(API_ENDPOINT.url + '/songs/' + id).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -49,7 +49,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.removeInstrumentalSong = function(songId, instrumentalId) {
-        return $http.delete(API_ENDPOINT.url + '/removeInstrumentalSong/' + songId + '/' + instrumentalId).then(function(response) {
+        return $http.delete(API_ENDPOINT.url + '/instrumentals/' + songId + '/' + instrumentalId).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -61,7 +61,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
 
 
     this.addAmbiance = function(ambiance) {
-        return $http.post(API_ENDPOINT.url + '/addAmbiance', ambiance).then(function(response) {
+        return $http.post(API_ENDPOINT.url + '/ambiances', ambiance).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -69,7 +69,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.getAllAmbiance = function() {
-        return $http.get(API_ENDPOINT.url + '/getAllAmbiance').then(function(response) {
+        return $http.get(API_ENDPOINT.url + '/ambiances').then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -77,7 +77,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.removeAmbiance = function(id) {
-        return $http.delete(API_ENDPOINT.url + '/removeAmbiance/' + id).then(function(response) {
+        return $http.delete(API_ENDPOINT.url + '/ambiances/' + id).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -90,7 +90,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
 
 
     this.addLength = function(length) {
-        return $http.post(API_ENDPOINT.url + '/addLength', length).then(function(response) {
+        return $http.post(API_ENDPOINT.url + '/lengths', length).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -98,7 +98,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.getAllLength = function() {
-        return $http.get(API_ENDPOINT.url + '/getAllLength').then(function(response) {
+        return $http.get(API_ENDPOINT.url + '/lengths').then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -106,7 +106,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.removeLength = function(id) {
-        return $http.delete(API_ENDPOINT.url + '/removeLength/' + id).then(function(response) {
+        return $http.delete(API_ENDPOINT.url + '/lengths/' + id).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -119,7 +119,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
 
 
     this.addStyle = function(style) {
-        return $http.post(API_ENDPOINT.url + '/addStyle', style).then(function(response) {
+        return $http.post(API_ENDPOINT.url + '/styles', style).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -127,7 +127,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.getAllStyle = function() {
-        return $http.get(API_ENDPOINT.url + '/getAllStyle').then(function(response) {
+        return $http.get(API_ENDPOINT.url + '/styles').then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -135,7 +135,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.removeStyle = function(id) {
-        return $http.delete(API_ENDPOINT.url + '/removeStyle/' + id).then(function(response) {
+        return $http.delete(API_ENDPOINT.url + '/styles/' + id).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -149,7 +149,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
 
 
     this.addInstrument = function(instrument) {
-        return $http.post(API_ENDPOINT.url + '/addInstrument', instrument).then(function(response) {
+        return $http.post(API_ENDPOINT.url + '/instruments', instrument).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -157,7 +157,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.getAllInstrument = function() {
-        return $http.get(API_ENDPOINT.url + '/getAllInstrument').then(function(response) {
+        return $http.get(API_ENDPOINT.url + '/instruments').then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -165,7 +165,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.removeInstrument = function(id) {
-        return $http.delete(API_ENDPOINT.url + '/removeInstrument/' + id).then(function(response) {
+        return $http.delete(API_ENDPOINT.url + '/instruments/' + id).then(function(response) {
             return response;
         }, function(error) {
             return error;
@@ -173,7 +173,7 @@ app.service("APIService", function($http, API_ENDPOINT) {
     };
 
     this.sendMail = function(userInfos) {
-        return $http.post(API_ENDPOINT.url + '/sendMail', userInfos).then(function(response) {
+        return $http.post(API_ENDPOINT.url + '/mail', userInfos).then(function(response) {
             return response;
         }, function(error) {
             return error;

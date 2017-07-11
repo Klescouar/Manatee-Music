@@ -57,7 +57,7 @@ app.service("AuthService", function($q, $http, API_ENDPOINT) {
     }
 
     const login = (user) => {
-       return $http.post(API_ENDPOINT.url + '/authenticate', user).then(
+       return $http.post(API_ENDPOINT.url + '/signin', user).then(
         function(response){
           if (response.data.msg === 'Authentication failed. Inactive account.') {
 

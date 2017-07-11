@@ -3,7 +3,10 @@ const Schema   = mongoose.Schema;
 
 
 const InstrumentSchema = new Schema({
-    name: String,
+    name: {
+      type: String,
+      required: true
+    }
 });
 
 module.exports = mongoose.model('Instrument', InstrumentSchema);

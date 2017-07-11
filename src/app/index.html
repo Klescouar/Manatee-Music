@@ -1,80 +1,108 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- TITLE -->
-        <title>Manatee-Music</title>
-        <!-- META -->
-        <meta name="description" content="Le site manatee-music.fr vous propose une large collection de musique spécifiquement crée pour être mis en image par les compositeurs Johan Barrer et Franck Gasseling"/>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Add to homescreen for Safari on iOS -->
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-        <!-- LOGO -->
-        <link rel="icon" type="image/png" href="../assets/images/logo.png"/>
-        <!-- LIB -->
-        <script type="text/javascript" src="../assets/lib/js/angular.min.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/jquery.min.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/ui-bootstrap-tpls.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/angular-soundmanager2.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/angular-ui-router.min.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/angular-aria.min.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/angular-material.min.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/angular-animate.min.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/ng-file-upload-shim.min.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/ng-file-upload.min.js"></script>
-        <script type="text/javascript" src="../assets/lib/js/ngParallax.min.js"></script>
-        <link rel="stylesheet" href="../assets/lib/css/normalize.css">
-        <link rel="stylesheet" href="../assets/lib/css/angular-material.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    </head>
-    <body ng-app="manatee-music">
 
-        <!-- NAV-BAR -->
-        <div class="nav-bar">
-            <div class="nav-bar-logo">
-                <a ui-sref="home" class="logo"></a>
-            </div>
-            <div class="nav-bar-right" >
-              <div class="nav-bar-button">
-                <a class="nav-bar-link" ui-sref="player">Nos productions</a>
-              </div>
-              <div class="nav-bar-button">
-                <a ng-class="{'nav-bar-link' : navBlack}" ui-sref="contact">Contact</a>
-              </div>
-            </div>
+<head>
+  <!-- TITLE -->
+  <title>Manatee-Music</title>
+  <!-- META -->
+  <meta name="description" content="Le site manatee-music.fr vous propose une large collection de musique spécifiquement crée pour être mis en image par les compositeurs Johan Barrer et Franck Gasseling" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+  <!-- LOGO -->
+  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  <!-- LIB -->
+  <script type="text/javascript" src="../assets/lib/js/angular.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/jquery.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/ui-bootstrap-tpls.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/angular-soundmanager2.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/angular-aria.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/angular-material.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/angular-animate.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/ng-file-upload-shim.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/ng-file-upload.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/js/ngParallax.min.js"></script>
+  <link rel="stylesheet" href="../assets/lib/css/normalize.css">
+  <link rel="stylesheet" href="../assets/lib/css/angular-material.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+
+<body ng-app="manatee-music">
+
+  <!-- NAV-BAR -->
+  <div class="nav-box" ng-controller="indexCtrl">
+
+    <div class="nav-bar">
+      <div id="menu-button" ng-click="menuToggle()" role="button" title="sweet hamburger">
+        <div class="hamburger">
+          <div class="inner"></div>
         </div>
+      </div>
+      <div class="nav-bar-logo">
+        <a ui-sref="home" class="logo"></a>
+      </div>
+      <div class="nav-bar-right">
+        <div class="nav-bar-button">
+          <a class="nav-bar-link" ui-sref="player">Nos productions</a>
+        </div>
+        <div class="nav-bar-button">
+          <a ng-class="{'nav-bar-link' : navBlack}" ui-sref="contact">Contact</a>
+        </div>
+      </div>
+    </div>
 
-        <main ui-view="home"></main>
+    <nav>
+      <ul>
+        <li>
+          <a class="nav-bar-link" ui-sref="home">HOME</a>
+        </li>
+        <li>
+          <a class="nav-bar-link" ui-sref="player">NOS PRODUCTIONS</a>
+        </li>
+        <li>
+          <a class="nav-bar-link" ui-sref="contact">CONTACT</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="app/css/index.css">
-        <link rel="stylesheet" href="app/css/home.css">
-        <link rel="stylesheet" href="app/css/contact.css">
-        <link rel="stylesheet" href="app/css/player.css">
-        <link rel="stylesheet" href="app/css/admin.css">
-        <!-- CONFIG -->
-        <script src="app/app.js"></script>
-        <script src="app/appRoute.js"></script>
-        <script src="app/constant.js"></script>
-        <!-- CONTROLLERS -->
-        <script src="app/js/controllers/homeCtrl.js"></script>
-        <script src="app/js/controllers/contactCtrl.js"></script>
-        <script src="app/js/controllers/playerCtrl.js"></script>
-        <script src="app/js/controllers/adminCtrl.js"></script>
-        <script src="app/js/controllers/admin/adminAddSongCtrl.js"></script>
-        <script src="app/js/controllers/admin/adminRemoveSongCtrl.js"></script>
-        <script src="app/js/controllers/admin/adminHandleFilterCtrl.js"></script>
-        <script src="app/js/controllers/admin/adminConnect.js"></script>
-        <!-- SERVICES -->
-        <script src="app/js/services/player-service.js"></script>
-        <script src="app/js/services/API-service.js"></script>
-        <script src="app/js/services/authentication-service.js"></script>
-        <!-- FILTERS -->
-        <script src="app/js/filters/listSongFilter.js"></script>
-        <!-- DIRECTIVES -->
-        <script src="app/js/directives/ratingDirective.js"></script>
-    </body>
+  <main ui-view="home"></main>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="app/css/index.css">
+  <link rel="stylesheet" href="app/css/home.css">
+  <link rel="stylesheet" href="app/css/contact.css">
+  <link rel="stylesheet" href="app/css/player.css">
+  <link rel="stylesheet" href="app/css/admin.css">
+  <link rel="stylesheet" href="app/css/burger-menu.css">
+  <link rel="stylesheet" href="app/css/media-queries.css">
+  <!-- CONFIG -->
+  <script src="app/app.js"></script>
+  <script src="app/appRoute.js"></script>
+  <script src="app/constant.js"></script>
+  <!-- CONTROLLERS -->
+  <script src="app/js/controllers/homeCtrl.js"></script>
+  <script src="app/js/controllers/contactCtrl.js"></script>
+  <script src="app/js/controllers/playerCtrl.js"></script>
+  <script src="app/js/controllers/adminCtrl.js"></script>
+  <script src="app/js/controllers/indexCtrl.js"></script>
+  <script src="app/js/controllers/admin/adminAddSongCtrl.js"></script>
+  <script src="app/js/controllers/admin/adminRemoveSongCtrl.js"></script>
+  <script src="app/js/controllers/admin/adminHandleFilterCtrl.js"></script>
+  <script src="app/js/controllers/admin/adminConnect.js"></script>
+  <!-- SERVICES -->
+  <script src="app/js/services/player-service.js"></script>
+  <script src="app/js/services/API-service.js"></script>
+  <script src="app/js/services/authentication-service.js"></script>
+  <!-- FILTERS -->
+  <script src="app/js/filters/listSongFilter.js"></script>
+  <!-- DIRECTIVES -->
+  <script src="app/js/directives/ratingDirective.js"></script>
+</body>
+
 </html>

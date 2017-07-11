@@ -3,7 +3,10 @@ const Schema   = mongoose.Schema;
 
 
 const LengthSchema = new Schema({
-    name: String,
+    name: {
+      type: String,
+      required: true
+    }
 });
 
 module.exports = mongoose.model('Length', LengthSchema);

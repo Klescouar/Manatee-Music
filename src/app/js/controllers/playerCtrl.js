@@ -15,7 +15,6 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   $scope.toggleLeft = buildToggler('left');
 
   function buildToggler(componentId) {
-    console.log(componentId);
     return function() {
       $mdSidenav(componentId).toggle();
     };
@@ -147,7 +146,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     APIService.getAllAmbiance().then(function(response) {
       $scope.ambiances = response.data;
     }).catch(function(errMsg) {
-      console.log('show profils members failed!');
+      console.log('show ambiances failed!');
     });
   }
   $scope.getAllAmbiance();
@@ -156,7 +155,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     APIService.getAllStyle().then(function(response) {
       $scope.styles = response.data;
     }).catch(function(errMsg) {
-      console.log('show profils members failed!');
+      console.log('show styles failed!');
     });
   }
   $scope.getAllStyle();
@@ -165,7 +164,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     APIService.getAllLength().then(function(response) {
       $scope.lengths = response.data;
     }).catch(function(errMsg) {
-      console.log('show profils members failed!');
+      console.log('show lengths failed!');
     });
   }
   $scope.getAllLength();
@@ -174,7 +173,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     APIService.getAllInstrument().then(function(response) {
       $scope.instruments = response.data;
     }).catch(function(errMsg) {
-      console.log('show profils members failed!');
+      console.log('show instruments failed!');
     });
   }
   $scope.getAllInstrument();
