@@ -3,6 +3,7 @@ app.controller('adminConnectCtrl', ['$scope', "AuthService", "$state", function(
     role : "Admin"
   };
 
+//////////////////////// ADMIN LOGIN FUNCTION ////////////////////////
   $scope.login = (user) => {
     AuthService.login(user).then((res) => {
       $state.go("admin");

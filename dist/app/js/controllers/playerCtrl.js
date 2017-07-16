@@ -12,6 +12,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   const playSvgPath = playSvg.querySelector('path');
   let volumeStatus = 0;
 
+////////////////////////FILTERS SIDE MENU////////////////////////
   $scope.toggleLeft = buildToggler('left');
 
   function buildToggler(componentId) {
@@ -20,6 +21,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     };
   }
 
+////////////////////////TRANSFORM _ID TO ID////////////////////////
   const transformKeys = obj => {
     result = {};
     Object.keys(obj).forEach(x => {
@@ -29,10 +31,12 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     return result;
   }
 
+////////////////////////GET ALL SONGS ID IN AN ARRAY////////////////////////
   const getArrayOfsongsId = (item) => {
     songsId.push(item.id);
   }
 
+////////////////////////HANDLE PLAYLIST////////////////////////
   const addTrackToPlaylist = (item) => {
     angularPlayer.addTrack(item);
   }
@@ -46,6 +50,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     angularPlayer.removeSong(item.id, playlist.indexOf(item));
   };
 
+////////////////////////FIND BY ATTRIBUTE FUNCTION////////////////////////
   function findWithAttr(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
       if (array[i][attr] === value) {
@@ -55,17 +60,19 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     return -1;
   }
 
+////////////////////////ADD INSTRUMENTALS TO PLAYLIST////////////////////////
   const addInstrumentalToPlaylist = (item) => {
     const trackIndex = findWithAttr($scope.songs, 'id', item.integral);
     $scope.songs.splice(trackIndex + 1, 0, item);
   }
 
+////////////////////////GET A SONG////////////////////////
   const getOnSong = (item, id) => {
     if (item.id === id) {
       return $scope.thisSong = item;
     }
   };
-
+////////////////////////HANDLE TRI////////////////////////
   $scope.changeOrder = (order) => {
     angularPlayer.stop();
     playSvgPath.setAttribute('d', playSvg.getAttribute('data-play'));
@@ -92,8 +99,6 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
       }
       $scope.songs.map(addTrackToPlaylist);
 
-
-
       if ($scope.orderProperty === order) {
         $scope.orderProperty = '-' + order;
       } else if ($scope.orderProperty === '-' + order) {
@@ -106,6 +111,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
 
   $scope.filterExeption = (filter) => {}
 
+////////////////////////SHOW INSTRUMENTALS////////////////////////
   $scope.openInstrumental = (id) => {
 
     angularPlayer.stop();
@@ -127,7 +133,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     });
   };
 
-  ////////////////////////////////////////// GET ALL SONGS //////////////////////////////////////////
+////////////////////////GET ALL SONGS////////////////////////
 
   $scope.getAllSongs = () => {
     return APIService.getAllSongs().then(function(response) {
@@ -140,7 +146,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   }
   $scope.getAllSongs();
 
-  ////////////////////////////////////////// GET ALL FILTERS //////////////////////////////////////////
+////////////////////////GET ALL AMBIANCES////////////////////////
 
   $scope.getAllAmbiance = () => {
     APIService.getAllAmbiance().then(function(response) {
@@ -151,6 +157,8 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   }
   $scope.getAllAmbiance();
 
+////////////////////////GET ALL STYLES////////////////////////
+
   $scope.getAllStyle = () => {
     APIService.getAllStyle().then(function(response) {
       $scope.styles = response.data;
@@ -159,6 +167,8 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
     });
   }
   $scope.getAllStyle();
+
+////////////////////////GET ALL LENGTHS////////////////////////
 
   $scope.getAllLength = () => {
     APIService.getAllLength().then(function(response) {
@@ -169,6 +179,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   }
   $scope.getAllLength();
 
+//////////////////////// GET ALL INSTRUMENT ////////////////////////
   $scope.getAllInstrument = () => {
     APIService.getAllInstrument().then(function(response) {
       $scope.instruments = response.data;
@@ -178,7 +189,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   }
   $scope.getAllInstrument();
 
-  ////////////////////////////////////////// HANDLE PLAYER //////////////////////////////////////////
+  //////////////////////// HANDLE PLAYER ////////////////////////
 
   $scope.$on('track:id', function(event, data) {
     $scope.currentSong.title = angularPlayer.currentTrackData().title;
@@ -277,6 +288,9 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
       $scope.songs.map(addTrackToPlaylist);
     }, 10);
   }
+
+
+//////////////////////// NAV BAR ANIMATION ////////////////////////
 
   $('.nav-bar').css("background-color", 'rgb(34,34,34)');
 

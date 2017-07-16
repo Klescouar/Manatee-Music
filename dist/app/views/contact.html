@@ -7,6 +7,9 @@
         <p>Contact</p>
         <div class="hr"></div>
       </div>
+
+      <!-- //////////////////////// CONTACT FORM //////////////////////// -->
+
       <form class="contact-page__form" ng-submit="sendMail()">
           <div class="contact-page__form__container">
               <md-input-container class="md-block" flex-gt-sm>
@@ -30,6 +33,9 @@
                   <textarea required ng-model="user.message" md-maxlength="500" rows="5" md-select-on-focus></textarea>
               </md-input-container>
           </div>
+
+          <!-- //////////////////////// SUBMIT BUTTON //////////////////////// -->
+
           <button class="button" type="submit">Envoyer</button>
       </form>
     </div>

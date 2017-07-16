@@ -26,7 +26,7 @@
   position: absolute;
   width: 25px;
   height: 2px;
-  background: #ccc;
+  background: #a2a2a2;
   transform-origin: 100% 50%;
   transition: all 750ms ease-in-out; }
 
@@ -49,7 +49,7 @@
 .menu-open .hamburger::before,
 .menu-open .hamburger::after,
 .menu-open .hamburger .inner {
-  background: #29252f; }
+  background: #a2a2a2; }
 
 .menu-open .hamburger::before {
   transform: translate3d(-4px, 1px, 0) rotateZ(-45deg); }
@@ -64,13 +64,16 @@
 nav {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -500px;
   width: 260px;
   bottom: 0;
   z-index: 100;
-  pointer-events: none; }
+  pointer-events: none;
+  transition: 0.5s ease all; }
 
 .menu-open nav {
+  left: 0px;
+  transition: 1s ease all;
   animation-duration: 10s;
   animation-name: wind;
   animation-iteration-count: infinite; }

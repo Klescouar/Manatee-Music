@@ -2,19 +2,19 @@
 <html>
 
 <head>
-  <!-- TITLE -->
+  <!-- //////////////////////// TITLE //////////////////////// -->
   <title>Manatee-Music</title>
-  <!-- META -->
+  <!-- //////////////////////// META //////////////////////// -->
   <meta name="description" content="Le site manatee-music.fr vous propose une large collection de musique spécifiquement crée pour être mis en image par les compositeurs Johan Barrer et Franck Gasseling" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Add to homescreen for Safari on iOS -->
+  <!-- //////////////////////// Add to homescreen for Safari on iOS //////////////////////// -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-  <!-- LOGO -->
+  <!-- //////////////////////// LOGO //////////////////////// -->
   <link rel="icon" type="image/png" href="../assets/images/logo.png" />
-  <!-- LIB -->
+  <!-- //////////////////////// LIB //////////////////////// -->
   <script type="text/javascript" src="../assets/lib/js/angular.min.js"></script>
   <script type="text/javascript" src="../assets/lib/js/jquery.min.js"></script>
   <script type="text/javascript" src="../assets/lib/js/bootstrap.min.js"></script>
@@ -24,8 +24,6 @@
   <script type="text/javascript" src="../assets/lib/js/angular-aria.min.js"></script>
   <script type="text/javascript" src="../assets/lib/js/angular-material.min.js"></script>
   <script type="text/javascript" src="../assets/lib/js/angular-animate.min.js"></script>
-  <script type="text/javascript" src="../assets/lib/js/ng-file-upload-shim.min.js"></script>
-  <script type="text/javascript" src="../assets/lib/js/ng-file-upload.min.js"></script>
   <script type="text/javascript" src="../assets/lib/js/ngParallax.min.js"></script>
   <link rel="stylesheet" href="../assets/lib/css/normalize.css">
   <link rel="stylesheet" href="../assets/lib/css/angular-material.min.css">
@@ -33,10 +31,8 @@
 </head>
 
 <body ng-app="manatee-music">
-
-  <!-- NAV-BAR -->
+  <!-- //////////////////////// NAV-BAR //////////////////////// -->
   <div class="nav-box" ng-controller="indexCtrl">
-
     <div class="nav-bar">
       <div id="menu-button" ng-click="menuToggle()" role="button" title="sweet hamburger">
         <div class="hamburger">
@@ -56,16 +52,18 @@
       </div>
     </div>
 
+    <!-- //////////////////////// BURGER MENU //////////////////////// -->
+
     <nav>
       <ul>
         <li>
-          <a class="nav-bar-link" ui-sref="home">HOME</a>
+          <a class="nav-bar-link" ng-click="menuToggle()" ui-sref="home">HOME</a>
         </li>
         <li>
-          <a class="nav-bar-link" ui-sref="player">NOS PRODUCTIONS</a>
+          <a class="nav-bar-link" ng-click="menuToggle()" ui-sref="player">NOS PRODUCTIONS</a>
         </li>
         <li>
-          <a class="nav-bar-link" ui-sref="contact">CONTACT</a>
+          <a class="nav-bar-link" ng-click="menuToggle()" ui-sref="contact">CONTACT</a>
         </li>
       </ul>
     </nav>

@@ -31,7 +31,7 @@
   position: absolute;
   width: 25px;
   height: 2px;
-  background: #ccc;
+  background: rgb(162, 162, 162);
   transform-origin: 100% 50%;
   transition: all 750ms ease-in-out;
 }
@@ -56,7 +56,7 @@
 .menu-open .hamburger::before,
 .menu-open .hamburger::after,
 .menu-open .hamburger .inner {
-  background: rgba(41, 37, 47, 1);
+  background: rgb(162, 162, 162);
 }
 
 .menu-open .hamburger::before {
@@ -73,14 +73,17 @@
 nav {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -500px;
   width: 260px;
   bottom: 0;
   z-index: 100;
   pointer-events: none;
+  transition: 0.5s ease all;
 }
 
 .menu-open nav {
+  left: 0px;
+  transition: 1s ease all;
   animation-duration: 10s;
   animation-name: wind;
   animation-iteration-count: infinite;

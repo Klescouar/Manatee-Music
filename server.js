@@ -58,9 +58,9 @@ apiRoutes.post('/signup', auth.signup);
 /////////////////////////SONG CONTROLLER/////////////////////////
 apiRoutes.get('/songs', songs.getAllSongs);
 apiRoutes.post('/songs', passport.authenticate('jwt', {session: false}), songs.addSong);
-apiRoutes.put('/songs/:id', passport.authenticate('jwt', {session: false}), songs.updateNumberOfPlay);
-apiRoutes.put('/songs/:id/:instrumentalId', passport.authenticate('jwt', {session: false}), songs.updateNumberOfPlay);
-apiRoutes.post('/instrumentals', passport.authenticate('jwt', {session: false}), songs.addInstrumentalSong);
+apiRoutes.put('/songs/:id', songs.updateNumberOfPlay);
+apiRoutes.put('/songs/:id/:instrumentalId', songs.updateNumberOfPlay);
+apiRoutes.post('/instrumentals', songs.addInstrumentalSong);
 apiRoutes.delete('/instrumentals/:songId/:instrumentalId', passport.authenticate('jwt', {session: false}), songs.removeInstrumentalSong);
 apiRoutes.delete('/songs/:id', passport.authenticate('jwt', {session: false}), songs.removeSong);
 
@@ -85,8 +85,8 @@ apiRoutes.post('/instruments', passport.authenticate('jwt', {session: false}), i
 apiRoutes.delete('/instruments/:id', passport.authenticate('jwt', {session: false}), instrument.removeInstrument);
 
 /////////////////////////UPLOAD CONTROLLER/////////////////////////
-apiRoutes.post('/upload_photos', passport.authenticate('jwt', {session: false}), uploadPhoto.uploadPhoto);
-apiRoutes.post('/upload_song', passport.authenticate('jwt', {session: false}), uploadSong.uploadSong);
+apiRoutes.post('/upload_photos', uploadPhoto.uploadPhoto);
+apiRoutes.post('/upload_song', uploadSong.uploadSong);
 
 /////////////////////////SEND MAIL/////////////////////////
 apiRoutes.post('/mail', mail.sendMail);

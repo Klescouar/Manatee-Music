@@ -1,8 +1,6 @@
 @media (max-width: 1024px) {
   .ap__item > .ap__controls {
-    flex: 1; } }
-
-@media (max-width: 950px) {
+    flex: 1; }
   .contact-page__body {
     width: 80%; }
   .contact-page__form {
@@ -28,13 +26,11 @@
     .home-page .presentation p {
       padding: 40px; } }
 
-@media (max-width: 650px) {
+@media (max-width: 580px) {
   .contact-page .hr {
     width: 50px; }
   .contact-page__form__header p {
-    margin: 0 20px; } }
-
-@media (max-width: 580px) {
+    margin: 0 20px; }
   .md-sidenav-left {
     display: block; }
     .md-sidenav-left .left-menu {
@@ -106,9 +102,7 @@
   .home-page .presentation {
     padding: 40px 20px; }
     .home-page .presentation p {
-      padding: 20px; } }
-
-@media (max-width: 450px) {
+      padding: 20px; }
   .contact-page__body {
     width: 90%; }
   .contact-page .hr {

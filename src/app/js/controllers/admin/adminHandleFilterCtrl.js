@@ -1,5 +1,6 @@
 app.controller('adminHandleFilterCtrl', ['$scope', 'APIService', function($scope, APIService){
 
+//////////////////////// GET ALL STYLES ////////////////////////
 
 $scope.getAllStyle = () => {
     APIService.getAllStyle().then(function(response) {
@@ -9,12 +10,16 @@ $scope.getAllStyle = () => {
     });
 }
 
+//////////////////////// ADD STYLE ////////////////////////
+
 $scope.addStyle = () => {
     APIService.addStyle($scope.style).then(function(response) {}).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Style failed!');
     });
     $scope.getAllStyle();
 };
+
+//////////////////////// REMOVE STYLE ////////////////////////
 
 $scope.removeStyle = (id) => {
     APIService.removeStyle(id).then(function(response) {
@@ -32,6 +37,7 @@ $scope.getAllStyle();
 
 
 
+//////////////////////// GET ALL LENGTHS ////////////////////////
 
 $scope.getAllLength = () => {
     APIService.getAllLength().then(function(response) {
@@ -41,12 +47,16 @@ $scope.getAllLength = () => {
     });
 }
 
+//////////////////////// ADD LENGTH ////////////////////////
+
 $scope.addLength = () => {
     APIService.addLength($scope.length).then(function(response) {}).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Length failed!');
     });
     $scope.getAllLength();
 };
+
+//////////////////////// REMOVE LENGTH ////////////////////////
 
 $scope.removeLength = (id) => {
     APIService.removeLength(id).then(function(response) {
@@ -59,11 +69,7 @@ $scope.removeLength = (id) => {
 $scope.getAllLength();
 
 
-
-
-
-
-
+//////////////////////// GET ALL INSTRUMENTS ////////////////////////
 
 $scope.getAllInstrument = () => {
     APIService.getAllInstrument().then(function(response) {
@@ -73,12 +79,16 @@ $scope.getAllInstrument = () => {
     });
 }
 
+//////////////////////// ADD INSTRUMENT ////////////////////////
+
 $scope.addInstrument = () => {
     APIService.addInstrument($scope.instrument).then(function(response) {}).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Instrument failed!');
     });
     $scope.getAllInstrument();
 };
+
+//////////////////////// REMOVE INSTRUMENT ////////////////////////
 
 $scope.removeInstrument = (id) => {
     APIService.removeInstrument(id).then(function(response) {
@@ -96,6 +106,7 @@ $scope.getAllInstrument();
 
 
 
+//////////////////////// GET ALL AMBIANCES ////////////////////////
 
 $scope.getAllAmbiance = () => {
     APIService.getAllAmbiance().then(function(response) {
@@ -105,12 +116,16 @@ $scope.getAllAmbiance = () => {
     });
 }
 
+//////////////////////// ADD AMBIANCE ////////////////////////
+
 $scope.addAmbiance = () => {
     APIService.addAmbiance($scope.ambiance).then(function(response) {}).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Ambiance failed!');
     });
     $scope.getAllAmbiance();
 };
+
+//////////////////////// REMOVE AMBIANCE ////////////////////////
 
 $scope.removeAmbiance = (id) => {
     APIService.removeAmbiance(id).then(function(response) {

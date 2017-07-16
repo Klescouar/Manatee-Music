@@ -60,6 +60,7 @@ exports.addSong = function(req, res) {
 };
 
 exports.updateNumberOfPlay = function(req, res) {
+  console.log(req.params.id);
     Songs.findById(req.params.id, function(err, doc) {
         if (err) {
             res.status(500).send(err);

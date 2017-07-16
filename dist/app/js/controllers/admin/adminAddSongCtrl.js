@@ -1,187 +1,214 @@
 app.controller('adminAddSongCtrl', ['$scope', 'APIService', function($scope, APIService){
   $scope.choice = '';
-$scope.ambiance = {
+
+  //////////////////////// SCHEMA ////////////////////////
+  $scope.ambiance = {
     name: ''
-};
-$scope.style = {
+  };
+  $scope.style = {
     name: ''
-};
-$scope.length = {
+  };
+  $scope.length = {
     name: ''
-};
-$scope.instrument = {
+  };
+  $scope.instrument = {
     name: ''
-};
-$scope.song = {
+  };
+  $scope.song = {
     title: '',
     icon: '',
     url: '',
     duration: '',
     artist: 'Manatee Music Team',
     tags: [],
-    numberOfPlay : 0,
-};
+    numberOfPlay: 0,
+  };
 
-////////////////////////////////////////// ADD SONGS //////////////////////////////////////////
+//////////////////////// GET ALL SONGS ////////////////////////
 
-$scope.getAllSongs = () => {
+  $scope.getAllSongs = () => {
     APIService.getAllSongs().then(function(response) {
-        $scope.songs = response.data;
+      $scope.songs = response.data;
     }).catch(function(errMsg) {
-        console.log('show profils members failed!');
-    });
-}
-
-$scope.addElementToSong = (name) => {
-    if ($scope.song.tags.indexOf(name) === -1) {
-        $scope.song.tags.push(name);
-    } else {
-        $scope.song.tags.splice($scope.song.tags.indexOf(name), 1);
-    }
-};
-
-$scope.addSong = () => {
-  if ($scope.song.integral) {
-    APIService.addInstrumentalSong($scope.song).then(function(response) {
-      alert("C'EST GOOD");
-    }).catch(function(errMsg) {
-        alert('Add Song failed!');
-    });
-  } else {
-    APIService.addSong($scope.song).then(function(response) {
-      alert("C'EST GOOD");
-    }).catch(function(errMsg) {
-        alert('Add Song failed!');
+      console.log('show profils members failed!');
     });
   }
-};
 
-$scope.uploadFiles = (formData) => {
-    $.ajax({url: '/api/upload_photos', method: 'post', data: formData, processData: false, contentType: false}).done($scope.handleSuccess).fail(function(xhr, status) {
-        alert(status);
-    });
-}
-$scope.uploadSong = (formData) => {
-    $.ajax({url: '/api/upload_song', method: 'post', data: formData, processData: false, contentType: false}).done($scope.handleSuccessSong).fail(function(xhr, status) {
-        alert(status);
-    });
-}
-
-$scope.handleSuccess = (data) => {
-    if (data.length > 0) {
-        $scope.song.icon = data[0].filename;
-        alert("Photo uploadé!")
+//////////////////////// ADD FILTER TO SONG ////////////////////////
+  $scope.addElementToSong = (name) => {
+    if ($scope.song.tags.indexOf(name) === -1) {
+      $scope.song.tags.push(name);
     } else {
-        alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
+      $scope.song.tags.splice($scope.song.tags.indexOf(name), 1);
     }
-}
-$scope.handleSuccessSong = (data) => {
-    if (data.length > 0) {
-        const newAudio = new Audio();
-        newAudio.src = '../../../assets/song/' + data[0].filename;
-        newAudio.addEventListener('loadedmetadata', function() {
-            $scope.song.duration = newAudio.duration;
-            switch (true) {
-                case($scope.song.duration < 30):
-                    $scope.song.tags.push('Moins de 30sec');
-                    break;
-                case($scope.song.duration > 30 && $scope.song.duration < 60):
-                    $scope.song.tags.push('De 30sec à 1min');
-                    break;
-                case($scope.song.duration < 60 && $scope.song.duration < 120):
-                    $scope.song.tags.push('De 1min à 2min');
-                    break;
-                case($scope.song.duration < 120 && $scope.song.duration < 180):
-                    $scope.song.tags.push('De 2min à 3min');
-                    break;
-                case($scope.song.duration > 180):
-                    $scope.song.tags.push('Plus de 3min');
-                    break;
-            }
-        });
-        $scope.song.url = '../../assets/song/' + data[0].filename;
-        alert('Son uploadé!')
-    } else {
-        alert('Mauvais format')
-    }
-}
+  };
 
-$scope.submitSong = function() {
+//////////////////////// ADD SONG ////////////////////////
+  $scope.addSong = () => {
+    if ($scope.song.integral) {
+      APIService.addInstrumentalSong($scope.song).then(function(response) {
+        alert("C'EST GOOD");
+      }).catch(function(errMsg) {
+        alert('Add Song failed!');
+      });
+    } else {
+      APIService.addSong($scope.song).then(function(response) {
+        alert("C'EST GOOD");
+      }).catch(function(errMsg) {
+        alert('Add Song failed!');
+      });
+    }
+  };
+
+//////////////////////// UPLOAD IMAGE ////////////////////////
+  $scope.uploadFiles = (formData) => {
+    $.ajax({
+      url: '/api/upload_photos',
+      method: 'post',
+      data: formData,
+      processData: false,
+      contentType: false
+    }).done($scope.handleSuccess).fail(function(xhr, status) {
+      alert(status);
+    });
+  }
+
+  //////////////////////// UPLOAD SONG ////////////////////////
+  $scope.uploadSong = (formData) => {
+    $.ajax({
+      url: '/api/upload_song',
+      method: 'post',
+      data: formData,
+      processData: false,
+      contentType: false
+    }).done($scope.handleSuccessSong).fail(function(xhr, status) {
+      alert(status);
+    });
+  }
+
+  $scope.handleSuccess = (data) => {
+    if (data.length > 0) {
+      $scope.song.icon = data[0].filename;
+      alert("Photo uploadé!")
+    } else {
+      alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
+    }
+  }
+  $scope.handleSuccessSong = (data) => {
+    if (data.length > 0) {
+      const newAudio = new Audio();
+      newAudio.src = '../../../assets/song/' + data[0].filename;
+      newAudio.addEventListener('loadedmetadata', function() {
+        $scope.song.duration = newAudio.duration;
+        switch (true) {
+          case ($scope.song.duration < 30):
+            $scope.song.tags.push('Moins de 30sec');
+            break;
+          case ($scope.song.duration > 30 && $scope.song.duration < 60):
+            $scope.song.tags.push('De 30sec à 1min');
+            break;
+          case ($scope.song.duration < 60 && $scope.song.duration < 120):
+            $scope.song.tags.push('De 1min à 2min');
+            break;
+          case ($scope.song.duration < 120 && $scope.song.duration < 180):
+            $scope.song.tags.push('De 2min à 3min');
+            break;
+          case ($scope.song.duration > 180):
+            $scope.song.tags.push('Plus de 3min');
+            break;
+        }
+      });
+      $scope.song.url = '../../assets/song/' + data[0].filename;
+      alert('Son uploadé!')
+    } else {
+      alert('Mauvais format')
+    }
+  }
+
+  $scope.submitSong = function() {
     // Get the files from input, create new FormData.
     const files = $('#song-input').get(0).files,
-        formData = new FormData();
+      formData = new FormData();
 
     if (files.length === 0) {
-        alert('Aucune photo séléctionnée.');
-        return false;
+      alert('Aucune photo séléctionnée.');
+      return false;
     }
 
     // Append the files to the formData.
     for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        formData.append('photos[]', file, file.name);
+      var file = files[i];
+      formData.append('photos[]', file, file.name);
     }
     // Note: We are only appending the file inputs to the FormData.
     $scope.uploadSong(formData);
-};
+  };
 
-// On form submit, handle the file uploads.
-$scope.submitPhoto = function() {
+  // On form submit, handle the file uploads.
+  $scope.submitPhoto = function() {
     // Get the files from input, create new FormData.
     const files = $('#photos-input').get(0).files,
-        formData = new FormData();
+      formData = new FormData();
 
     if (files.length === 0) {
-        alert('Aucune photo séléctionnée.');
-        return false;
+      alert('Aucune photo séléctionnée.');
+      return false;
     }
 
     // Append the files to the formData.
     for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        formData.append('photos[]', file, file.name);
+      var file = files[i];
+      formData.append('photos[]', file, file.name);
     }
 
     // Note: We are only appending the file inputs to the FormData.
     $scope.uploadFiles(formData);
-};
+  };
 
-$scope.getAllStyle = () => {
+//////////////////////// GET ALL STYLES ////////////////////////
+
+  $scope.getAllStyle = () => {
     APIService.getAllStyle().then(function(response) {
-        $scope.styles = response.data;
+      $scope.styles = response.data;
     }).catch(function(errMsg) {
-        console.log('show style failed!');
+      console.log('show style failed!');
     });
-}
+  }
 
-$scope.getAllLength = () => {
+//////////////////////// GET ALL LENGTHS ////////////////////////
+
+  $scope.getAllLength = () => {
     APIService.getAllLength().then(function(response) {
-        $scope.lengths = response.data;
+      $scope.lengths = response.data;
     }).catch(function(errMsg) {
-        console.log('show Length failed!');
+      console.log('show Length failed!');
     });
-}
+  }
 
-$scope.getAllInstrument = () => {
+//////////////////////// GET ALL INSTRUMENTS ////////////////////////
+
+  $scope.getAllInstrument = () => {
     APIService.getAllInstrument().then(function(response) {
-        $scope.instruments = response.data;
+      $scope.instruments = response.data;
     }).catch(function(errMsg) {
-        console.log('show Instrument failed!');
+      console.log('show Instrument failed!');
     });
-}
+  }
 
-$scope.getAllAmbiance = () => {
+//////////////////////// GET ALL AMBIANCES ////////////////////////
+
+  $scope.getAllAmbiance = () => {
     APIService.getAllAmbiance().then(function(response) {
-        $scope.ambiances = response.data;
+      $scope.ambiances = response.data;
     }).catch(function(errMsg) {
-        console.log('show Ambiance failed!');
+      console.log('show Ambiance failed!');
     });
-}
+  }
 
-$scope.getAllInstrument();
-$scope.getAllStyle();
-$scope.getAllLength();
-$scope.getAllAmbiance();
-$scope.getAllSongs();
+  $scope.getAllInstrument();
+  $scope.getAllStyle();
+  $scope.getAllLength();
+  $scope.getAllAmbiance();
+  $scope.getAllSongs();
 
 }]);

@@ -1,4 +1,7 @@
 <div class="add-song">
+
+  <!-- //////////////////////// SONG TYPE CHOICE //////////////////////// -->
+
     <md-input-container>
         <p>Si version instrumentale choisir la version intégrale:</p>
         </br>
@@ -9,15 +12,20 @@
             </md-option>
         </md-select>
     </md-input-container>
+
+    <!-- //////////////////////// SONG TITLE //////////////////////// -->
+
     <md-input-container>
         <label>Titre</label>
         <input ng-model="song.title">
     </md-input-container>
 
+    <!-- //////////////////////// ADD FILTERS TO THE SONG //////////////////////// -->
+
     <div ng-if="!song.integral.length" class="ambiance-choice">
         <h4>CHOISIR LES AMBIANCES CORRESPONDANTES</h4>
         <button class="check-button" type="button" ng-repeat="ambiance in ambiances track by $index" ng-model="ambiance.name" ng-click='addElementToSong(ambiance.name,
-  song.ambiance); isActive = !isActive' ng-class="{'active' : isActive}">{{ambiance.name}}</button>
+        song.ambiance); isActive = !isActive' ng-class="{'active' : isActive}">{{ambiance.name}}</button>
     </div>
     <div ng-if="!song.integral.length" class="style-choice">
         <h4>CHOISIR LES STYLES CORRESPONDANTS</h4>
@@ -30,6 +38,9 @@
 
     <div class="form-box">
         <div class="choose-pic">
+
+          <!-- //////////////////////// UPLOAD SONG IMAGE //////////////////////// -->
+
             <div id="upload-pic"></div>
             <form id="upload-photos" enctype="multipart/form-data">
                 <div class="form-group">
@@ -39,6 +50,9 @@
             </form>
         </div>
         <div class="choose-pic">
+
+          <!-- //////////////////////// UPLOAD SONG //////////////////////// -->
+
             <div id="upload-pic"></div>
             <form id="upload-song" enctype="multipart/form-data">
                 <div class="form-group">

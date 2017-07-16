@@ -2,8 +2,6 @@
   .ap__item > .ap__controls {
     flex: 1;
   }
-}
-@media(max-width:950px) {
   .contact-page__body {
     width: 80%;
   }
@@ -16,6 +14,7 @@
     }
   }
 }
+
 @media(max-width:750px) {
   .home-page {
     .first-view {
@@ -53,7 +52,7 @@
     }
   }
 }
-@media(max-width:650px) {
+@media(max-width:580px) {
   .contact-page {
     .hr {
       width: 50px;
@@ -63,8 +62,6 @@
   .contact-page__form__header p {
     margin: 0 20px;
   }
-}
-@media(max-width:580px) {
   .md-sidenav-left {
     display: block;
 
@@ -201,8 +198,6 @@
       }
     }
   }
-}
-@media(max-width:450px) {
   .contact-page__body {
     width: 90%;
   }

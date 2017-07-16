@@ -2,7 +2,7 @@ app.controller('homeCtrl', ['$scope', 'angularPlayer', '$rootScope', '$window', 
   angularPlayer.stop();
    $scope.background = '../../../assets/images/home.jpg'
 
-
+//////////////////////// NAV BAR ANIMATION ////////////////////////
    const addBackgroundToNav = () => {
      $('.nav-bar').css("background-color", 'rgba(0, 0, 0, 0.8)');
    }

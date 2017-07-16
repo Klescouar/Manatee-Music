@@ -10,7 +10,6 @@ const transporter = nodemailer.createTransport({
 
 
 exports.sendMail = (req, res) => {
-  console.log(req.body);
   const mailOptions = {
       from: `${req.body.lastName} ${req.body.firstName} <${req.body.email}>`, // sender address
       to: 'manateemusicofficiel@gmail.com', // list of receivers

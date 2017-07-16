@@ -4,6 +4,7 @@ app.controller('contactCtrl', ['$scope', '$http', 'angularPlayer', '$rootScope',
     angular.element($window).unbind('scroll');
   });
 
+//////////////////////// USER INFOS ////////////////////////
   $scope.user = {
     lastName: '',
     firstName: '',
@@ -11,6 +12,7 @@ app.controller('contactCtrl', ['$scope', '$http', 'angularPlayer', '$rootScope',
     message: ''
   }
 
+//////////////////////// SEND MAIL && BUTTON ANIMATION ////////////////////////
   $scope.sendMail = () => {
     $('.button').addClass("loading");
     APIService.sendMail($scope.user).then((response) => {
@@ -23,7 +25,7 @@ app.controller('contactCtrl', ['$scope', '$http', 'angularPlayer', '$rootScope',
     });
   }
 
-
+//////////////////////// NAV BAR ANIMATION ////////////////////////
   $('.nav-bar').css("background-color", 'transparent');
   const addBackgroundToNav = () => {
     $('.nav-bar').css("background-color", 'rgba(0, 0, 0, 0.8)');

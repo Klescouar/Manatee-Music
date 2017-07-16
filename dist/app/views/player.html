@@ -1,5 +1,8 @@
 <div class="player-page">
   <sound-manager></sound-manager>
+
+  <!-- //////////////////////// FILTERS //////////////////////// -->
+
   <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
     <md-button ng-click="toggleLeft()" class="md-accent">
       Fermer
@@ -45,10 +48,13 @@
       </div>
     </div>
   </md-sidenav>
-  <div class="left-container">
 
-  </div>
+  <!-- //////////////////////// CENTRAL PART WITH PLAYLIST //////////////////////// -->
+
   <div class="songs-container">
+
+    <!-- //////////////////////// SONG SORT //////////////////////// -->
+
     <div class="songs-filters">
       <div class="alphab-filter filters-part-left-border" ng-click="changeOrder('title')">
         <p>
@@ -75,6 +81,9 @@
         </div>
       </div>
     </div>
+
+    <!-- //////////////////////// SONGS //////////////////////// -->
+
     <div ng-repeat="song in songs | orderBy: filterExeption(orderProperty) track by $index">
       <li class="pl-list" ng-class="{'pllistcurrent': isPlaying && currentTrackId === song.id, 'instrumental-song' : song.integral}">
         <div ng-if="song.instrumental.length > 0" ng-click="openInstrumental(song.id)" class="open-track"></div>
@@ -104,56 +113,76 @@
     </div>
   </div>
 </div>
-<!-- Audio player -->
+
+
+<!-- //////////////////////// AUDIO PLAYER //////////////////////// -->
+
 <div class="ap" id="ap">
   <div class="ap__inner">
     <div class="ap__item ap__item--playback">
+
+      <!-- //////////////////////// PREVIOUS BUTTON //////////////////////// -->
+
       <button class="ap__controls ap__controls--prev" ng-click="prevTrack()">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#333" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M9.516 12l8.484-6v12zM6 6h2.016v12h-2.016v-12z"></path>
-                </svg>
-            </button>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#333" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M9.516 12l8.484-6v12zM6 6h2.016v12h-2.016v-12z"></path>
+          </svg>
+      </button>
+
+      <!-- //////////////////////// PLAY BUTTON //////////////////////// -->
+
       <button class="ap__controls ap__controls--toggle" ng-click="playToggle()" ng-class="{'is-playing' : isPlaying}">
-                <svg
-                    class="icon-play"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    fill="#333"
-                    width="36"
-                    height="36"
-                    viewBox="0 0 36 36"
-                    data-play="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"
-                    data-pause="M 12,26 16.33,26 16.33,10 12,10 z M 20.66,26 25,26 25,10 20.66,10 z">
-                    <path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"></path>
-                </svg>
-            </button>
+          <svg
+              class="icon-play"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              fill="#333"
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+              data-play="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"
+              data-pause="M 12,26 16.33,26 16.33,10 12,10 z M 20.66,26 25,26 25,10 20.66,10 z">
+              <path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"></path>
+          </svg>
+      </button>
+
+      <!-- //////////////////////// NEXT BUTTON //////////////////////// -->
+
       <button class="ap__controls ap__controls--next" ng-click="nextTrack()">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#333" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M15.984 6h2.016v12h-2.016v-12zM6 18v-12l8.484 6z"></path>
-                </svg>
-            </button>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#333" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M15.984 6h2.016v12h-2.016v-12zM6 18v-12l8.484 6z"></path>
+          </svg>
+      </button>
     </div>
+
+    <!-- //////////////////////// TRACK VISUALISATION //////////////////////// -->
+
     <div class="ap__item ap__item--track">
-      <div class="track">
-        <div class="track__title">{{currentSong.title}}</div>
-        <div class="track__time">
-          <p>{{ currentPostion }} / {{ currentDuration }}</p>
+        <div class="track">
+            <div class="track__title">{{currentSong.title}}</div>
+            <div class="track__time">
+                <p>{{ currentPostion }} / {{ currentDuration }}</p>
+            </div>
+            <div class="load-bar"></div>
+
+            <!-- //////////////////////// PROGRESS BAR //////////////////////// -->
+
+            <div class="progress-bar progress-bar-slider">
+                <input seek-track class="progress-slider" type="range" step="0.001" min="0" max="100" value="0" ng-model="progress">
+                <div ng-if="!isDisabled" class="inner" ng-style="{ width: progress + '%' || '0%' }"></div>
+            </div>
         </div>
-        <div class="load-bar"></div>
-        <div class="progress-bar progress-bar-slider">
-          <input seek-track class="progress-slider" type="range" step="0.001" min="0" max="100" value="0" ng-model="progress">
-          <div ng-if="!isDisabled" class="inner" ng-style="{ width: progress + '%' || '0%' }"></div>
-        </div>
-        <!-- <md-slider-container seek-track ng-disabled="isDisabled">
-                        <md-slider ng-model="progress" flex>
-                        </md-slider>
-                    </md-slider-container> -->
-      </div>
     </div>
+
+    <!-- //////////////////////// SONG IMAGE //////////////////////// -->
+
     <div class="pic-box">
       <div class="song-pic" ng-style="{'background-image':'url(../assets/images/'+currentSong.icon+')'}"></div>
     </div>
+
+    <!-- //////////////////////// PLAYER VOLUME //////////////////////// -->
+
     <div class="ap__item ap__item--settings">
       <div class="ap__controls volume-container">
         <button class="volume-btn" ng-click="handleVol()">
@@ -171,6 +200,9 @@
           </md-slider>
         </div>
       </div>
+
+      <!-- //////////////////////// OPEN FILTERS //////////////////////// -->
+
       <md-button ng-click="toggleLeft()" class="filter-button">
         <p>Filtrer</p>
       </md-button>
