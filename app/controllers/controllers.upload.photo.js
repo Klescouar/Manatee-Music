@@ -30,11 +30,6 @@ exports.uploadPhoto = function(req, res) {
 
         // Check the file type, must be either png,jpg or jpeg
         if (type !== null && (type.ext === 'png' || type.ext === 'jpg' || type.ext === 'jpeg')) {
-            if (file.size < 15000) {
-                form.on('error', function(err) {
-                    console.log('Problem size');
-                });
-            } else {
                 // Assign new file name
                 filename = Date.now() + '-' + file.name;
 
@@ -48,7 +43,6 @@ exports.uploadPhoto = function(req, res) {
                     type: type.ext,
                     publicPath: '../../dist/assets/images/' + filename
                 });
-            }
         } else {
             form.on('error', function(err) {
                 console.log('Error occurred during processing - ' + err);

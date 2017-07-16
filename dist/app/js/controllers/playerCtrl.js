@@ -253,6 +253,7 @@ app.controller('playerCtrl', ['$scope', '$http', '$stateParams', 'playerService'
   });
 
   $scope.handleVol = () => {
+    console.log('hooooo');
     if ($scope.volume > 0) {
       volumeStatus = $scope.volume;
       angularPlayer.adjustVolumeSlider(0);

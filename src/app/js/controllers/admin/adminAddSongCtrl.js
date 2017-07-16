@@ -47,13 +47,13 @@ app.controller('adminAddSongCtrl', ['$scope', 'APIService', function($scope, API
   $scope.addSong = () => {
     if ($scope.song.integral) {
       APIService.addInstrumentalSong($scope.song).then(function(response) {
-        alert("C'EST GOOD");
+        alert("Morceau ajouté");
       }).catch(function(errMsg) {
         alert('Add Song failed!');
       });
     } else {
       APIService.addSong($scope.song).then(function(response) {
-        alert("C'EST GOOD");
+        alert("Morceau ajouté");
       }).catch(function(errMsg) {
         alert('Add Song failed!');
       });
@@ -91,7 +91,7 @@ app.controller('adminAddSongCtrl', ['$scope', 'APIService', function($scope, API
       $scope.song.icon = data[0].filename;
       alert("Photo uploadé!")
     } else {
-      alert('Image trop petite ou dans un mauvais format (formats accéptés: jpg,png,jpeg)')
+      alert('Image dans un mauvais format (formats accéptés: jpg,png,jpeg)')
     }
   }
   $scope.handleSuccessSong = (data) => {
@@ -119,7 +119,7 @@ app.controller('adminAddSongCtrl', ['$scope', 'APIService', function($scope, API
         }
       });
       $scope.song.url = '../../assets/song/' + data[0].filename;
-      alert('Son uploadé!')
+      alert('Morceau uploadé!')
     } else {
       alert('Mauvais format')
     }

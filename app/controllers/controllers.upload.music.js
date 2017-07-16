@@ -30,11 +30,6 @@ exports.uploadSong = function(req, res) {
 
         // Check the file type, must be either png,jpg or jpeg
         if (type !== null && (type.ext === 'mp3')) {
-            if (file.size < 1000) {
-                form.on('error', function(err) {
-                    console.log('Problem size');
-                });
-            } else {
                 // Assign new file name
                 filename = file.name;
 
@@ -48,7 +43,6 @@ exports.uploadSong = function(req, res) {
                     type: type.ext,
                     publicPath: '../../dist/assets/song/' + filename
                 });
-            }
         } else {
             form.on('error', function(err) {
                 console.log('Error occurred during processing - ' + err);

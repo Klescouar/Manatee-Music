@@ -60,7 +60,6 @@ exports.addSong = function(req, res) {
 };
 
 exports.updateNumberOfPlay = function(req, res) {
-  console.log(req.params.id);
     Songs.findById(req.params.id, function(err, doc) {
         if (err) {
             res.status(500).send(err);
@@ -72,7 +71,6 @@ exports.updateNumberOfPlay = function(req, res) {
                 const indexOfInstrumental = doc.instrumental.indexOf(filteredArray[0]);
                 doc.instrumental[indexOfInstrumental].numberOfPlay++;
                 const instrumentalArray = doc.instrumental;
-                console.log(instrumentalArray)
                 Songs.update({
                     _id: doc.id
                 }, {
