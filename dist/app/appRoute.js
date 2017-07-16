@@ -45,11 +45,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       resolve:{
        function(AuthService, $state){
         const role = AuthService.userRole();
-        if (role === 'Admin') {
-          return true;
-        }else{
+        if (role !== 'Admin') {
           $state.go('adminConnect');
           return false;
+        }else{
+          return true;
         }
        }
       }
