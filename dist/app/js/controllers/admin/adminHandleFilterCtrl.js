@@ -13,20 +13,21 @@ $scope.getAllStyle = () => {
 //////////////////////// ADD STYLE ////////////////////////
 
 $scope.addStyle = () => {
-    APIService.addStyle($scope.style).then(function(response) {}).catch(function(errMsg) {
+    APIService.addStyle($scope.style).then(function(response) {
+      $scope.getAllStyle();
+    }).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Style failed!');
     });
-    $scope.getAllStyle();
 };
 
 //////////////////////// REMOVE STYLE ////////////////////////
 
 $scope.removeStyle = (id) => {
     APIService.removeStyle(id).then(function(response) {
+      $scope.getAllStyle();
     }).catch(function(errMsg) {
         console.log('remove style failed!');
     });
-    $scope.getAllStyle();
 }
 
 $scope.getAllStyle();
@@ -50,20 +51,21 @@ $scope.getAllLength = () => {
 //////////////////////// ADD LENGTH ////////////////////////
 
 $scope.addLength = () => {
-    APIService.addLength($scope.length).then(function(response) {}).catch(function(errMsg) {
+    APIService.addLength($scope.length).then(function(response) {
+      $scope.getAllLength();
+    }).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Length failed!');
     });
-    $scope.getAllLength();
 };
 
 //////////////////////// REMOVE LENGTH ////////////////////////
 
 $scope.removeLength = (id) => {
     APIService.removeLength(id).then(function(response) {
+      $scope.getAllLength();
     }).catch(function(errMsg) {
         console.log('remove Length failed!');
     });
-    $scope.getAllLength();
 }
 
 $scope.getAllLength();
@@ -82,20 +84,21 @@ $scope.getAllInstrument = () => {
 //////////////////////// ADD INSTRUMENT ////////////////////////
 
 $scope.addInstrument = () => {
-    APIService.addInstrument($scope.instrument).then(function(response) {}).catch(function(errMsg) {
+    APIService.addInstrument($scope.instrument).then(function(response) {
+      $scope.getAllInstrument();
+    }).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Instrument failed!');
     });
-    $scope.getAllInstrument();
 };
 
 //////////////////////// REMOVE INSTRUMENT ////////////////////////
 
 $scope.removeInstrument = (id) => {
     APIService.removeInstrument(id).then(function(response) {
+      $scope.getAllInstrument();
     }).catch(function(errMsg) {
         console.log('remove Instrument failed!');
     });
-    $scope.getAllInstrument();
 }
 
 $scope.getAllInstrument();
@@ -119,20 +122,21 @@ $scope.getAllAmbiance = () => {
 //////////////////////// ADD AMBIANCE ////////////////////////
 
 $scope.addAmbiance = () => {
-    APIService.addAmbiance($scope.ambiance).then(function(response) {}).catch(function(errMsg) {
+    APIService.addAmbiance($scope.ambiance).then(function(response) {
+      $scope.getAllAmbiance();
+    }).catch(function(errMsg) {
         const alertPopup = $window.alert('Add Ambiance failed!');
     });
-    $scope.getAllAmbiance();
 };
 
 //////////////////////// REMOVE AMBIANCE ////////////////////////
 
 $scope.removeAmbiance = (id) => {
     APIService.removeAmbiance(id).then(function(response) {
+      $scope.getAllAmbiance();
     }).catch(function(errMsg) {
         console.log('remove Ambiance failed!');
     });
-    $scope.getAllAmbiance();
 }
 
 $scope.getAllAmbiance();

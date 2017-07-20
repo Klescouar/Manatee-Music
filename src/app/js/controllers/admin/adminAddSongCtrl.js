@@ -89,7 +89,7 @@ app.controller('adminAddSongCtrl', ['$scope', 'APIService', function($scope, API
   $scope.handleSuccess = (data) => {
     if (data.length > 0) {
       $scope.song.icon = data[0].filename;
-      alert("Photo uploadé!")
+      alert("Photo uploadée!")
     } else {
       alert('Image dans un mauvais format (formats accéptés: jpg,png,jpeg)')
     }
